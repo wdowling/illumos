@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>4835-getexecattr-manpage-formatting Old usr/src/man/man3secdb/getexecattr.3secdb</title>
+<body id="SUNWwebrev">
+<pre>
+   1 '\" te
+   2 .\" Copyright (c) 2005, Sun Microsystems, Inc.  All Rights Reserved.
+   3 .\" The contents of this file are subject to the terms of the Common Development and Distribution License (the "License").  You may not use this file except in compliance with the License.
+   4 .\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http://www.opensolaris.org/os/licensing.  See the License for the specific language governing permissions and limitations under the License.
+   5 .\" When distributing Covered Code, include this CDDL HEADER in each file and include the License file at usr/src/OPENSOLARIS.LICENSE.  If applicable, add the following below this CDDL HEADER, with the fields enclosed by brackets "[]" replaced with your own identifying information: Portions Copyright [yyyy] [name of copyright owner]
+   6 .TH GETEXECATTR 3SECDB "Mar 31, 2005"
+   7 .SH NAME
+   8 getexecattr, free_execattr, setexecattr, endexecattr, getexecuser, getexecprof,
+   9 match_execattr \- get execution profile entry
+  10 .SH SYNOPSIS
+  11 .LP
+  12 .nf
+  13 cc [ \fIflag\fR... ] \fIfile\fR... -lsecdb  -lsocket  -lnsl  [ \fIlibrary\fR... ]
+  14 #include &lt;exec_attr.h&gt;
+  15 #include &lt;secdb.h&gt;
+  16 
+  17 \fBexecattr_t *\fR\fBgetexecattr\fR(\fBvoid\fR);
+  18 .fi
+  19 
+  20 .LP
+  21 .nf
+  22 \fBvoid\fR \fBfree_execattr\fR(\fBexecattr_t *\fR\fIep\fR);
+  23 .fi
+  24 
+  25 .LP
+  26 .nf
+  27 \fBvoid\fR \fBsetexecattr\fR(\fBvoid\fR);
+  28 .fi
+  29 
+  30 .LP
+  31 .nf
+  32 \fBvoid\fR \fBendexecattr\fR(\fBvoid\fR);
+  33 .fi
+  34 
+  35 .LP
+  36 .nf
+  37 \fBexecattr_t *\fR\fBgetexecuser\fR(\fBconst char *\fR\fIusername\fR, \fBconst char *\fR\fItype\fR,
+  38      \fBconst char *\fR\fIid\fR, \fBint\fR \fIsearch_flag\fR);
+  39 .fi
+  40 
+  41 .LP
+  42 .nf
+  43 \fBexecattr_t *\fR\fBgetexecprof\fR(\fBconst char *\fR\fIprofname\fR, \fBconst char *\fR\fItype\fR,
+  44      \fBconst char *\fR\fIid\fR, \fBint\fR \fIsearch_flag\fR);
+  45 .fi
+  46 
+  47 .LP
+  48 .nf
+  49 \fBexecattr_t *\fR\fBmatch_execattr\fR(\fBexecattr_t *\fR\fIep\fR, \fBchar *\fR\fIprofname\fR,
+  50      \fBchar *\fR\fItype\fR, \fBchar *\fR\fIid\fR);
+  51 .fi
+  52 
+  53 .SH DESCRIPTION
+  54 .sp
+  55 .LP
+  56 The \fBgetexecattr()\fR function returns a single \fBexec_attr\fR(4) entry.
+  57 Entries can come from any of the sources specified in the
+  58 \fBnsswitch.conf\fR(4) file.
+  59 .sp
+  60 .LP
+  61 Successive calls to \fBgetexecattr()\fR return either successive
+  62 \fBexec_attr\fR entries or \fINULL\fR. Because \fBgetexecattr()\fR always
+  63 returns a single entry, the \fBnext\fR pointer in the  \fBexecattr_t\fR data
+  64 structure points to \fINULL\fR.
+  65 .sp
+  66 .LP
+  67 The internal representation of an \fBexec_attr\fR entry is an \fBexecattr_t\fR
+  68 structure defined in  &lt;\fBexec_attr.h\fR&gt; with the following members:
+  69 .sp
+  70 .in +2
+  71 .nf
+  72 char              *name;   /* name of the profile */
+  73 char              *type;   /* type of profile */
+  74 char              *policy; /* policy under which the attributes are */
+  75                            /* relevant*/
+  76 char              *res1;   /* reserved for future use */
+  77 char              *res2;   /* reserved for future use */
+  78 char              *id;     /* unique identifier */
+  79 kva_t             *attr;   /* attributes */
+  80 struct execattr_s *next;   /* optional pointer to next profile */
+  81 .fi
+  82 .in -2
+  83 
+  84 .sp
+  85 .LP
+  86 The \fBfree_execattr()\fR function releases memory. It follows the \fBnext\fR
+  87 pointers in the \fBexecattr_t\fR structure so that the entire linked list is
+  88 released.
+  89 .sp
+  90 .LP
+  91 The \fBsetexecattr()\fR function "rewinds" to the beginning of the enumeration
+  92 of \fBexec_attr\fR entries. Calls to \fBgetexecuser()\fR can leave the
+  93 enumeration in an indeterminate state. Therefore, \fBsetexecattr()\fR should be
+  94 called before the first call to \fBgetexecattr()\fR.
+  95 .sp
+  96 .LP
+  97 The \fBendexecattr()\fR function can be called to indicate that \fBexec_attr\fR
+  98 processing is complete; the library can then close any open \fBexec_attr\fR
+  99 file, deallocate any internal storage, and so forth.
+ 100 .sp
+ 101 .LP
+ 102 The \fBgetexecuser()\fR function returns a linked list of entries that match
+ 103 the \fItype\fR and \fIid\fR arguments and have a profile that has been assigned
+ 104 to the user specified by \fIusername\fR, as described in \fBpasswd\fR(4).
+ 105 Profiles for the user are obtained from the list of default profiles in
+ 106 \fB/etc/security/policy.conf\fR (see \fBpolicy.conf\fR(4)) and the
+ 107 \fBuser_attr\fR(4) database. Only entries in the name service scope for which
+ 108 the corresponding profile entry is found in the \fBprof_attr\fR(4) database are
+ 109 returned.
+ 110 .sp
+ 111 .LP
+ 112 The \fBgetexecprof()\fR function returns a linked list of entries that match
+ 113 the \fItype\fR and \fIid\fR arguments and have the profile specified by the
+ 114 \fIprofname\fR argument. Only entries in the name service scope for which the
+ 115 corresponding profile entry is found in the \fBprof_attr\fR database are
+ 116 returned.
+ 117 .sp
+ 118 .LP
+ 119 Using \fBgetexecuser()\fR and \fBgetexecprof()\fR, programmers can search  for
+ 120 any \fItype\fR argument, such as the manifest constant \fBKV_COMMAND\fR. The
+ 121 arguments are logically AND-ed together so that only entries exactly matching
+ 122 all of the arguments are returned. Wildcard matching applies if there is no
+ 123 exact match for an \fBID\fR. Any argument can be assigned the \fINULL\fR value
+ 124 to indicate that it is not used as part of the matching criteria. The \fB\fR
+ 125 search_flag controls whether the function returns the first match
+ 126 (\fBGET_ONE\fR), setting the \fBnext\fR pointer to \fINULL\fR or all matching
+ 127 entries (\fBGET_ALL\fR), using the \fBnext\fR pointer to create a linked list
+ 128 of all entries that meet the search criteria. See  \fBEXAMPLES\fR.
+ 129 .sp
+ 130 .LP
+ 131 Once a list of entries is returned by \fBgetexecuser()\fR or
+ 132 \fBgetexecprof()\fR, the convenience function \fBmatch_execattr()\fR can be
+ 133 used to identify an individual entry. It returns a pointer to the individual
+ 134 element with the same profile name ( \fIprofname\fR), type name ( \fItype\fR),
+ 135 and \fIid\fR. Function parameters set to \fINULL\fR are not used as part of the
+ 136 matching criteria. In the event that multiple entries meet the matching
+ 137 criteria, only a pointer to the first entry is returned. The
+ 138 \fBkva_match\fR(3SECDB) function can be used to look up a key in a key-value
+ 139 array.
+ 140 .SH RETURN VALUES
+ 141 .sp
+ 142 .LP
+ 143 Those functions returning data only return data related to the active policy.
+ 144 The \fBgetexecattr()\fR function returns a pointer to a  \fBexecattr_t\fR if it
+ 145 successfully enumerates an entry; otherwise it returns \fINULL\fR, indicating
+ 146 the end of the enumeration.
+ 147 .SH USAGE
+ 148 .sp
+ 149 .LP
+ 150 The \fBgetexecattr()\fR, \fBgetexecuser()\fR, and \fBgetexecprof()\fR functions
+ 151 all allocate memory for the pointers they return. This memory should be
+ 152 deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR(
+ 153 function does not allocate any memory. Therefore, pointers returned by this
+ 154 function should not be deallocated.
+ 155 .sp
+ 156 .LP
+ 157 Individual attributes may be referenced in the \fBattr\fR structure by calling
+ 158 the \fBkva_match\fR(3SECDB) function.
+ 159 .SH EXAMPLES
+ 160 .LP
+ 161 \fBExample 1 \fRFind all profiles that have the  \fBping\fR command.
+ 162 .sp
+ 163 .in +2
+ 164 .nf
+ 165 if ((execprof=getexecprof(NULL, KV_COMMAND, "/usr/sbin/ping",
+ 166     GET_ONE)) == NULL) {
+ 167         /* do error */
+ 168 }
+ 169 .fi
+ 170 .in -2
+ 171 
+ 172 .LP
+ 173 \fBExample 2 \fRFind the entry for the \fBping\fR command in the Network
+ 174 Administration Profile.
+ 175 .sp
+ 176 .in +2
+ 177 .nf
+ 178 if ((execprof=getexecprof("Network Administration", KV_COMMAND,
+ 179     "/usr/sbin/ping", GET_ALL))==NULL) {
+ 180         /* do error */
+ 181 }
+ 182 .fi
+ 183 .in -2
+ 184 
+ 185 .LP
+ 186 \fBExample 3 \fRTell everything that can be done in the Filesystem Security
+ 187 profile.
+ 188 .sp
+ 189 .in +2
+ 190 .nf
+ 191 if ((execprof=getexecprof("Filesystem Security", KV_NULL, NULL,
+ 192     GET_ALL))==NULL)) {
+ 193         /* do error */
+ 194 }
+ 195 .fi
+ 196 .in -2
+ 197 
+ 198 .LP
+ 199 \fBExample 4 \fRTell if the \fBtar\fR utility is in a profile assigned to user
+ 200 wetmore. If there is no exact profile entry, the wildcard (*), if defined, is
+ 201 returned.
+ 202 .sp
+ 203 .LP
+ 204 The following tells if the \fBtar\fR utility is in a profile assigned to user
+ 205 wetmore. If there is no exact profile entry, the wildcard (*), if defined, is
+ 206 returned.
+ 207 
+ 208 .sp
+ 209 .in +2
+ 210 .nf
+ 211 if ((execprof=getexecuser("wetmore", KV_COMMAND, "/usr/bin/tar",
+ 212     GET_ONE))==NULL) {
+ 213         /* do error */
+ 214 }
+ 215 .fi
+ 216 .in -2
+ 217 
+ 218 .SH FILES
+ 219 .sp
+ 220 .ne 2
+ 221 .na
+ 222 \fB\fB/etc/nsswitch.conf\fR\fR
+ 223 .ad
+ 224 .RS 29n
+ 225 configuration file lookup information for the name server switch
+ 226 .RE
+ 227 
+ 228 .sp
+ 229 .ne 2
+ 230 .na
+ 231 \fB\fB/etc/user_attr\fR\fR
+ 232 .ad
+ 233 .RS 29n
+ 234 extended user attributes
+ 235 .RE
+ 236 
+ 237 .sp
+ 238 .ne 2
+ 239 .na
+ 240 \fB\fB/etc/security/exec_attr\fR\fR
+ 241 .ad
+ 242 .RS 29n
+ 243 execution profiles
+ 244 .RE
+ 245 
+ 246 .sp
+ 247 .ne 2
+ 248 .na
+ 249 \fB\fB/etc/security/policy.conf\fR\fR
+ 250 .ad
+ 251 .RS 29n
+ 252 policy definitions
+ 253 .RE
+ 254 
+ 255 .SH ATTRIBUTES
+ 256 .sp
+ 257 .LP
+ 258 See \fBattributes\fR(5) for descriptions of the following attributes:
+ 259 .sp
+ 260 
+ 261 .sp
+ 262 .TS
+ 263 box;
+ 264 c | c
+ 265 l | l .
+ 266 ATTRIBUTE TYPE  ATTRIBUTE VALUE
+ 267 _
+ 268 MT-Level        MT-Safe
+ 269 .TE
+ 270 
+ 271 .SH SEE ALSO
+ 272 .sp
+ 273 .LP
+ 274 \fBgetauthattr\fR(3SECDB), \fBgetuserattr\fR(3SECDB), \fBkva_match\fR(3SECDB),
+ 275 \fBexec_attr\fR(4), \fBpasswd\fR(4), \fBpolicy.conf\fR(4), \fBprof_attr\fR(4),
+ 276 \fBuser_attr\fR(4), \fBattributes\fR(5)
+</pre></body></html>

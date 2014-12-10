@@ -1,0 +1,1011 @@
+%!PS-Adobe-2.0
+%%Creator: codereview on oi
+%%CreationDate: Thu May 22 21:03:26 2014
+%%For: wmd
+%%DocumentFonts: Courier Courier-Bold Courier-Oblique Courier-BoldOblique
+%%Pages: (atend)
+%%EndComments
+%
+% PostScript Prologue for lwlp LaserWriter Line Printer
+%
+/SFT {findfont exch scalefont setfont}bind def
+/SWT {( ) stringwidth pop dup /W exch def neg /NW exch def}bind def
+/SPG {/SV save def translate dup scale rotate}bind def
+/EPG {SV restore}bind def
+/FPG {/#copies exch def showpage}bind def
+/B {NW 0 rmoveto}def
+/M /moveto load def
+/T {W mul 0 rmoveto}def
+/S /show load def
+/Z {0 exch moveto}bind def
+/SHD {save 5 1 roll			% S x1 y1 x0 y0
+	2 copy moveto			% S x1 y1 x0 y0
+	3 index exch lineto		% S x1 y1 x0
+	3 -1 roll 2 index lineto	% S y1 x0
+	exch lineto			% S
+	0.95 setgray fill		% S
+	restore}def
+%%EndProlog
+/FRN {10.526316 /Courier SFT}bind def
+/FRB {10.526316 /Courier-Bold SFT}bind def
+/FIN {10.526316 /Courier-Oblique SFT}bind def
+/FIB {10.526316 /Courier-BoldOblique SFT}bind def
+%%Page: ? 1
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (1)S
+FRN
+FIB
+0 688.42 M
+688.42 Z
+(**********************************************************)S
+0 677.89 M
+677.89 Z
+(   18816 Thu May 22 21:03:26 2014)S
+0 667.37 M
+667.37 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+0 656.84 M
+656.84 Z
+(4775 Fixed formatting in getaddinfo\(3\) man page)S
+0 646.32 M
+646.32 Z
+(**********************************************************)S
+FRN
+FIB
+635.79 Z
+(______unchanged_portion_omitted_)S
+FRN
+625.26 Z
+2 T (96)S 1 T (.fi)S
+614.74 Z
+2 T (97)S 1 T (.in -2)S
+593.68 Z
+2 T (99)S 1 T (.sp)S
+583.16 Z
+1 T (100)S 1 T (.LP)S
+572.63 Z
+1 T (101)S 1 T (In this \\fIhints\\fR structure, all members other than \\fBai_flags\\fR,)S
+562.11 Z
+1 T (102)S 1 T (\\fBai_family\\fR, \\fBai_socktype\\fR, and \\fBai_protocol\\fR must be 0 or a null)S
+551.58 Z
+1 T (103)S 1 T (pointer. A value of \\fBPF_UNSPEC\\fR for \\fBai_family\\fR indicates that the)S
+541.05 Z
+1 T (104)S 1 T (caller will accept any protocol family. A value of 0 for \\fBai_socktype\\fR)S
+530.53 Z
+1 T (105)S 1 T (indicates that the caller will accept any socket type.  A value of 0 for)S
+520.00 Z
+1 T (106)S 1 T (\\fBai_protocol\\fR indicates that the caller will accept any protocol. For)S
+509.47 Z
+1 T (107)S 1 T (example, if the caller handles only TCP and not UDP, then the \\fBai_socktype\\fR)S
+498.95 Z
+1 T (108)S 1 T (member of the \\fIhints\\fR structure should be set to \\fBSOCK_STREAM\\fR when)S
+488.42 Z
+1 T (109)S 1 T (\\fBgetaddrinfo\(\)\\fR is called. If the caller handles only IPv4 and not IPv6,)S
+477.89 Z
+1 T (110)S 1 T (then the \\fBai_family\\fR member of the \\fIhints\\fR structure should be set to)S
+467.37 Z
+1 T (111)S 1 T (\\fBPF_INET\\fR when \\fBgetaddrinfo\(\)\\fR is called. If the third argument to)S
+456.84 Z
+1 T (112)S 1 T (\\fBgetaddrinfo\(\)\\fR is a null pointer, it is as if the caller had filled in an)S
+446.32 Z
+1 T (113)S 1 T (\\fBaddrinfo\\fR structure initialized to 0 with \\fBai_family\\fR set to)S
+435.79 Z
+1 T (114)S 1 T (\\fBPF_UNSPEC\\fR.)S
+425.26 Z
+1 T (115)S 1 T (.sp)S
+414.74 Z
+1 T (116)S 1 T (.LP)S
+404.21 Z
+1 T (117)S 1 T (Upon success, a pointer to a linked list of one or more \\fBaddrinfo\\fR)S
+393.68 Z
+1 T (118)S 1 T (structures is returned through the final argument.  The caller can process each)S
+383.16 Z
+1 T (119)S 1 T (\\fBaddrinfo\\fR structure in this list by following the \\fBai_next\\fR pointer,)S
+372.63 Z
+1 T (120)S 1 T (until a null pointer is encountered. In each returned \\fBaddrinfo\\fR structure)S
+362.11 Z
+1 T (121)S 1 T (the three members \\fBai_family\\fR, \\fBai_socktype\\fR, and \\fBai_protocol\\fR are)S
+351.58 Z
+1 T (122)S 1 T (the corresponding arguments for a call to the \\fBsocket\\fR\(3SOCKET\) function.)S
+341.05 Z
+1 T (123)S 1 T (In each \\fBaddrinfo\\fR structure the \\fBai_addr\\fR member points to a filled-in)S
+330.53 Z
+1 T (124)S 1 T (socket address structure whose length is specified by the \\fBai_addrlen\\fR)S
+320.00 Z
+1 T (125)S 1 T (member.)S
+309.47 Z
+1 T (126)S 1 T (.sp)S
+298.95 Z
+1 T (127)S 1 T (.LP)S
+288.42 Z
+1 T (128)S 1 T (If the \\fBAI_PASSIVE\\fR bit is set in the \\fBai_flags\\fR member of the)S
+277.90 Z
+1 T (129)S 1 T (\\fIhints\\fR structure, the caller plans to use the returned socket address)S
+267.37 Z
+1 T (130)S 1 T (structure in a call to \\fBbind\\fR\(3SOCKET\). In this case, if the \\fInodename\\fR)S
+256.84 Z
+1 T (131)S 1 T (argument is a null pointer, the IP address portion of the socket address)S
+246.32 Z
+1 T (132)S 1 T (structure will be set to \\fBINADDR_ANY\\fR for an IPv4 address or)S
+235.79 Z
+1 T (133)S 1 T (\\fBIN6ADDR_ANY_INIT\\fR for an IPv6 address.)S
+225.26 Z
+1 T (134)S 1 T (.sp)S
+214.74 Z
+1 T (135)S 1 T (.LP)S
+204.21 Z
+1 T (136)S 1 T (If the \\fBAI_PASSIVE\\fR bit is not set in the \\fBai_flags\\fR member of the)S
+193.68 Z
+1 T (137)S 1 T (\\fIhints\\fR structure, then the returned socket address structure will be ready)S
+183.16 Z
+1 T (138)S 1 T (for a call to \\fBconnect\\fR\(3SOCKET\) \(for a connection-oriented protocol\) or)S
+172.63 Z
+1 T (139)S 1 T (either \\fBconnect\\fR\(3SOCKET\), \\fBsendto\\fR\(3SOCKET\), or \\fBsendmsg\\fR\(3SOCKET\))S
+162.11 Z
+1 T (140)S 1 T (\(for a connectionless protocol\). If the \\fInodename\\fR argument is a null)S
+151.58 Z
+1 T (141)S 1 T (pointer, the IP address portion of the socket address structure will be set to)S
+141.05 Z
+1 T (142)S 1 T (the loopback address.)S
+130.53 Z
+1 T (143)S 1 T (.sp)S
+120.00 Z
+1 T (144)S 1 T (.LP)S
+109.47 Z
+1 T (145)S 1 T (If the \\fBAI_CANONNAME\\fR bit is set in the \\fBai_flags\\fR member of the)S
+98.95 Z
+1 T (146)S 1 T (\\fIhints\\fR structure, then upon successful return the \\fBai_canonname\\fR)S
+88.42 Z
+1 T (147)S 1 T (member of the first \\fBaddrinfo\\fR structure in the linked list will point to a)S
+77.90 Z
+1 T (148)S 1 T (null-terminated string containing the canonical name of the specified)S
+67.37 Z
+1 T (149)S 1 T (\\fInodename\\fR. A numeric host address string is not a name, and thus does not)S
+56.84 Z
+1 T (150)S 1 T (have a canonical name form; no address to host name translation is performed.)S
+46.32 Z
+1 T (151)S 1 T (.sp)S
+35.79 Z
+1 T (152)S 1 T (.LP)S
+25.26 Z
+1 T (153)S 1 T (If the \\fBAI_NUMERICHOST\\fR bit is set in the \\fBai_flags\\fR member of the)S
+14.74 Z
+1 T (154)S 1 T (\\fIhints\\fR structure, then a non-null \\fInodename\\fR string must be a numeric)S
+4.21 Z
+1 T (155)S 1 T (host address string. Otherwise an error of \\fBEAI_NONAME\\fR is returned. This)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (2)S
+FRN
+688.42 Z
+1 T (156)S 1 T (flag prevents any type of name resolution service \(such as DNS\) from being)S
+677.89 Z
+1 T (157)S 1 T (called.)S
+667.37 Z
+1 T (158)S 1 T (.sp)S
+656.84 Z
+1 T (159)S 1 T (.LP)S
+646.32 Z
+1 T (160)S 1 T (If the \\fBAI_NUMERICSERV\\fR flag is specified, then a non-null servname string)S
+635.79 Z
+1 T (161)S 1 T (supplied will be a numeric port string.  Otherwise, an [\\fBEAI_NONAME\\fR] error)S
+625.26 Z
+1 T (162)S 1 T (is returned. This flag prevents any type of name resolution service \(for)S
+614.74 Z
+1 T (163)S 1 T (example, NIS+\) from being invoked.)S
+604.21 Z
+1 T (164)S 1 T (.sp)S
+593.68 Z
+1 T (165)S 1 T (.LP)S
+583.16 Z
+1 T (166)S 1 T (If the \\fBAI_V4MAPPED\\fR flag is specified along with an \\fBai_family\\fR of)S
+572.63 Z
+1 T (167)S 1 T (\\fBAF_INET6\\fR, then \\fBgetaddrinfo\(\)\\fR returns IPv4-mapped IPv6 addresses on)S
+562.11 Z
+1 T (168)S 1 T (finding no matching IPv6 addresses \(\\fBai_addrlen\\fR shall be 16\). For example,)S
+551.58 Z
+1 T (169)S 1 T (if no AAAA records are found when using DNS, a query is made for A records. Any)S
+541.05 Z
+1 T (170)S 1 T (found records are returned as IPv4-mapped IPv6 addresses.)S
+530.53 Z
+1 T (171)S 1 T (.sp)S
+520.00 Z
+1 T (172)S 1 T (.LP)S
+509.47 Z
+1 T (173)S 1 T (The \\fBAI_V4MAPPED\\fR flag is ignored unless \\fBai_family\\fR equals)S
+498.95 Z
+1 T (174)S 1 T (\\fBAF_INET6\\fR.)S
+488.42 Z
+1 T (175)S 1 T (.sp)S
+477.89 Z
+1 T (176)S 1 T (.LP)S
+467.37 Z
+1 T (177)S 1 T (If the \\fBAI_ALL\\fR flag is used with the AI_V4MAPPED flag, then)S
+456.84 Z
+1 T (178)S 1 T (\\fBgetaddrinfo\(\)\\fR returns all matching IPv6 and IPv4 addresses. For example,)S
+446.32 Z
+1 T (179)S 1 T (when using the DNS, queries are made for both AAAA records and A records, and)S
+435.79 Z
+1 T (180)S 1 T (\\fBgetaddrinfo\(\)\\fR returns the combined results of both queries. Any IPv4)S
+425.26 Z
+1 T (181)S 1 T (addresses found are returned as IPv4-mapped IPv6 addresses.)S
+414.74 Z
+1 T (182)S 1 T (.sp)S
+404.21 Z
+1 T (183)S 1 T (.LP)S
+393.68 Z
+1 T (184)S 1 T (The \\fBAI_ALL\\fR flag without the \\fBAI_V4MAPPED\\fR flag is ignored.)S
+383.16 Z
+1 T (185)S 1 T (.sp)S
+372.63 Z
+1 T (186)S 1 T (.LP)S
+362.11 Z
+1 T (187)S 1 T (When \\fBai_family\\fR is not specified \(\\fBAF_UNSPEC\\fR\), \\fBAI_V4MAPPED\\fR and)S
+351.58 Z
+1 T (188)S 1 T (\\fBAI_ALL\\fR flags are used only if \\fBAF_INET6\\fR is supported.)S
+341.05 Z
+1 T (189)S 1 T (.sp)S
+330.53 Z
+1 T (190)S 1 T (.LP)S
+320.00 Z
+1 T (191)S 1 T (If the \\fBAI_ADDRCONFIG\\fR flag is specified, IPv4 addresses are returned only)S
+309.47 Z
+1 T (192)S 1 T (if an IPv4 address is configured on the local system, and IPv6 addresses are)S
+298.95 Z
+1 T (193)S 1 T (returned only if an IPv6 address is configured on the local system. For this)S
+288.42 Z
+1 T (194)S 1 T (case, the loopback address is not considered to be as valid as a configured)S
+277.90 Z
+1 T (195)S 1 T (address. For example, when using the DNS, a query for AAAA records should occur)S
+267.37 Z
+1 T (196)S 1 T (only if the node has at least one IPv6 address configured \(other than IPv6)S
+256.84 Z
+1 T (197)S 1 T (loopback\) and a query for A records should occur only if the node has at least)S
+246.32 Z
+1 T (198)S 1 T (one IPv4 address configured \(other than the IPv4 loopback\).)S
+235.79 Z
+1 T (199)S 1 T (.sp)S
+225.26 Z
+1 T (200)S 1 T (.LP)S
+214.74 Z
+1 T (201)S 1 T (All of the information returned by \\fBgetaddrinfo\(\)\\fR is dynamically)S
+204.21 Z
+1 T (202)S 1 T (allocated: the \\fBaddrinfo\\fR structures as well as the socket address)S
+193.68 Z
+1 T (203)S 1 T (structures and canonical node name strings pointed to by the \\fBaddrinfo\\fR)S
+183.16 Z
+1 T (204)S 1 T (structures. The \\fBfreeaddrinfo\(\)\\fR function is called to return this)S
+172.63 Z
+1 T (205)S 1 T (information to the system. For \\fBfreeaddrinfo\(\)\\fR, the \\fBaddrinfo\\fR)S
+162.11 Z
+1 T (206)S 1 T (structure pointed to by the \\fIai\\fR argument is freed, along with any dynamic)S
+151.58 Z
+1 T (207)S 1 T (storage pointed to by the structure. This operation is repeated until a null)S
+141.05 Z
+1 T (208)S 1 T (\\fBai_next\\fR pointer is encountered.)S
+130.53 Z
+1 T (209)S 1 T (.sp)S
+120.00 Z
+1 T (210)S 1 T (.LP)S
+109.47 Z
+1 T (211)S 1 T (To aid applications in printing error messages based on the \\fBEAI_\\fR* codes)S
+98.95 Z
+1 T (212)S 1 T (returned by \\fBgetaddrinfo\(\)\\fR, the \\fBgai_strerror\(\)\\fR is defined. The)S
+88.42 Z
+1 T (213)S 1 T (argument is one of the \\fBEAI_\\fR* values defined below and the return value)S
+77.90 Z
+1 T (214)S 1 T (points to a string describing the error. If the argument is not one of the)S
+67.37 Z
+1 T (215)S 1 T (\\fBEAI_\\fR* values, the function still returns a pointer to a string whose)S
+56.84 Z
+1 T (216)S 1 T (contents indicate an unknown error.)S
+46.32 Z
+1 T (217)S 1 T (.sp)S
+35.79 Z
+1 T (218)S 1 T (.LP)S
+25.26 Z
+1 T (219)S 1 T (The \\fBgetnameinfo\(\)\\fR function looks up an IP address and port number)S
+14.74 Z
+1 T (220)S 1 T (provided by the caller in the name service database and system-specific)S
+4.21 Z
+1 T (221)S 1 T (database, and returns text strings for both in buffers provided by the caller.)S
+EPG
+1 FPG
+%%Page: ? 2
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (3)S
+FRN
+688.42 Z
+1 T (222)S 1 T (The function indicates successful completion by a 0 return value; a non-zero)S
+677.89 Z
+1 T (223)S 1 T (return value indicates failure.)S
+667.37 Z
+1 T (224)S 1 T (.sp)S
+656.84 Z
+1 T (225)S 1 T (.LP)S
+646.32 Z
+1 T (226)S 1 T (The first argument, \\fIsa\\fR, points to either a \\fBsockaddr_in\\fR structure)S
+635.79 Z
+1 T (227)S 1 T (\(for IPv4\) or a \\fBsockaddr_in6\\fR structure \(for IPv6\) that holds the IP)S
+625.26 Z
+1 T (228)S 1 T (address and port number. The \\fIsalen\\fR argument gives the length of the)S
+614.74 Z
+1 T (229)S 1 T (\\fBsockaddr_in\\fR or \\fBsockaddr_in6\\fR structure.)S
+604.21 Z
+1 T (230)S 1 T (.sp)S
+593.68 Z
+1 T (231)S 1 T (.LP)S
+583.16 Z
+1 T (232)S 1 T (The function returns the node name associated with the IP address in the buffer)S
+572.63 Z
+1 T (233)S 1 T (pointed to by the \\fIhost\\fR argument.)S
+562.11 Z
+1 T (234)S 1 T (.sp)S
+551.58 Z
+1 T (235)S 1 T (.LP)S
+541.05 Z
+1 T (236)S 1 T (The function can also return the IPv6 zone-id in the form:)S
+530.53 Z
+1 T (237)S 1 T (.sp)S
+520.00 Z
+1 T (238)S 1 T (.in +2)S
+509.47 Z
+1 T (239)S 1 T (.nf)S
+498.95 Z
+1 T (240)S 1 T (<address>%<zone-id>)S
+488.42 Z
+1 T (241)S 1 T (.fi)S
+477.89 Z
+1 T (242)S 1 T (.in -2)S
+456.84 Z
+1 T (244)S 1 T (.sp)S
+446.32 Z
+1 T (245)S 1 T (.LP)S
+435.79 Z
+1 T (246)S 1 T (The caller provides the size of this buffer with the \\fIhostlen\\fR argument.)S
+425.26 Z
+1 T (247)S 1 T (The service name associated with the port number is returned in the buffer)S
+414.74 Z
+1 T (248)S 1 T (pointed to by \\fIserv\\fR, and the \\fIservlen\\fR argument gives the length of)S
+404.21 Z
+1 T (249)S 1 T (this buffer. The caller specifies not to return either string by providing a 0)S
+393.68 Z
+1 T (250)S 1 T (value for the \\fIhostlen\\fR or \\fIservlen\\fR arguments. Otherwise, the caller)S
+383.16 Z
+1 T (251)S 1 T (must provide buffers large enough to hold the node name and the service name,)S
+372.63 Z
+1 T (252)S 1 T (including the terminating null characters.)S
+362.11 Z
+1 T (253)S 1 T (.sp)S
+351.58 Z
+1 T (254)S 1 T (.LP)S
+341.05 Z
+1 T (255)S 1 T (To aid the application in allocating buffers for these two returned strings,)S
+330.53 Z
+1 T (256)S 1 T (the following constants are defined in <\\fBnetdb.h\\fR>:)S
+320.00 Z
+1 T (257)S 1 T (.sp)S
+309.47 Z
+1 T (258)S 1 T (.in +2)S
+298.95 Z
+1 T (259)S 1 T (.nf)S
+288.42 Z
+1 T (260)S 1 T (#define NI_MAXHOST  1025)S
+277.90 Z
+1 T (261)S 1 T (#define NI_MAXSERV    32)S
+267.37 Z
+1 T (262)S 1 T (.fi)S
+256.84 Z
+1 T (263)S 1 T (.in -2)S
+235.79 Z
+1 T (265)S 1 T (.sp)S
+225.26 Z
+1 T (266)S 1 T (.LP)S
+214.74 Z
+1 T (267)S 1 T (The final argument is a flag that changes the default actions of this function.)S
+204.21 Z
+1 T (268)S 1 T (By default, the fully-qualified domain name \(\\fBFQDN\\fR\) for the host is looked)S
+193.68 Z
+1 T (269)S 1 T (up in the name service database and returned. If the flag bit \\fBNI_NOFQDN\\fR)S
+183.16 Z
+1 T (270)S 1 T (is set, only the node name portion of the \\fBFQDN\\fR is returned for local)S
+172.63 Z
+1 T (271)S 1 T (hosts.)S
+162.11 Z
+1 T (272)S 1 T (.sp)S
+151.58 Z
+1 T (273)S 1 T (.LP)S
+141.05 Z
+1 T (274)S 1 T (If the flag bit \\fBNI_NUMERICHOST\\fR is set, or if the host's name cannot be)S
+130.53 Z
+1 T (275)S 1 T (located in the name service, the numeric form of the host's address is returned)S
+120.00 Z
+1 T (276)S 1 T (instead of its name, for example, by calling \\fBinet_ntop\(\)\\fR \(see)S
+109.47 Z
+1 T (277)S 1 T (\\fBinet\\fR\(3SOCKET\)\) instead of \\fBgetipnodebyname\\fR\(3SOCKET\). If the flag bit)S
+98.95 Z
+1 T (278)S 1 T (\\fBNI_NAMEREQD\\fR is set, an error is returned if the host's name cannot be)S
+88.42 Z
+1 T (279)S 1 T (located in the name service database.)S
+77.90 Z
+1 T (280)S 1 T (.sp)S
+67.37 Z
+1 T (281)S 1 T (.LP)S
+56.84 Z
+1 T (282)S 1 T (If the flag bit \\fBNI_NUMERICSERV\\fR is set, the numeric form of the service)S
+46.32 Z
+1 T (283)S 1 T (address is returned \(for example, its port number\) instead of its name. The two)S
+35.79 Z
+1 T (284)S 1 T (\\fBNI_NUMERIC\\fR* flags are required to support the \\fB-n\\fR flag that many)S
+25.26 Z
+1 T (285)S 1 T (commands provide.)S
+14.74 Z
+1 T (286)S 1 T (.sp)S
+4.21 Z
+1 T (287)S 1 T (.LP)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (4)S
+FRN
+688.42 Z
+1 T (288)S 1 T (A fifth flag bit, \\fBNI_DGRAM\\fR, specifies that the service is a datagram)S
+677.89 Z
+1 T (289)S 1 T (service, and causes \\fBgetservbyport\\fR\(3SOCKET\) to be called with a second)S
+667.37 Z
+1 T (290)S 1 T (argument of \\fBudp\\fR instead of the default \\fBtcp\\fR. This is required for)S
+656.84 Z
+1 T (291)S 1 T (the few ports \(for example, 512-514\) that have different services for UDP and)S
+646.32 Z
+1 T (292)S 1 T (TCP.)S
+635.79 Z
+1 T (293)S 1 T (.sp)S
+625.26 Z
+1 T (294)S 1 T (.LP)S
+614.74 Z
+1 T (295)S 1 T (These \\fBNI_\\fR* flags are defined in <\\fBnetdb.h\\fR> along with the \\fBAI_\\fR*)S
+604.21 Z
+1 T (296)S 1 T (flags already defined for \\fBgetaddrinfo\(\)\\fR.)S
+593.68 Z
+1 T (297)S 1 T (.SH RETURN VALUES)S
+583.16 Z
+1 T (298)S 1 T (.sp)S
+572.63 Z
+1 T (299)S 1 T (.LP)S
+562.11 Z
+1 T (300)S 1 T (For \\fBgetaddrinfo\(\)\\fR, if the query is successful, a pointer to a linked list)S
+551.58 Z
+1 T (301)S 1 T (of one or more \\fBaddrinfo\\fR structures is returned by the fourth argument and)S
+FRB
+0 537.89 540 548.42 SHD
+541.05 Z
+FRN
+1 T (302)S 1 T FRB
+(the function returns \\fB0\\fR. The order of the addresses returned in the fourth)S
+FIN
+0 527.37 540 537.89 SHD
+530.53 Z
+FRN
+1 T (302)S 1 T FIN
+(the function returns \\fB0\\fR. The order of the addresses returned i nthe fourth)S
+FRN
+520.00 Z
+1 T (303)S 1 T (argument is discussed in the ADDRESS ORDERING section. If the query fails, a)S
+509.47 Z
+1 T (304)S 1 T (non-zero error code will be returned. For \\fBgetnameinfo\(\)\\fR, if successful,)S
+498.95 Z
+1 T (305)S 1 T (the strings hostname and service are copied into \\fIhost\\fR and \\fIserv\\fR,)S
+488.42 Z
+1 T (306)S 1 T (respectively. If unsuccessful, zero values for either \\fIhostlen\\fR or)S
+477.89 Z
+1 T (307)S 1 T (\\fIservlen\\fR will suppress the associated lookup; in this case no data is)S
+467.37 Z
+1 T (308)S 1 T (copied into the applicable buffer. If \\fBgai_strerror\(\)\\fR is successful, a)S
+456.84 Z
+1 T (309)S 1 T (pointer to a string containing an error message appropriate for the \\fBEAI_\\fR*)S
+446.32 Z
+1 T (310)S 1 T (errors is returned. If \\fIerrcode\\fR is not one of the \\fBEAI_\\fR* values, a)S
+435.79 Z
+1 T (311)S 1 T (pointer to a string indicating an unknown error is returned.)S
+425.26 Z
+1 T (312)S 1 T (.SS "Address Ordering")S
+414.74 Z
+1 T (313)S 1 T (.sp)S
+404.21 Z
+1 T (314)S 1 T (.LP)S
+393.68 Z
+1 T (315)S 1 T (AF_INET6 addresses returned by the fourth argument of \\fBgetaddrinfo\(\)\\fR are)S
+383.16 Z
+1 T (316)S 1 T (ordered according to the algorithm described in \\fIRFC 3484, Default Address)S
+372.63 Z
+1 T (317)S 1 T (Selection for Internet Protocol version 6 \(IPv6\)\\fR. The addresses are ordered)S
+362.11 Z
+1 T (318)S 1 T (using a list of pair-wise comparison rules which are applied in order. If a)S
+351.58 Z
+1 T (319)S 1 T (rule determines that one address is better than another, the remaining rules)S
+341.05 Z
+1 T (320)S 1 T (are irrelevant to the comparison of those two addresses. If two addresses are)S
+330.53 Z
+1 T (321)S 1 T (equivalent according to one rule, the remaining rules act as a tie-breaker. The)S
+320.00 Z
+1 T (322)S 1 T (address ordering list of pair-wise comparison rules follow below:)S
+309.47 Z
+1 T (323)S 1 T (.sp)S
+288.42 Z
+1 T (325)S 1 T (.sp)S
+277.90 Z
+1 T (326)S 1 T (.TS)S
+267.37 Z
+1 T (327)S 1 T (box;)S
+256.84 Z
+1 T (328)S 1 T (l | l)S
+246.32 Z
+1 T (329)S 1 T (l | l .)S
+235.79 Z
+1 T (330)S 1 T (Avoid unusable destinations.)S 4 T (T{)S
+225.26 Z
+1 T (331)S 1 T (Prefer a destination that is reachable through the IP routing table.)S
+214.74 Z
+1 T (332)S 1 T (T})S
+204.21 Z
+1 T (333)S 1 T (_)S
+193.68 Z
+1 T (334)S 1 T (Prefer matching scope.)S 2 T (T{)S
+183.16 Z
+1 T (335)S 1 T (Prefer a destination whose scope is equal to the scope of its source address. Se)S
+172.63 Z
+1 T (336)S 1 T (T})S
+162.11 Z
+1 T (337)S 1 T (_)S
+151.58 Z
+1 T (338)S 1 T (Avoid link-local source.)S 8 T (T{)S
+141.05 Z
+1 T (339)S 1 T (Avoid selecting a link-local source address when the destination address is not )S
+130.53 Z
+1 T (340)S 1 T (T})S
+120.00 Z
+1 T (341)S 1 T (_)S
+109.47 Z
+1 T (342)S 1 T (Avoid deprecated addresses.)S 5 T (T{)S
+98.95 Z
+1 T (343)S 1 T (Prefer a destination that is not deprecated \(\\fBIFF_DEPRECATED\\fR\).)S
+88.42 Z
+1 T (344)S 1 T (T})S
+77.90 Z
+1 T (345)S 1 T (_)S
+67.37 Z
+1 T (346)S 1 T (T{)S
+56.84 Z
+1 T (347)S 1 T (Prefer matching label. This rule uses labels that are obtained through the IPv6 )S
+46.32 Z
+1 T (348)S 1 T (T})S 6 T (T{)S
+35.79 Z
+1 T (349)S 1 T (Prefer a destination whose label is equal to the label of its source address.)S
+25.26 Z
+1 T (350)S 1 T (T})S
+14.74 Z
+1 T (351)S 1 T (_)S
+4.21 Z
+1 T (352)S 1 T (T{)S
+EPG
+1 FPG
+%%Page: ? 3
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (5)S
+FRN
+688.42 Z
+1 T (353)S 1 T (Prefer higher precedence. This rule uses precedence values that are obtained thr)S
+677.89 Z
+1 T (354)S 1 T (T})S 6 T (T{)S
+667.37 Z
+1 T (355)S 1 T (Prefer the destination whose precedence is higher than the other destination.)S
+656.84 Z
+1 T (356)S 1 T (T})S
+646.32 Z
+1 T (357)S 1 T (_)S
+635.79 Z
+1 T (358)S 1 T (Prefer native transport.)S 8 T (T{)S
+625.26 Z
+1 T (359)S 1 T (Prefer a destination if the interface that is used for sending packets to that d)S
+614.74 Z
+1 T (360)S 1 T (T})S
+604.21 Z
+1 T (361)S 1 T (_)S
+593.68 Z
+1 T (362)S 1 T (T{)S
+583.16 Z
+1 T (363)S 1 T (Prefer smaller scope. See \\fBinet6\\fR\(7P\) for the definition of this rule.)S
+572.63 Z
+1 T (364)S 1 T (T})S 6 T (T{)S
+562.11 Z
+1 T (365)S 1 T (Prefer the destination whose scope is smaller than the other destination.)S
+551.58 Z
+1 T (366)S 1 T (T})S
+541.05 Z
+1 T (367)S 1 T (_)S
+530.53 Z
+1 T (368)S 1 T (Use longest matching prefix.)S 4 T (T{)S
+520.00 Z
+1 T (369)S 1 T (When the two destinations belong to the same address family, prefer the destinat)S
+509.47 Z
+1 T (370)S 1 T (T})S
+498.95 Z
+1 T (371)S 1 T (.TE)S
+477.89 Z
+1 T (373)S 1 T (.SH ERRORS)S
+467.37 Z
+1 T (374)S 1 T (.sp)S
+456.84 Z
+1 T (375)S 1 T (.LP)S
+446.32 Z
+1 T (376)S 1 T (The following names are the error values returned by \\fBgetaddrinfo\(\)\\fR and)S
+435.79 Z
+1 T (377)S 1 T (are defined in <\\fBnetdb.h\\fR>:)S
+425.26 Z
+1 T (378)S 1 T (.sp)S
+414.74 Z
+1 T (379)S 1 T (.ne 2)S
+404.21 Z
+1 T (380)S 1 T (.na)S
+393.68 Z
+1 T (381)S 1 T (\\fB\\fBEAI_ADDRFAMILY\\fR\\fR)S
+383.16 Z
+1 T (382)S 1 T (.ad)S
+372.63 Z
+1 T (383)S 1 T (.RS 18n)S
+362.11 Z
+1 T (384)S 1 T (Address family for nodename is not supported.)S
+351.58 Z
+1 T (385)S 1 T (.RE)S
+330.53 Z
+1 T (387)S 1 T (.sp)S
+320.00 Z
+1 T (388)S 1 T (.ne 2)S
+309.47 Z
+1 T (389)S 1 T (.na)S
+298.95 Z
+1 T (390)S 1 T (\\fB\\fBEAI_AGAIN\\fR\\fR)S
+288.42 Z
+1 T (391)S 1 T (.ad)S
+277.90 Z
+1 T (392)S 1 T (.RS 18n)S
+267.37 Z
+1 T (393)S 1 T (Temporary failure in name resolution has occurred .)S
+256.84 Z
+1 T (394)S 1 T (.RE)S
+235.79 Z
+1 T (396)S 1 T (.sp)S
+225.26 Z
+1 T (397)S 1 T (.ne 2)S
+214.74 Z
+1 T (398)S 1 T (.na)S
+204.21 Z
+1 T (399)S 1 T (\\fB\\fBEAI_BADFLAGS\\fR\\fR)S
+193.68 Z
+1 T (400)S 1 T (.ad)S
+183.16 Z
+1 T (401)S 1 T (.RS 18n)S
+172.63 Z
+1 T (402)S 1 T (Invalid value specified for \\fBai_flags\\fR.)S
+162.11 Z
+1 T (403)S 1 T (.RE)S
+141.05 Z
+1 T (405)S 1 T (.sp)S
+130.53 Z
+1 T (406)S 1 T (.ne 2)S
+120.00 Z
+1 T (407)S 1 T (.na)S
+109.47 Z
+1 T (408)S 1 T (\\fB\\fBEAI_FAIL\\fR\\fR)S
+98.95 Z
+1 T (409)S 1 T (.ad)S
+88.42 Z
+1 T (410)S 1 T (.RS 18n)S
+77.90 Z
+1 T (411)S 1 T (Non-recoverable failure in name resolution has occurred.)S
+67.37 Z
+1 T (412)S 1 T (.RE)S
+46.32 Z
+1 T (414)S 1 T (.sp)S
+35.79 Z
+1 T (415)S 1 T (.ne 2)S
+25.26 Z
+1 T (416)S 1 T (.na)S
+14.74 Z
+1 T (417)S 1 T (\\fB\\fBEAI_FAMILY\\fR\\fR)S
+4.21 Z
+1 T (418)S 1 T (.ad)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (6)S
+FRN
+688.42 Z
+1 T (419)S 1 T (.RS 18n)S
+677.89 Z
+1 T (420)S 1 T (The \\fBai_family\\fR is not supported.)S
+667.37 Z
+1 T (421)S 1 T (.RE)S
+646.32 Z
+1 T (423)S 1 T (.sp)S
+635.79 Z
+1 T (424)S 1 T (.ne 2)S
+625.26 Z
+1 T (425)S 1 T (.na)S
+614.74 Z
+1 T (426)S 1 T (\\fB\\fBEAI_MEMORY\\fR\\fR)S
+604.21 Z
+1 T (427)S 1 T (.ad)S
+593.68 Z
+1 T (428)S 1 T (.RS 18n)S
+583.16 Z
+1 T (429)S 1 T (Memory allocation failure has occurred.)S
+572.63 Z
+1 T (430)S 1 T (.RE)S
+551.58 Z
+1 T (432)S 1 T (.sp)S
+541.05 Z
+1 T (433)S 1 T (.ne 2)S
+530.53 Z
+1 T (434)S 1 T (.na)S
+520.00 Z
+1 T (435)S 1 T (\\fB\\fBEAI_NODATA\\fR\\fR)S
+509.47 Z
+1 T (436)S 1 T (.ad)S
+498.95 Z
+1 T (437)S 1 T (.RS 18n)S
+488.42 Z
+1 T (438)S 1 T (No address is associated with \\fInodename\\fR.)S
+477.89 Z
+1 T (439)S 1 T (.RE)S
+456.84 Z
+1 T (441)S 1 T (.sp)S
+446.32 Z
+1 T (442)S 1 T (.ne 2)S
+435.79 Z
+1 T (443)S 1 T (.na)S
+425.26 Z
+1 T (444)S 1 T (\\fB\\fBEAI_NONAME\\fR\\fR)S
+414.74 Z
+1 T (445)S 1 T (.ad)S
+404.21 Z
+1 T (446)S 1 T (.RS 18n)S
+393.68 Z
+1 T (447)S 1 T (Neither \\fInodename\\fR nor \\fIservname\\fR is provided or known.)S
+383.16 Z
+1 T (448)S 1 T (.RE)S
+362.11 Z
+1 T (450)S 1 T (.sp)S
+351.58 Z
+1 T (451)S 1 T (.ne 2)S
+341.05 Z
+1 T (452)S 1 T (.na)S
+330.53 Z
+1 T (453)S 1 T (\\fB\\fBEAI_SERVICE\\fR\\fR)S
+320.00 Z
+1 T (454)S 1 T (.ad)S
+309.47 Z
+1 T (455)S 1 T (.RS 18n)S
+298.95 Z
+1 T (456)S 1 T (The \\fIservname\\fR is not supported for \\fBai_socktype\\fR.)S
+288.42 Z
+1 T (457)S 1 T (.RE)S
+267.37 Z
+1 T (459)S 1 T (.sp)S
+256.84 Z
+1 T (460)S 1 T (.ne 2)S
+246.32 Z
+1 T (461)S 1 T (.na)S
+235.79 Z
+1 T (462)S 1 T (\\fB\\fBEAI_SOCKTYPE\\fR\\fR)S
+225.26 Z
+1 T (463)S 1 T (.ad)S
+214.74 Z
+1 T (464)S 1 T (.RS 18n)S
+204.21 Z
+1 T (465)S 1 T (The \\fBai_socktype\\fR is not supported.)S
+193.68 Z
+1 T (466)S 1 T (.RE)S
+172.63 Z
+1 T (468)S 1 T (.sp)S
+162.11 Z
+1 T (469)S 1 T (.ne 2)S
+151.58 Z
+1 T (470)S 1 T (.na)S
+141.05 Z
+1 T (471)S 1 T (\\fB\\fBEAI_OVERFLOW\\fR\\fR)S
+130.53 Z
+1 T (472)S 1 T (.ad)S
+120.00 Z
+1 T (473)S 1 T (.RS 18n)S
+109.47 Z
+1 T (474)S 1 T (Argument buffer has overflowed.)S
+98.95 Z
+1 T (475)S 1 T (.RE)S
+77.90 Z
+1 T (477)S 1 T (.sp)S
+67.37 Z
+1 T (478)S 1 T (.ne 2)S
+56.84 Z
+1 T (479)S 1 T (.na)S
+46.32 Z
+1 T (480)S 1 T (\\fB\\fBEAI_SYSTEM\\fR\\fR)S
+35.79 Z
+1 T (481)S 1 T (.ad)S
+25.26 Z
+1 T (482)S 1 T (.RS 18n)S
+14.74 Z
+1 T (483)S 1 T (System error was returned in \\fIerrno\\fR.)S
+4.21 Z
+1 T (484)S 1 T (.RE)S
+EPG
+1 FPG
+%%Page: ? 4
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3socket/getaddrinfo.3socket)S
+530 709.47 M (7)S
+FRN
+677.89 Z
+1 T (486)S 1 T (.SH FILES)S
+667.37 Z
+1 T (487)S 1 T (.sp)S
+656.84 Z
+1 T (488)S 1 T (.ne 2)S
+646.32 Z
+1 T (489)S 1 T (.na)S
+635.79 Z
+1 T (490)S 1 T (\\fB\\fB/etc/inet/hosts\\fR\\fR)S
+625.26 Z
+1 T (491)S 1 T (.ad)S
+614.74 Z
+1 T (492)S 1 T (.RS 22n)S
+604.21 Z
+1 T (493)S 1 T (local database that associates names of nodes with IP addresses)S
+593.68 Z
+1 T (494)S 1 T (.RE)S
+572.63 Z
+1 T (496)S 1 T (.sp)S
+562.11 Z
+1 T (497)S 1 T (.ne 2)S
+551.58 Z
+1 T (498)S 1 T (.na)S
+541.05 Z
+1 T (499)S 1 T (\\fB\\fB/etc/netconfig\\fR\\fR)S
+530.53 Z
+1 T (500)S 1 T (.ad)S
+520.00 Z
+1 T (501)S 1 T (.RS 22n)S
+509.47 Z
+1 T (502)S 1 T (network configuration database)S
+498.95 Z
+1 T (503)S 1 T (.RE)S
+477.89 Z
+1 T (505)S 1 T (.sp)S
+467.37 Z
+1 T (506)S 1 T (.ne 2)S
+456.84 Z
+1 T (507)S 1 T (.na)S
+446.32 Z
+1 T (508)S 1 T (\\fB\\fB/etc/nsswitch.conf\\fR\\fR)S
+435.79 Z
+1 T (509)S 1 T (.ad)S
+425.26 Z
+1 T (510)S 1 T (.RS 22n)S
+414.74 Z
+1 T (511)S 1 T (configuration file for the name service switch)S
+404.21 Z
+1 T (512)S 1 T (.RE)S
+383.16 Z
+1 T (514)S 1 T (.SH ATTRIBUTES)S
+372.63 Z
+1 T (515)S 1 T (.sp)S
+362.11 Z
+1 T (516)S 1 T (.LP)S
+351.58 Z
+1 T (517)S 1 T (See \\fBattributes\\fR\(5\) for description of the following attributes:)S
+341.05 Z
+1 T (518)S 1 T (.sp)S
+320.00 Z
+1 T (520)S 1 T (.sp)S
+309.47 Z
+1 T (521)S 1 T (.TS)S
+298.95 Z
+1 T (522)S 1 T (box;)S
+288.42 Z
+1 T (523)S 1 T (c | c)S
+277.90 Z
+1 T (524)S 1 T (l | l .)S
+267.37 Z
+1 T (525)S 1 T (ATTRIBUTE TYPE)S 2 T (ATTRIBUTE VALUE)S
+256.84 Z
+1 T (526)S 1 T (_)S
+246.32 Z
+1 T (527)S 1 T (Interface Stability)S 5 T (Committed)S
+235.79 Z
+1 T (528)S 1 T (_)S
+225.26 Z
+1 T (529)S 1 T (MT-Level)S 8 T (MT-Safe)S
+214.74 Z
+1 T (530)S 1 T (_)S
+204.21 Z
+1 T (531)S 1 T (Standard)S 8 T (See \\fBstandards\\fR\(5\).)S
+193.68 Z
+1 T (532)S 1 T (.TE)S
+172.63 Z
+1 T (534)S 1 T (.SH SEE ALSO)S
+162.11 Z
+1 T (535)S 1 T (.sp)S
+151.58 Z
+1 T (536)S 1 T (.LP)S
+141.05 Z
+1 T (537)S 1 T (\\fBipaddrsel\\fR\(1M\), \\fBgethostbyname\\fR\(3NSL\), \\fBgetipnodebyname\\fR\(3SOCKET\),)S
+130.53 Z
+1 T (538)S 1 T (\\fBhtonl\\fR\(3SOCKET\), \\fBinet\\fR\(3SOCKET\), \\fBnetdb.h\\fR\(3HEAD\),)S
+120.00 Z
+1 T (539)S 1 T (\\fBsocket\\fR\(3SOCKET\), \\fBhosts\\fR\(4\), \\fBnsswitch.conf\\fR\(4\),)S
+109.47 Z
+1 T (540)S 1 T (\\fBattributes\\fR\(5\), \\fBstandards\\fR\(5\), \\fBinet6\\fR\(7P\))S
+98.95 Z
+1 T (541)S 1 T (.sp)S
+88.42 Z
+1 T (542)S 1 T (.LP)S
+77.90 Z
+1 T (543)S 1 T (Draves, R. \\fIRFC 3484, Default Address Selection for Internet Protocol version)S
+67.37 Z
+1 T (544)S 1 T (6 \(IPv6\)\\fR. Network Working Group. February 2003.)S
+56.84 Z
+1 T (545)S 1 T (.SH NOTES)S
+46.32 Z
+1 T (546)S 1 T (.sp)S
+35.79 Z
+1 T (547)S 1 T (.LP)S
+25.26 Z
+1 T (548)S 1 T (IPv4-mapped addresses are not recommended.)S
+EPG
+1 FPG
+%%Trailer
+%%Pages: 4

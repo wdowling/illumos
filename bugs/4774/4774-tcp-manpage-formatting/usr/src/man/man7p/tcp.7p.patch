@@ -1,0 +1,63 @@
+--- old/usr/src/man/man7p/tcp.7p	2014-05-26 17:48:17.340054755 +0100
++++ new/usr/src/man/man7p/tcp.7p	2014-05-26 17:48:17.347444580 +0100
+@@ -184,7 +184,7 @@
+ .sp
+ .LP
+ SunOS supports \fBTCP\fR Extensions for High Performance (\fIRFC 1323\fR) which
+-includes the window scale and time stamp options, and Protection Against Wrap
++includes the window scale and timestamp options, and Protection Against Wrap
+ Around Sequence Numbers (PAWS). SunOS also supports Selective Acknowledgment
+ (SACK) capabilities (RFC 2018) and Explicit Congestion Notification (ECN)
+ mechanism (\fIRFC 3168\fR).
+@@ -261,13 +261,13 @@
+ .RE
+ .sp
+ .LP
+-Turn on the time stamp option in the following way:
++Turn on the timestamp option in the following way:
+ .RS +4
+ .TP
+ .ie t \(bu
+ .el o
+ Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_always\fR. If
+-\fBtcp_tstamp_always\fR is \fB1\fR, the time stamp option will always be set
++\fBtcp_tstamp_always\fR is \fB1\fR, the timestamp option will always be set
+ when connecting to a remote machine. If \fBtcp_tstamp_always\fR is \fB0\fR, the
+ timestamp option will not be set when connecting to a remote system. The
+ default for \fBtcp_tstamp_always\fR is \fB0\fR.
+@@ -276,29 +276,29 @@
+ .TP
+ .ie t \(bu
+ .el o
+-Regardless of the value of \fBtcp_tstamp_always\fR, the time stamp option will
++Regardless of the value of \fBtcp_tstamp_always\fR, the timestamp option will
+ always be included in a connect acknowledgement (and all succeeding packets) if
+-the connecting system has used the time stamp option.
++the connecting system has used the timestamp option.
+ .RE
+ .sp
+ .LP
+-Use the following procedure to turn on the time stamp option only when the
++Use the following procedure to turn on the timestamp option only when the
+ window scale option is in effect:
+ .RS +4
+ .TP
+ .ie t \(bu
+ .el o
+ Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_if_wscale\fR.
+-Setting \fBtcp_tstamp_if_wscale\fR to \fB1\fR will cause the time stamp option
++Setting \fBtcp_tstamp_if_wscale\fR to \fB1\fR will cause the timestamp option
+ to be set when connecting to a remote system, if the window scale option has
+-been set. If \fBtcp_tstamp_if_wscale\fR is \fB0\fR, the time stamp option will
++been set. If \fBtcp_tstamp_if_wscale\fR is \fB0\fR, the timestamp option will
+ not be set when connecting to a remote system. The default for
+ \fBtcp_tstamp_if_wscale\fR is \fB1\fR.
+ .RE
+ .sp
+ .LP
+ Protection Against Wrap Around Sequence Numbers (PAWS) is always used when the
+-time stamp option is set.
++timestamp option is set.
+ .sp
+ .LP
+ SunOS also supports multiple methods of generating initial sequence numbers.

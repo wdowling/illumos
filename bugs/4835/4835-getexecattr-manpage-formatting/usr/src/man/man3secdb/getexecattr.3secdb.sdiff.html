@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>4835-getexecattr-manpage-formatting Sdiff usr/src/man/man3secdb/getexecattr.3secdb</title>
+</head><body id="SUNWwebrev">
+<a class="print" href="javascript:print()">Print this page</a>
+<pre><a href="https://illumos.org/issues/4835">4835</a> getexecattr(3secdb): Minor formatting issues</pre>
+
+<table><tr valign="top">
+<td><pre>
+
+</pre><hr></hr><pre>
+ 114 \fIprofname\fR argument. Only entries in the name service scope for which the
+ 115 corresponding profile entry is found in the \fBprof_attr\fR database are
+ 116 returned.
+ 117 .sp
+ 118 .LP
+ 119 Using \fBgetexecuser()\fR and \fBgetexecprof()\fR, programmers can search  for
+ 120 any \fItype\fR argument, such as the manifest constant \fBKV_COMMAND\fR. The
+ 121 arguments are logically AND-ed together so that only entries exactly matching
+ 122 all of the arguments are returned. Wildcard matching applies if there is no
+ 123 exact match for an \fBID\fR. Any argument can be assigned the \fINULL\fR value
+ 124 to indicate that it is not used as part of the matching criteria. The \fB\fR
+ 125 search_flag controls whether the function returns the first match
+ 126 (\fBGET_ONE\fR), setting the \fBnext\fR pointer to \fINULL\fR or all matching
+ 127 entries (\fBGET_ALL\fR), using the \fBnext\fR pointer to create a linked list
+ 128 of all entries that meet the search criteria. See  \fBEXAMPLES\fR.
+ 129 .sp
+ 130 .LP
+ 131 Once a list of entries is returned by \fBgetexecuser()\fR or
+ 132 \fBgetexecprof()\fR, the convenience function \fBmatch_execattr()\fR can be
+ 133 used to identify an individual entry. It returns a pointer to the individual
+<span class="changed"> 134 element with the same profile name ( \fIprofname\fR), type name ( \fItype\fR),</span>
+ 135 and \fIid\fR. Function parameters set to \fINULL\fR are not used as part of the
+ 136 matching criteria. In the event that multiple entries meet the matching
+ 137 criteria, only a pointer to the first entry is returned. The
+ 138 \fBkva_match\fR(3SECDB) function can be used to look up a key in a key-value
+ 139 array.
+ 140 .SH RETURN VALUES
+ 141 .sp
+ 142 .LP
+ 143 Those functions returning data only return data related to the active policy.
+ 144 The \fBgetexecattr()\fR function returns a pointer to a  \fBexecattr_t\fR if it
+ 145 successfully enumerates an entry; otherwise it returns \fINULL\fR, indicating
+ 146 the end of the enumeration.
+ 147 .SH USAGE
+ 148 .sp
+ 149 .LP
+ 150 The \fBgetexecattr()\fR, \fBgetexecuser()\fR, and \fBgetexecprof()\fR functions
+ 151 all allocate memory for the pointers they return. This memory should be
+<span class="changed"> 152 deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR(</span>
+ 153 function does not allocate any memory. Therefore, pointers returned by this
+ 154 function should not be deallocated.
+ 155 .sp
+ 156 .LP
+ 157 Individual attributes may be referenced in the \fBattr\fR structure by calling
+ 158 the \fBkva_match\fR(3SECDB) function.
+ 159 .SH EXAMPLES
+ 160 .LP
+ 161 \fBExample 1 \fRFind all profiles that have the  \fBping\fR command.
+ 162 .sp
+ 163 .in +2
+ 164 .nf
+ 165 if ((execprof=getexecprof(NULL, KV_COMMAND, "/usr/sbin/ping",
+ 166     GET_ONE)) == NULL) {
+ 167         /* do error */
+ 168 }
+ 169 .fi
+ 170 .in -2
+ 171 
+ 172 .LP
+
+</pre><hr></hr>
+</pre></td><td><pre>
+
+</pre><hr></hr><pre>
+ 114 \fIprofname\fR argument. Only entries in the name service scope for which the
+ 115 corresponding profile entry is found in the \fBprof_attr\fR database are
+ 116 returned.
+ 117 .sp
+ 118 .LP
+ 119 Using \fBgetexecuser()\fR and \fBgetexecprof()\fR, programmers can search  for
+ 120 any \fItype\fR argument, such as the manifest constant \fBKV_COMMAND\fR. The
+ 121 arguments are logically AND-ed together so that only entries exactly matching
+ 122 all of the arguments are returned. Wildcard matching applies if there is no
+ 123 exact match for an \fBID\fR. Any argument can be assigned the \fINULL\fR value
+ 124 to indicate that it is not used as part of the matching criteria. The \fB\fR
+ 125 search_flag controls whether the function returns the first match
+ 126 (\fBGET_ONE\fR), setting the \fBnext\fR pointer to \fINULL\fR or all matching
+ 127 entries (\fBGET_ALL\fR), using the \fBnext\fR pointer to create a linked list
+ 128 of all entries that meet the search criteria. See  \fBEXAMPLES\fR.
+ 129 .sp
+ 130 .LP
+ 131 Once a list of entries is returned by \fBgetexecuser()\fR or
+ 132 \fBgetexecprof()\fR, the convenience function \fBmatch_execattr()\fR can be
+ 133 used to identify an individual entry. It returns a pointer to the individual
+<span class="changed"> 134 element with the same profile name (\fIprofname\fR), type name (\fItype\fR),</span>
+ 135 and \fIid\fR. Function parameters set to \fINULL\fR are not used as part of the
+ 136 matching criteria. In the event that multiple entries meet the matching
+ 137 criteria, only a pointer to the first entry is returned. The
+ 138 \fBkva_match\fR(3SECDB) function can be used to look up a key in a key-value
+ 139 array.
+ 140 .SH RETURN VALUES
+ 141 .sp
+ 142 .LP
+ 143 Those functions returning data only return data related to the active policy.
+ 144 The \fBgetexecattr()\fR function returns a pointer to a  \fBexecattr_t\fR if it
+ 145 successfully enumerates an entry; otherwise it returns \fINULL\fR, indicating
+ 146 the end of the enumeration.
+ 147 .SH USAGE
+ 148 .sp
+ 149 .LP
+ 150 The \fBgetexecattr()\fR, \fBgetexecuser()\fR, and \fBgetexecprof()\fR functions
+ 151 all allocate memory for the pointers they return. This memory should be
+<span class="changed"> 152 deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR</span>
+ 153 function does not allocate any memory. Therefore, pointers returned by this
+ 154 function should not be deallocated.
+ 155 .sp
+ 156 .LP
+ 157 Individual attributes may be referenced in the \fBattr\fR structure by calling
+ 158 the \fBkva_match\fR(3SECDB) function.
+ 159 .SH EXAMPLES
+ 160 .LP
+ 161 \fBExample 1 \fRFind all profiles that have the  \fBping\fR command.
+ 162 .sp
+ 163 .in +2
+ 164 .nf
+ 165 if ((execprof=getexecprof(NULL, KV_COMMAND, "/usr/sbin/ping",
+ 166     GET_ONE)) == NULL) {
+ 167         /* do error */
+ 168 }
+ 169 .fi
+ 170 .in -2
+ 171 
+ 172 .LP
+
+</pre><hr></hr>
+</pre></td>
+</tr></table>
+</body></html>

@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>illumos-gate Sdiff usr/src/man/man3socket/getaddrinfo.3socket</title>
+</head><body id="SUNWwebrev">
+<a class="print" href="javascript:print()">Print this page</a>
+<pre><a href="https://illumos.org/issues/4775">4775</a> Fixed formatting in getaddinfo(3) man page</pre>
+
+<table><tr valign="top">
+<td><pre>
+
+</pre><hr></hr><pre>
+ 282 If the flag bit \fBNI_NUMERICSERV\fR is set, the numeric form of the service
+ 283 address is returned (for example, its port number) instead of its name. The two
+ 284 \fBNI_NUMERIC\fR* flags are required to support the \fB-n\fR flag that many
+ 285 commands provide.
+ 286 .sp
+ 287 .LP
+ 288 A fifth flag bit, \fBNI_DGRAM\fR, specifies that the service is a datagram
+ 289 service, and causes \fBgetservbyport\fR(3SOCKET) to be called with a second
+ 290 argument of \fBudp\fR instead of the default \fBtcp\fR. This is required for
+ 291 the few ports (for example, 512-514) that have different services for UDP and
+ 292 TCP.
+ 293 .sp
+ 294 .LP
+ 295 These \fBNI_\fR* flags are defined in &lt;\fBnetdb.h\fR&gt; along with the \fBAI_\fR*
+ 296 flags already defined for \fBgetaddrinfo()\fR.
+ 297 .SH RETURN VALUES
+ 298 .sp
+ 299 .LP
+ 300 For \fBgetaddrinfo()\fR, if the query is successful, a pointer to a linked list
+ 301 of one or more \fBaddrinfo\fR structures is returned by the fourth argument and
+<span class="changed"> 302 the function returns \fB0\fR. The order of the addresses returned i nthe fourth</span>
+ 303 argument is discussed in the ADDRESS ORDERING section. If the query fails, a
+ 304 non-zero error code will be returned. For \fBgetnameinfo()\fR, if successful,
+ 305 the strings hostname and service are copied into \fIhost\fR and \fIserv\fR,
+ 306 respectively. If unsuccessful, zero values for either \fIhostlen\fR or
+ 307 \fIservlen\fR will suppress the associated lookup; in this case no data is
+ 308 copied into the applicable buffer. If \fBgai_strerror()\fR is successful, a
+ 309 pointer to a string containing an error message appropriate for the \fBEAI_\fR*
+ 310 errors is returned. If \fIerrcode\fR is not one of the \fBEAI_\fR* values, a
+ 311 pointer to a string indicating an unknown error is returned.
+ 312 .SS "Address Ordering"
+ 313 .sp
+ 314 .LP
+ 315 AF_INET6 addresses returned by the fourth argument of \fBgetaddrinfo()\fR are
+ 316 ordered according to the algorithm described in \fIRFC 3484, Default Address
+ 317 Selection for Internet Protocol version 6 (IPv6)\fR. The addresses are ordered
+ 318 using a list of pair-wise comparison rules which are applied in order. If a
+ 319 rule determines that one address is better than another, the remaining rules
+ 320 are irrelevant to the comparison of those two addresses. If two addresses are
+ 321 equivalent according to one rule, the remaining rules act as a tie-breaker. The
+ 322 address ordering list of pair-wise comparison rules follow below:
+
+</pre><hr></hr>
+</pre></td><td><pre>
+
+</pre><hr></hr><pre>
+ 282 If the flag bit \fBNI_NUMERICSERV\fR is set, the numeric form of the service
+ 283 address is returned (for example, its port number) instead of its name. The two
+ 284 \fBNI_NUMERIC\fR* flags are required to support the \fB-n\fR flag that many
+ 285 commands provide.
+ 286 .sp
+ 287 .LP
+ 288 A fifth flag bit, \fBNI_DGRAM\fR, specifies that the service is a datagram
+ 289 service, and causes \fBgetservbyport\fR(3SOCKET) to be called with a second
+ 290 argument of \fBudp\fR instead of the default \fBtcp\fR. This is required for
+ 291 the few ports (for example, 512-514) that have different services for UDP and
+ 292 TCP.
+ 293 .sp
+ 294 .LP
+ 295 These \fBNI_\fR* flags are defined in &lt;\fBnetdb.h\fR&gt; along with the \fBAI_\fR*
+ 296 flags already defined for \fBgetaddrinfo()\fR.
+ 297 .SH RETURN VALUES
+ 298 .sp
+ 299 .LP
+ 300 For \fBgetaddrinfo()\fR, if the query is successful, a pointer to a linked list
+ 301 of one or more \fBaddrinfo\fR structures is returned by the fourth argument and
+<span class="changed"> 302 the function returns \fB0\fR. The order of the addresses returned in the fourth</span>
+ 303 argument is discussed in the ADDRESS ORDERING section. If the query fails, a
+ 304 non-zero error code will be returned. For \fBgetnameinfo()\fR, if successful,
+ 305 the strings hostname and service are copied into \fIhost\fR and \fIserv\fR,
+ 306 respectively. If unsuccessful, zero values for either \fIhostlen\fR or
+ 307 \fIservlen\fR will suppress the associated lookup; in this case no data is
+ 308 copied into the applicable buffer. If \fBgai_strerror()\fR is successful, a
+ 309 pointer to a string containing an error message appropriate for the \fBEAI_\fR*
+ 310 errors is returned. If \fIerrcode\fR is not one of the \fBEAI_\fR* values, a
+ 311 pointer to a string indicating an unknown error is returned.
+ 312 .SS "Address Ordering"
+ 313 .sp
+ 314 .LP
+ 315 AF_INET6 addresses returned by the fourth argument of \fBgetaddrinfo()\fR are
+ 316 ordered according to the algorithm described in \fIRFC 3484, Default Address
+ 317 Selection for Internet Protocol version 6 (IPv6)\fR. The addresses are ordered
+ 318 using a list of pair-wise comparison rules which are applied in order. If a
+ 319 rule determines that one address is better than another, the remaining rules
+ 320 are irrelevant to the comparison of those two addresses. If two addresses are
+ 321 equivalent according to one rule, the remaining rules act as a tie-breaker. The
+ 322 address ordering list of pair-wise comparison rules follow below:
+
+</pre><hr></hr>
+</pre></td>
+</tr></table>
+</body></html>

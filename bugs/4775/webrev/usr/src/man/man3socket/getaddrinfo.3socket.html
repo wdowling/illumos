@@ -1,0 +1,634 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>illumos-gate New usr/src/man/man3socket/getaddrinfo.3socket</title>
+<body id="SUNWwebrev">
+<pre>
+   1 '\" te
+   2 .\" Copyright (c) 2009, Sun Microsystems, Inc. All Rights Reserved
+   3 .\" The contents of this file are subject to the terms of the Common Development and Distribution License (the "License").  You may not use this file except in compliance with the License. You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http://www.opensolaris.org/os/licensing.
+   4 .\"  See the License for the specific language governing permissions and limitations under the License. When distributing Covered Code, include this CDDL HEADER in each file and include the License file at usr/src/OPENSOLARIS.LICENSE.  If applicable, add the following below this CDDL HEADER, with
+   5 .\" the fields enclosed by brackets "[]" replaced with your own identifying information: Portions Copyright [yyyy] [name of copyright owner]
+   6 .TH GETADDRINFO 3SOCKET "May 8, 2009"
+   7 .SH NAME
+   8 getaddrinfo, getnameinfo, freeaddrinfo, gai_strerror \- translate between node
+   9 name and address
+  10 .SH SYNOPSIS
+  11 .LP
+  12 .nf
+  13 \fBcc\fR [ \fIflag\fR\&amp;.\|.\|. ] \fIfile\fR \&amp;.\|.\|. \fB-lsocket\fR \fB -lnsl \fR [ \fIlibrary\fR \&amp;.\|.\|. ]
+  14 #include &lt;sys/socket.h&gt;
+  15 #include &lt;netdb.h&gt;
+  16 
+  17 \fBint\fR \fBgetaddrinfo\fR(\fBconst char *\fR\fInodename\fR, \fBconst char *\fR\fIservname\fR,
+  18      \fBconst struct addrinfo *\fR\fIhints\fR, \fBstruct addrinfo **\fR\fIres\fR);
+  19 .fi
+  20 
+  21 .LP
+  22 .nf
+  23 \fBint\fR \fBgetnameinfo\fR(\fBconst struct sockaddr *\fR\fIsa\fR, \fBsocklen_t\fR \fIsalen\fR,
+  24      \fBchar *\fR\fIhost\fR, \fBsize_t\fR \fIhostlen\fR, \fBchar *\fR\fIserv\fR, \fBsize_t\fR \fIservlen\fR,
+  25      \fBint\fR \fIflags\fR);
+  26 .fi
+  27 
+  28 .LP
+  29 .nf
+  30 \fBvoid\fR \fBfreeaddrinfo\fR(\fBstruct addrinfo *\fR\fIai\fR);
+  31 .fi
+  32 
+  33 .LP
+  34 .nf
+  35 \fBchar *\fR\fBgai_strerror\fR(\fBint\fR \fIerrcode\fR);
+  36 .fi
+  37 
+  38 .SH DESCRIPTION
+  39 .sp
+  40 .LP
+  41 These functions perform translations from node name to address and from address
+  42 to node name in a protocol-independent manner.
+  43 .sp
+  44 .LP
+  45 The \fBgetaddrinfo()\fR function performs the node name to address translation.
+  46 The \fInodename\fR and \fIservname\fR arguments are pointers to null-terminated
+  47 strings or \fINULL\fR. One or both of these arguments must be a non-null
+  48 pointer. In the normal client scenario, both the \fInodename\fR and
+  49 \fIservname\fR are specified. In the normal server scenario, only the
+  50 \fIservname\fR is specified.
+  51 .sp
+  52 .LP
+  53 A non-null \fInodename\fR string can be a node name or a numeric host address
+  54 string. The \fInodename\fR can also be an IPv6 zone-id in the form:
+  55 .sp
+  56 .in +2
+  57 .nf
+  58 &lt;address&gt;%&lt;zone-id&gt;
+  59 .fi
+  60 .in -2
+  61 
+  62 .sp
+  63 .LP
+  64 The address is the literal IPv6 link-local address or host name of the
+  65 destination. The zone-id is the interface ID of the IPv6 link used to send the
+  66 packet. The zone-id can either be a numeric value, indicating a literal zone
+  67 value, or an interface name such as \fBhme0\fR.
+  68 .sp
+  69 .LP
+  70 A non-null \fIservname\fR string can be either a service name or a decimal port
+  71 number.
+  72 .sp
+  73 .LP
+  74 The caller can optionally pass an \fBaddrinfo\fR structure, pointed to by the
+  75 \fIhints\fR argument, to provide hints concerning the type of socket that the
+  76 caller supports.
+  77 .sp
+  78 .LP
+  79 The \fBaddrinfo\fR structure is defined as:
+  80 .sp
+  81 .in +2
+  82 .nf
+  83 struct addrinfo {
+  84 int              ai_flags;      /* AI_PASSIVE, AI_CANONNAME,
+  85                                    AI_NUMERICHOST, AI_NUMERICSERV
+  86                                    AI_V4MAPPED, AI_ALL,
+  87                                    AI_ADDRCONFIG */
+  88 int              ai_family;     /* PF_xxx */
+  89 int              ai_socktype;   /* SOCK_xxx */
+  90 int              ai_protocol;   /* 0 or IPPROTO_xxx for IPv4 &amp; IPv6 */
+  91 socklen_t        ai_addrlen;    /* length of ai_addr */
+  92 char             *ai_canonname; /* canonical name for nodename */
+  93 struct sockaddr  *ai_addr;      /* binary address */
+  94 struct addrinfo  *ai_next;      /* next structure in linked list */
+  95 };
+  96 .fi
+  97 .in -2
+  98 
+  99 .sp
+ 100 .LP
+ 101 In this \fIhints\fR structure, all members other than \fBai_flags\fR,
+ 102 \fBai_family\fR, \fBai_socktype\fR, and \fBai_protocol\fR must be 0 or a null
+ 103 pointer. A value of \fBPF_UNSPEC\fR for \fBai_family\fR indicates that the
+ 104 caller will accept any protocol family. A value of 0 for \fBai_socktype\fR
+ 105 indicates that the caller will accept any socket type.  A value of 0 for
+ 106 \fBai_protocol\fR indicates that the caller will accept any protocol. For
+ 107 example, if the caller handles only TCP and not UDP, then the \fBai_socktype\fR
+ 108 member of the \fIhints\fR structure should be set to \fBSOCK_STREAM\fR when
+ 109 \fBgetaddrinfo()\fR is called. If the caller handles only IPv4 and not IPv6,
+ 110 then the \fBai_family\fR member of the \fIhints\fR structure should be set to
+ 111 \fBPF_INET\fR when \fBgetaddrinfo()\fR is called. If the third argument to
+ 112 \fBgetaddrinfo()\fR is a null pointer, it is as if the caller had filled in an
+ 113 \fBaddrinfo\fR structure initialized to 0 with \fBai_family\fR set to
+ 114 \fBPF_UNSPEC\fR.
+ 115 .sp
+ 116 .LP
+ 117 Upon success, a pointer to a linked list of one or more \fBaddrinfo\fR
+ 118 structures is returned through the final argument.  The caller can process each
+ 119 \fBaddrinfo\fR structure in this list by following the \fBai_next\fR pointer,
+ 120 until a null pointer is encountered. In each returned \fBaddrinfo\fR structure
+ 121 the three members \fBai_family\fR, \fBai_socktype\fR, and \fBai_protocol\fR are
+ 122 the corresponding arguments for a call to the \fBsocket\fR(3SOCKET) function.
+ 123 In each \fBaddrinfo\fR structure the \fBai_addr\fR member points to a filled-in
+ 124 socket address structure whose length is specified by the \fBai_addrlen\fR
+ 125 member.
+ 126 .sp
+ 127 .LP
+ 128 If the \fBAI_PASSIVE\fR bit is set in the \fBai_flags\fR member of the
+ 129 \fIhints\fR structure, the caller plans to use the returned socket address
+ 130 structure in a call to \fBbind\fR(3SOCKET). In this case, if the \fInodename\fR
+ 131 argument is a null pointer, the IP address portion of the socket address
+ 132 structure will be set to \fBINADDR_ANY\fR for an IPv4 address or
+ 133 \fBIN6ADDR_ANY_INIT\fR for an IPv6 address.
+ 134 .sp
+ 135 .LP
+ 136 If the \fBAI_PASSIVE\fR bit is not set in the \fBai_flags\fR member of the
+ 137 \fIhints\fR structure, then the returned socket address structure will be ready
+ 138 for a call to \fBconnect\fR(3SOCKET) (for a connection-oriented protocol) or
+ 139 either \fBconnect\fR(3SOCKET), \fBsendto\fR(3SOCKET), or \fBsendmsg\fR(3SOCKET)
+ 140 (for a connectionless protocol). If the \fInodename\fR argument is a null
+ 141 pointer, the IP address portion of the socket address structure will be set to
+ 142 the loopback address.
+ 143 .sp
+ 144 .LP
+ 145 If the \fBAI_CANONNAME\fR bit is set in the \fBai_flags\fR member of the
+ 146 \fIhints\fR structure, then upon successful return the \fBai_canonname\fR
+ 147 member of the first \fBaddrinfo\fR structure in the linked list will point to a
+ 148 null-terminated string containing the canonical name of the specified
+ 149 \fInodename\fR. A numeric host address string is not a name, and thus does not
+ 150 have a canonical name form; no address to host name translation is performed.
+ 151 .sp
+ 152 .LP
+ 153 If the \fBAI_NUMERICHOST\fR bit is set in the \fBai_flags\fR member of the
+ 154 \fIhints\fR structure, then a non-null \fInodename\fR string must be a numeric
+ 155 host address string. Otherwise an error of \fBEAI_NONAME\fR is returned. This
+ 156 flag prevents any type of name resolution service (such as DNS) from being
+ 157 called.
+ 158 .sp
+ 159 .LP
+ 160 If the \fBAI_NUMERICSERV\fR flag is specified, then a non-null servname string
+ 161 supplied will be a numeric port string.  Otherwise, an [\fBEAI_NONAME\fR] error
+ 162 is returned. This flag prevents any type of name resolution service (for
+ 163 example, NIS+) from being invoked.
+ 164 .sp
+ 165 .LP
+ 166 If the \fBAI_V4MAPPED\fR flag is specified along with an \fBai_family\fR of
+ 167 \fBAF_INET6\fR, then \fBgetaddrinfo()\fR returns IPv4-mapped IPv6 addresses on
+ 168 finding no matching IPv6 addresses (\fBai_addrlen\fR shall be 16). For example,
+ 169 if no AAAA records are found when using DNS, a query is made for A records. Any
+ 170 found records are returned as IPv4-mapped IPv6 addresses.
+ 171 .sp
+ 172 .LP
+ 173 The \fBAI_V4MAPPED\fR flag is ignored unless \fBai_family\fR equals
+ 174 \fBAF_INET6\fR.
+ 175 .sp
+ 176 .LP
+ 177 If the \fBAI_ALL\fR flag is used with the AI_V4MAPPED flag, then
+ 178 \fBgetaddrinfo()\fR returns all matching IPv6 and IPv4 addresses. For example,
+ 179 when using the DNS, queries are made for both AAAA records and A records, and
+ 180 \fBgetaddrinfo()\fR returns the combined results of both queries. Any IPv4
+ 181 addresses found are returned as IPv4-mapped IPv6 addresses.
+ 182 .sp
+ 183 .LP
+ 184 The \fBAI_ALL\fR flag without the \fBAI_V4MAPPED\fR flag is ignored.
+ 185 .sp
+ 186 .LP
+ 187 When \fBai_family\fR is not specified (\fBAF_UNSPEC\fR), \fBAI_V4MAPPED\fR and
+ 188 \fBAI_ALL\fR flags are used only if \fBAF_INET6\fR is supported.
+ 189 .sp
+ 190 .LP
+ 191 If the \fBAI_ADDRCONFIG\fR flag is specified, IPv4 addresses are returned only
+ 192 if an IPv4 address is configured on the local system, and IPv6 addresses are
+ 193 returned only if an IPv6 address is configured on the local system. For this
+ 194 case, the loopback address is not considered to be as valid as a configured
+ 195 address. For example, when using the DNS, a query for AAAA records should occur
+ 196 only if the node has at least one IPv6 address configured (other than IPv6
+ 197 loopback) and a query for A records should occur only if the node has at least
+ 198 one IPv4 address configured (other than the IPv4 loopback).
+ 199 .sp
+ 200 .LP
+ 201 All of the information returned by \fBgetaddrinfo()\fR is dynamically
+ 202 allocated: the \fBaddrinfo\fR structures as well as the socket address
+ 203 structures and canonical node name strings pointed to by the \fBaddrinfo\fR
+ 204 structures. The \fBfreeaddrinfo()\fR function is called to return this
+ 205 information to the system. For \fBfreeaddrinfo()\fR, the \fBaddrinfo\fR
+ 206 structure pointed to by the \fIai\fR argument is freed, along with any dynamic
+ 207 storage pointed to by the structure. This operation is repeated until a null
+ 208 \fBai_next\fR pointer is encountered.
+ 209 .sp
+ 210 .LP
+ 211 To aid applications in printing error messages based on the \fBEAI_\fR* codes
+ 212 returned by \fBgetaddrinfo()\fR, the \fBgai_strerror()\fR is defined. The
+ 213 argument is one of the \fBEAI_\fR* values defined below and the return value
+ 214 points to a string describing the error. If the argument is not one of the
+ 215 \fBEAI_\fR* values, the function still returns a pointer to a string whose
+ 216 contents indicate an unknown error.
+ 217 .sp
+ 218 .LP
+ 219 The \fBgetnameinfo()\fR function looks up an IP address and port number
+ 220 provided by the caller in the name service database and system-specific
+ 221 database, and returns text strings for both in buffers provided by the caller.
+ 222 The function indicates successful completion by a 0 return value; a non-zero
+ 223 return value indicates failure.
+ 224 .sp
+ 225 .LP
+ 226 The first argument, \fIsa\fR, points to either a \fBsockaddr_in\fR structure
+ 227 (for IPv4) or a \fBsockaddr_in6\fR structure (for IPv6) that holds the IP
+ 228 address and port number. The \fIsalen\fR argument gives the length of the
+ 229 \fBsockaddr_in\fR or \fBsockaddr_in6\fR structure.
+ 230 .sp
+ 231 .LP
+ 232 The function returns the node name associated with the IP address in the buffer
+ 233 pointed to by the \fIhost\fR argument.
+ 234 .sp
+ 235 .LP
+ 236 The function can also return the IPv6 zone-id in the form:
+ 237 .sp
+ 238 .in +2
+ 239 .nf
+ 240 &lt;address&gt;%&lt;zone-id&gt;
+ 241 .fi
+ 242 .in -2
+ 243 
+ 244 .sp
+ 245 .LP
+ 246 The caller provides the size of this buffer with the \fIhostlen\fR argument.
+ 247 The service name associated with the port number is returned in the buffer
+ 248 pointed to by \fIserv\fR, and the \fIservlen\fR argument gives the length of
+ 249 this buffer. The caller specifies not to return either string by providing a 0
+ 250 value for the \fIhostlen\fR or \fIservlen\fR arguments. Otherwise, the caller
+ 251 must provide buffers large enough to hold the node name and the service name,
+ 252 including the terminating null characters.
+ 253 .sp
+ 254 .LP
+ 255 To aid the application in allocating buffers for these two returned strings,
+ 256 the following constants are defined in &lt;\fBnetdb.h\fR&gt;:
+ 257 .sp
+ 258 .in +2
+ 259 .nf
+ 260 #define NI_MAXHOST  1025
+ 261 #define NI_MAXSERV    32
+ 262 .fi
+ 263 .in -2
+ 264 
+ 265 .sp
+ 266 .LP
+ 267 The final argument is a flag that changes the default actions of this function.
+ 268 By default, the fully-qualified domain name (\fBFQDN\fR) for the host is looked
+ 269 up in the name service database and returned. If the flag bit \fBNI_NOFQDN\fR
+ 270 is set, only the node name portion of the \fBFQDN\fR is returned for local
+ 271 hosts.
+ 272 .sp
+ 273 .LP
+ 274 If the flag bit \fBNI_NUMERICHOST\fR is set, or if the host's name cannot be
+ 275 located in the name service, the numeric form of the host's address is returned
+ 276 instead of its name, for example, by calling \fBinet_ntop()\fR (see
+ 277 \fBinet\fR(3SOCKET)) instead of \fBgetipnodebyname\fR(3SOCKET). If the flag bit
+ 278 \fBNI_NAMEREQD\fR is set, an error is returned if the host's name cannot be
+ 279 located in the name service database.
+ 280 .sp
+ 281 .LP
+ 282 If the flag bit \fBNI_NUMERICSERV\fR is set, the numeric form of the service
+ 283 address is returned (for example, its port number) instead of its name. The two
+ 284 \fBNI_NUMERIC\fR* flags are required to support the \fB-n\fR flag that many
+ 285 commands provide.
+ 286 .sp
+ 287 .LP
+ 288 A fifth flag bit, \fBNI_DGRAM\fR, specifies that the service is a datagram
+ 289 service, and causes \fBgetservbyport\fR(3SOCKET) to be called with a second
+ 290 argument of \fBudp\fR instead of the default \fBtcp\fR. This is required for
+ 291 the few ports (for example, 512-514) that have different services for UDP and
+ 292 TCP.
+ 293 .sp
+ 294 .LP
+ 295 These \fBNI_\fR* flags are defined in &lt;\fBnetdb.h\fR&gt; along with the \fBAI_\fR*
+ 296 flags already defined for \fBgetaddrinfo()\fR.
+ 297 .SH RETURN VALUES
+ 298 .sp
+ 299 .LP
+ 300 For \fBgetaddrinfo()\fR, if the query is successful, a pointer to a linked list
+ 301 of one or more \fBaddrinfo\fR structures is returned by the fourth argument and
+ 302 the function returns \fB0\fR. The order of the addresses returned in the fourth
+ 303 argument is discussed in the ADDRESS ORDERING section. If the query fails, a
+ 304 non-zero error code will be returned. For \fBgetnameinfo()\fR, if successful,
+ 305 the strings hostname and service are copied into \fIhost\fR and \fIserv\fR,
+ 306 respectively. If unsuccessful, zero values for either \fIhostlen\fR or
+ 307 \fIservlen\fR will suppress the associated lookup; in this case no data is
+ 308 copied into the applicable buffer. If \fBgai_strerror()\fR is successful, a
+ 309 pointer to a string containing an error message appropriate for the \fBEAI_\fR*
+ 310 errors is returned. If \fIerrcode\fR is not one of the \fBEAI_\fR* values, a
+ 311 pointer to a string indicating an unknown error is returned.
+ 312 .SS "Address Ordering"
+ 313 .sp
+ 314 .LP
+ 315 AF_INET6 addresses returned by the fourth argument of \fBgetaddrinfo()\fR are
+ 316 ordered according to the algorithm described in \fIRFC 3484, Default Address
+ 317 Selection for Internet Protocol version 6 (IPv6)\fR. The addresses are ordered
+ 318 using a list of pair-wise comparison rules which are applied in order. If a
+ 319 rule determines that one address is better than another, the remaining rules
+ 320 are irrelevant to the comparison of those two addresses. If two addresses are
+ 321 equivalent according to one rule, the remaining rules act as a tie-breaker. The
+ 322 address ordering list of pair-wise comparison rules follow below:
+ 323 .sp
+ 324 
+ 325 .sp
+ 326 .TS
+ 327 box;
+ 328 l | l
+ 329 l | l .
+ 330 Avoid unusable destinations.    T{
+ 331 Prefer a destination that is reachable through the IP routing table.
+ 332 T}
+ 333 _
+ 334 Prefer matching scope.  T{
+ 335 Prefer a destination whose scope is equal to the scope of its source address. See \fBinet6\fR(7P) for the definition of scope used by this rule.
+ 336 T}
+ 337 _
+ 338 Avoid link-local source.        T{
+ 339 Avoid selecting a link-local source address when the destination address is not a link-local address.
+ 340 T}
+ 341 _
+ 342 Avoid deprecated addresses.     T{
+ 343 Prefer a destination that is not deprecated (\fBIFF_DEPRECATED\fR).
+ 344 T}
+ 345 _
+ 346 T{
+ 347 Prefer matching label. This rule uses labels that are obtained through the IPv6 default address selection policy table. See \fBipaddrsel\fR(1M) for a description of the default contents of the table and how the table is configured.
+ 348 T}      T{
+ 349 Prefer a destination whose label is equal to the label of its source address.
+ 350 T}
+ 351 _
+ 352 T{
+ 353 Prefer higher precedence. This rule uses precedence values that are obtained through the IPv6 default address selection policy table. See \fBipaddrsel\fR(1M) for a description of the default contents of the table and how the table is configured.
+ 354 T}      T{
+ 355 Prefer the destination whose precedence is higher than the other destination.
+ 356 T}
+ 357 _
+ 358 Prefer native transport.        T{
+ 359 Prefer a destination if the interface that is used for sending packets to that destination is not an IP over IP tunnel.
+ 360 T}
+ 361 _
+ 362 T{
+ 363 Prefer smaller scope. See \fBinet6\fR(7P) for the definition of this rule.
+ 364 T}      T{
+ 365 Prefer the destination whose scope is smaller than the other destination.
+ 366 T}
+ 367 _
+ 368 Use longest matching prefix.    T{
+ 369 When the two destinations belong to the same address family, prefer the destination that has the longer matching prefix with its source address.
+ 370 T}
+ 371 .TE
+ 372 
+ 373 .SH ERRORS
+ 374 .sp
+ 375 .LP
+ 376 The following names are the error values returned by \fBgetaddrinfo()\fR and
+ 377 are defined in &lt;\fBnetdb.h\fR&gt;:
+ 378 .sp
+ 379 .ne 2
+ 380 .na
+ 381 \fB\fBEAI_ADDRFAMILY\fR\fR
+ 382 .ad
+ 383 .RS 18n
+ 384 Address family for nodename is not supported.
+ 385 .RE
+ 386 
+ 387 .sp
+ 388 .ne 2
+ 389 .na
+ 390 \fB\fBEAI_AGAIN\fR\fR
+ 391 .ad
+ 392 .RS 18n
+ 393 Temporary failure in name resolution has occurred .
+ 394 .RE
+ 395 
+ 396 .sp
+ 397 .ne 2
+ 398 .na
+ 399 \fB\fBEAI_BADFLAGS\fR\fR
+ 400 .ad
+ 401 .RS 18n
+ 402 Invalid value specified for \fBai_flags\fR.
+ 403 .RE
+ 404 
+ 405 .sp
+ 406 .ne 2
+ 407 .na
+ 408 \fB\fBEAI_FAIL\fR\fR
+ 409 .ad
+ 410 .RS 18n
+ 411 Non-recoverable failure in name resolution has occurred.
+ 412 .RE
+ 413 
+ 414 .sp
+ 415 .ne 2
+ 416 .na
+ 417 \fB\fBEAI_FAMILY\fR\fR
+ 418 .ad
+ 419 .RS 18n
+ 420 The \fBai_family\fR is not supported.
+ 421 .RE
+ 422 
+ 423 .sp
+ 424 .ne 2
+ 425 .na
+ 426 \fB\fBEAI_MEMORY\fR\fR
+ 427 .ad
+ 428 .RS 18n
+ 429 Memory allocation failure has occurred.
+ 430 .RE
+ 431 
+ 432 .sp
+ 433 .ne 2
+ 434 .na
+ 435 \fB\fBEAI_NODATA\fR\fR
+ 436 .ad
+ 437 .RS 18n
+ 438 No address is associated with \fInodename\fR.
+ 439 .RE
+ 440 
+ 441 .sp
+ 442 .ne 2
+ 443 .na
+ 444 \fB\fBEAI_NONAME\fR\fR
+ 445 .ad
+ 446 .RS 18n
+ 447 Neither \fInodename\fR nor \fIservname\fR is provided or known.
+ 448 .RE
+ 449 
+ 450 .sp
+ 451 .ne 2
+ 452 .na
+ 453 \fB\fBEAI_SERVICE\fR\fR
+ 454 .ad
+ 455 .RS 18n
+ 456 The \fIservname\fR is not supported for \fBai_socktype\fR.
+ 457 .RE
+ 458 
+ 459 .sp
+ 460 .ne 2
+ 461 .na
+ 462 \fB\fBEAI_SOCKTYPE\fR\fR
+ 463 .ad
+ 464 .RS 18n
+ 465 The \fBai_socktype\fR is not supported.
+ 466 .RE
+ 467 
+ 468 .sp
+ 469 .ne 2
+ 470 .na
+ 471 \fB\fBEAI_OVERFLOW\fR\fR
+ 472 .ad
+ 473 .RS 18n
+ 474 Argument buffer has overflowed.
+ 475 .RE
+ 476 
+ 477 .sp
+ 478 .ne 2
+ 479 .na
+ 480 \fB\fBEAI_SYSTEM\fR\fR
+ 481 .ad
+ 482 .RS 18n
+ 483 System error was returned in \fIerrno\fR.
+ 484 .RE
+ 485 
+ 486 .SH FILES
+ 487 .sp
+ 488 .ne 2
+ 489 .na
+ 490 \fB\fB/etc/inet/hosts\fR\fR
+ 491 .ad
+ 492 .RS 22n
+ 493 local database that associates names of nodes with IP addresses
+ 494 .RE
+ 495 
+ 496 .sp
+ 497 .ne 2
+ 498 .na
+ 499 \fB\fB/etc/netconfig\fR\fR
+ 500 .ad
+ 501 .RS 22n
+ 502 network configuration database
+ 503 .RE
+ 504 
+ 505 .sp
+ 506 .ne 2
+ 507 .na
+ 508 \fB\fB/etc/nsswitch.conf\fR\fR
+ 509 .ad
+ 510 .RS 22n
+ 511 configuration file for the name service switch
+ 512 .RE
+ 513 
+ 514 .SH ATTRIBUTES
+ 515 .sp
+ 516 .LP
+ 517 See \fBattributes\fR(5) for description of the following attributes:
+ 518 .sp
+ 519 
+ 520 .sp
+ 521 .TS
+ 522 box;
+ 523 c | c
+ 524 l | l .
+ 525 ATTRIBUTE TYPE  ATTRIBUTE VALUE
+ 526 _
+ 527 Interface Stability     Committed
+ 528 _
+ 529 MT-Level        MT-Safe
+ 530 _
+ 531 Standard        See \fBstandards\fR(5).
+ 532 .TE
+ 533 
+ 534 .SH SEE ALSO
+ 535 .sp
+ 536 .LP
+ 537 \fBipaddrsel\fR(1M), \fBgethostbyname\fR(3NSL), \fBgetipnodebyname\fR(3SOCKET),
+ 538 \fBhtonl\fR(3SOCKET), \fBinet\fR(3SOCKET), \fBnetdb.h\fR(3HEAD),
+ 539 \fBsocket\fR(3SOCKET), \fBhosts\fR(4), \fBnsswitch.conf\fR(4),
+ 540 \fBattributes\fR(5), \fBstandards\fR(5), \fBinet6\fR(7P)
+ 541 .sp
+ 542 .LP
+ 543 Draves, R. \fIRFC 3484, Default Address Selection for Internet Protocol version
+ 544 6 (IPv6)\fR. Network Working Group. February 2003.
+ 545 .SH NOTES
+ 546 .sp
+ 547 .LP
+ 548 IPv4-mapped addresses are not recommended.
+</pre></body></html>

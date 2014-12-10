@@ -1,0 +1,72 @@
+
+[Links]
+- http://wiki.illumos.org/display/illumos/How+To+Contribute
+- http://wiki.illumos.org/display/illumos/How+To+Build+illumos
+- http://us-east.manta.joyent.com/rmustacc/public/iondg/workflow.html
+
+[Setting up zpool]
+- sudo zfs create rpool/export/home/illumos-dev
+- sudo zfs create rpool/export/home/illumos-dev/code
+- sudo ln -s ./export/home/illumos-dev/code /
+- sudo chown -R $USER /export/home/illumos-dev
+- sudo zfs set compression=lzjb rpool/export/home/illumos-dev
+- sudo zfs set atime=off rpool/export/home/illumos-dev
+- sudo zfs set sync=disabled rpool/export/home/illumos-dev
+- sudo zfs create -o atime=off -o compression=gzip-9 \
+  rpool/export/home/illumos-dev/packages
+- sudo chown -R $USER /export/home/illumos-dev
+ 
+- ### NOTE: Make the symlink AFTER checking out the source:
+- sudo ln -s ../../packages /export/home/illumos-dev/code/illumos-gate
+
+[Obtaining Source]
+- cd /export/home/illumos-dev/code
+- git clone git://github.com/illumos-gate/illumos-gate.git
+- cd /export/home/illumos-dev/code/illumos-gate
+- cp /opt/onbld/env/illumos illumos.sh
+- vi illumos.sh
+	export GATE="illumos-gate"
+	export CODEMGR_WS="/export/home/illumos-dev/code/$GATE"
+	# Default to compiling with gcc
+	export __GNUC=""
+	# Disable the shadow compiler which requires the correct version of Sun Studio
+	export CW_NO_SHADOW=1
+
+[Obtaining closed binaries]
+- cd /export/home/illumos-dev/code/illumos-gate
+- curl -O https://download.joyent.com/pub/build/illumos/on-closed-bins.i386.tar.bz2
+- curl -O https://download.joyent.com/pub/build/illumos/on-closed-bins-nd.i386.tar.bz2
+- tar xjvpf on-closed-bins.i386.tar.bz2
+- tar xjvpf on-closed-bins-nd.i386.tar.bz2
+
+[Build illumos]
+- cd /export/home/illumos-dev/code/illumos-gate
+- /opt/onbld/bin/nightly ./illumos.sh
+- cd log/
+- tail -f nightly.log
+	22/05/14 Build:
+		real	268m30.885s
+		user	190m17.520s
+		sys	47m45.915s
+
+[Using bldenv]
+- cd /export/home/illumos-dev/code/illumos-gate
+- /opt/onbld/bin/bldenv -d ./illumos.sh
+	Build type   is  DEBUG
+	RELEASE      is 
+	VERSION      is illumos-gate
+	RELEASE_DATE is May 2014
+
+	The top-level 'setup' target is available to build headers and tools.
+
+	Using /bin/bash as shell.
+
+[Using cscope]
+**** Problem ****
+- dmake cscope.out
+- cscope-fast -dq
+**** Problem ****
+where XXXX = bug #
+webrev -o XXXX-YYYYYYYY -p HEAD^
+
+YYYYY... = bug description

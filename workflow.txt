@@ -1,0 +1,81 @@
+
+Bug Hunting Workflow
+
+1: Create ZFS pool
+	sudo zfs create -o sync=disabled rpool/export/home/illumos-dev/code/illumos-gate
+	chown wmd:staff illumos-gate
+2: Clone repo from illumos git
+	git clone git@github.com:illumos/illumos-gate.git
+2: ZFS snapshot of local repo for bug work
+	zfs snapshot rpool/export/home/illumos-dev/code/illumos-gate@DATE
+3: ZFS clone to illumos-<bugid>
+	zfs clone rpool/export/home/illumos-dev/code/illumos-gate@DATE rpool/export/home/illumos-dev/code/illumos-<bugid>
+4: Work on bug/build source
+	cp ../illumos-gate/illumos.sh .
+	change $GATE to illumos-BUGID
+	/opt/onbld/bin/ws
+5: Set bug to In Progress
+6: Fix bug
+	git add *.c
+	git commit -m "<BUG-ID> <BUG-Description>"
+7: Generate webrev
+	webrev -o <BUG-ID>-<BugDescription>
+
+8: Upload webrev
+	webrev -t rsync://webrev@cr.illumos.org:<BUG-ID>-<BUG-Description> -O -U
+9: Email webrev to developers list
+10: generate patch
+	git show HEAD > NNNN-bug-description.patch
+10: Email RTI to advocated list
+	
+
+
+webrev email template:
+
+email addr: developer@lists.illumos.org
+subject: REVIEW - <BUGID> <BUG TITLE>
+body: 
+	"Formatting issue with ...."
+	<link to webrev>
+	Thanks,
+
+RTI email template:
+
+email addr: advocates@lists.illumos.org
+subject: RTI: <BUG ID> <BUG TITLE>
+body:
+	Minor manpage typo for submission.
+
+	Issue:
+	https://www.illumos.org/issues/4775
+	4775 - Typo in getaddrinfo(3SOCKET) man page
+	Files affected: /usr/src/man/man3socket/getaddrinfo.3socket
+
+	webrev:
+	http://cr.illumos.org/~webrev/wdowling/getaddinfo-formatting-bug/
+
+	gitwhatchanged:
+	$ git whatchanged -v origin/master..master
+	commit 8595c96a9c639b8ddf5fdc483acebc0be079b187
+	Author: William Dowling <wmdowling@gmail.com>
+	Date:   Thu May 22 20:55:24 2014 +0100
+
+    		4775 Typo in getaddrinfo(3SOCKET) man page
+    		Reviewed by: Josef 'Jeff' Sipek <josef.sipek@nexenta.com>
+    		Reviewed by: Garrett D'Amore <garrett@damore.org>
+    		Reviewed by: Andy Stormont <andyjstormont@gmail.com>
+
+		:100644 100644 66f3731... 135c8b5... M
+		usr/src/man/man3socket/getaddrinfo.3socket
+
+	gitpbchk:
+	$ git pbchk
+	Copyrights:
+	usr/src/man/man3socket/getaddrinfo.3socket: no copyright claim for
+	current year found
+
+	testing:
+	nroff -man getaddrinfo.3socket displayed the manpage in the correct format.
+
+	This is a very minor change to a manpage. I have attached
+	getaddrinfo-fix-typo-patch.

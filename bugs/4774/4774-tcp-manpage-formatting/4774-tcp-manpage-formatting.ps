@@ -1,0 +1,1182 @@
+%!PS-Adobe-2.0
+%%Creator: codereview on oi
+%%CreationDate: Mon May 26 17:48:17 2014
+%%For: wmd
+%%DocumentFonts: Courier Courier-Bold Courier-Oblique Courier-BoldOblique
+%%Pages: (atend)
+%%EndComments
+%
+% PostScript Prologue for lwlp LaserWriter Line Printer
+%
+/SFT {findfont exch scalefont setfont}bind def
+/SWT {( ) stringwidth pop dup /W exch def neg /NW exch def}bind def
+/SPG {/SV save def translate dup scale rotate}bind def
+/EPG {SV restore}bind def
+/FPG {/#copies exch def showpage}bind def
+/B {NW 0 rmoveto}def
+/M /moveto load def
+/T {W mul 0 rmoveto}def
+/S /show load def
+/Z {0 exch moveto}bind def
+/SHD {save 5 1 roll			% S x1 y1 x0 y0
+	2 copy moveto			% S x1 y1 x0 y0
+	3 index exch lineto		% S x1 y1 x0
+	3 -1 roll 2 index lineto	% S y1 x0
+	exch lineto			% S
+	0.95 setgray fill		% S
+	restore}def
+%%EndProlog
+/FRN {10.526316 /Courier SFT}bind def
+/FRB {10.526316 /Courier-Bold SFT}bind def
+/FIN {10.526316 /Courier-Oblique SFT}bind def
+/FIB {10.526316 /Courier-BoldOblique SFT}bind def
+%%Page: ? 1
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (1)S
+FRN
+FIB
+0 688.42 M
+688.42 Z
+(**********************************************************)S
+0 677.89 M
+677.89 Z
+(   19581 Mon May 26 17:48:17 2014)S
+0 667.37 M
+667.37 Z
+(new/usr/src/man/man7p/tcp.7p)S
+0 656.84 M
+656.84 Z
+(4774 Typos in tcp\(7P\) manpage)S
+0 646.32 M
+646.32 Z
+(**********************************************************)S
+FRN
+635.79 Z
+3 T (1)S 1 T ('\\" te)S
+625.26 Z
+3 T (2)S 1 T (.\\" Copyright \(c\) 2006, Sun Microsystems, Inc. All Rights Reserved.)S
+614.74 Z
+3 T (3)S 1 T (.\\" Copyright \(c\) 2011 Nexenta Systems, Inc. All rights reserved.)S
+604.21 Z
+3 T (4)S 1 T (.\\" Copyright 1989 AT&T)S
+593.68 Z
+3 T (5)S 1 T (.\\" The contents of this file are subject to the terms of the Common Development)S
+583.16 Z
+3 T (6)S 1 T (.\\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http:)S
+572.63 Z
+3 T (7)S 1 T (.\\" When distributing Covered Code, include this CDDL HEADER in each file and in)S
+562.11 Z
+3 T (8)S 1 T (.TH TCP 7P "Jun 30, 2006")S
+551.58 Z
+3 T (9)S 1 T (.SH NAME)S
+541.05 Z
+2 T (10)S 1 T (tcp, TCP \\- Internet Transmission Control Protocol)S
+530.53 Z
+2 T (11)S 1 T (.SH SYNOPSIS)S
+520.00 Z
+2 T (12)S 1 T (.LP)S
+509.47 Z
+2 T (13)S 1 T (.nf)S
+498.95 Z
+2 T (14)S 1 T (\\fB#include <sys/socket.h>\\fR)S
+488.42 Z
+2 T (15)S 1 T (.fi)S
+467.37 Z
+2 T (17)S 1 T (.LP)S
+456.84 Z
+2 T (18)S 1 T (.nf)S
+446.32 Z
+2 T (19)S 1 T (\\fB#include <netinet/in.h>\\fR)S
+435.79 Z
+2 T (20)S 1 T (.fi)S
+414.74 Z
+2 T (22)S 1 T (.LP)S
+404.21 Z
+2 T (23)S 1 T (.nf)S
+393.68 Z
+2 T (24)S 1 T (\\fBs = socket\(AF_INET, SOCK_STREAM, 0\);\\fR)S
+383.16 Z
+2 T (25)S 1 T (.fi)S
+362.11 Z
+2 T (27)S 1 T (.LP)S
+351.58 Z
+2 T (28)S 1 T (.nf)S
+341.05 Z
+2 T (29)S 1 T (\\fBs = socket\(AF_INET6, SOCK_STREAM, 0\);\\fR)S
+330.53 Z
+2 T (30)S 1 T (.fi)S
+309.47 Z
+2 T (32)S 1 T (.LP)S
+298.95 Z
+2 T (33)S 1 T (.nf)S
+288.42 Z
+2 T (34)S 1 T (\\fBt = t_open\("/dev/tcp", O_RDWR\);\\fR)S
+277.90 Z
+2 T (35)S 1 T (.fi)S
+256.84 Z
+2 T (37)S 1 T (.LP)S
+246.32 Z
+2 T (38)S 1 T (.nf)S
+235.79 Z
+2 T (39)S 1 T (\\fBt = t_open\("/dev/tcp6", O_RDWR\);\\fR)S
+225.26 Z
+2 T (40)S 1 T (.fi)S
+204.21 Z
+2 T (42)S 1 T (.SH DESCRIPTION)S
+193.68 Z
+2 T (43)S 1 T (.sp)S
+183.16 Z
+2 T (44)S 1 T (.LP)S
+172.63 Z
+2 T (45)S 1 T (\\fBTCP\\fR is the virtual circuit protocol of the Internet protocol family. It)S
+162.11 Z
+2 T (46)S 1 T (provides reliable, flow-controlled, in order, two-way transmission of data. It)S
+151.58 Z
+2 T (47)S 1 T (is a byte-stream protocol layered above the Internet Protocol \(\\fBIP\\fR\), or)S
+141.05 Z
+2 T (48)S 1 T (the Internet Protocol Version 6 \(\\fBIPv6\\fR\), the Internet protocol family's)S
+130.53 Z
+2 T (49)S 1 T (internetwork datagram delivery protocol.)S
+120.00 Z
+2 T (50)S 1 T (.sp)S
+109.47 Z
+2 T (51)S 1 T (.LP)S
+98.95 Z
+2 T (52)S 1 T (Programs can access \\fBTCP\\fR using the socket interface as a \\fBSOCK_STREAM\\fR)S
+88.42 Z
+2 T (53)S 1 T (socket type, or using the Transport Level Interface \(\\fBTLI\\fR\) where it)S
+77.90 Z
+2 T (54)S 1 T (supports the connection-oriented \(\\fBT_COTS_ORD\\fR\) service type.)S
+67.37 Z
+2 T (55)S 1 T (.sp)S
+56.84 Z
+2 T (56)S 1 T (.LP)S
+46.32 Z
+2 T (57)S 1 T (\\fBTCP\\fR uses \\fBIP\\fR's host-level addressing and adds its own per-host)S
+35.79 Z
+2 T (58)S 1 T (collection of "port addresses." The endpoints of a \\fBTCP\\fR connection are)S
+25.26 Z
+2 T (59)S 1 T (identified by the combination of an \\fBIP\\fR or IPv6 address and a \\fBTCP\\fR)S
+14.74 Z
+2 T (60)S 1 T (port number. Although other protocols, such as the User Datagram Protocol)S
+4.21 Z
+2 T (61)S 1 T (\(UDP\), may use the same host and port address format, the port space of these)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (2)S
+FRN
+688.42 Z
+2 T (62)S 1 T (protocols is distinct. See \\fBinet\\fR\(7P\) and \\fBinet6\\fR\(7P\) for details on)S
+677.89 Z
+2 T (63)S 1 T (the common aspects of addressing in the Internet protocol family.)S
+667.37 Z
+2 T (64)S 1 T (.sp)S
+656.84 Z
+2 T (65)S 1 T (.LP)S
+646.32 Z
+2 T (66)S 1 T (Sockets utilizing \\fBTCP\\fR are either "active" or "passive." Active sockets)S
+635.79 Z
+2 T (67)S 1 T (initiate connections to passive sockets. Both types of sockets must have their)S
+625.26 Z
+2 T (68)S 1 T (local \\fBIP\\fR or IPv6 address and \\fBTCP\\fR port number bound with the)S
+614.74 Z
+2 T (69)S 1 T (\\fBbind\\fR\(3SOCKET\) system call after the socket is created. By default,)S
+604.21 Z
+2 T (70)S 1 T (\\fBTCP\\fR sockets are active. A passive socket is created by calling the)S
+593.68 Z
+2 T (71)S 1 T (\\fBlisten\\fR\(3SOCKET\) system call after binding the socket with \\fBbind\(\)\\fR.)S
+583.16 Z
+2 T (72)S 1 T (This establishes a queueing parameter for the passive socket. After this,)S
+572.63 Z
+2 T (73)S 1 T (connections to the passive socket can be received with the)S
+562.11 Z
+2 T (74)S 1 T (\\fBaccept\\fR\(3SOCKET\) system call. Active sockets use the)S
+551.58 Z
+2 T (75)S 1 T (\\fBconnect\\fR\(3SOCKET\) call after binding to initiate connections.)S
+541.05 Z
+2 T (76)S 1 T (.sp)S
+530.53 Z
+2 T (77)S 1 T (.LP)S
+520.00 Z
+2 T (78)S 1 T (By using the special value \\fBINADDR_ANY\\fR with \\fBIP\\fR, or the unspecified)S
+509.47 Z
+2 T (79)S 1 T (address \(all zeroes\) with IPv6, the local \\fBIP\\fR address can be left)S
+498.95 Z
+2 T (80)S 1 T (unspecified in the \\fBbind\(\)\\fR call by either active or passive \\fBTCP\\fR)S
+488.42 Z
+2 T (81)S 1 T (sockets. This feature is usually used if the local address is either unknown or)S
+477.89 Z
+2 T (82)S 1 T (irrelevant. If left unspecified, the local \\fBIP\\fR or IPv6 address will be)S
+467.37 Z
+2 T (83)S 1 T (bound at connection time to the address of the network interface used to)S
+456.84 Z
+2 T (84)S 1 T (service the connection.)S
+446.32 Z
+2 T (85)S 1 T (.sp)S
+435.79 Z
+2 T (86)S 1 T (.LP)S
+425.26 Z
+2 T (87)S 1 T (Note that no two TCP sockets can be bound to the same port unless the bound IP)S
+414.74 Z
+2 T (88)S 1 T (addresses are different.  IPv4 \\fBINADDR_ANY\\fR and IPv6 unspecified addresses)S
+404.21 Z
+2 T (89)S 1 T (compare as equal to any IPv4 or IPv6 address. For example, if a socket is bound)S
+393.68 Z
+2 T (90)S 1 T (to \\fBINADDR_ANY\\fR or unspecified address and port X, no other socket can bind)S
+383.16 Z
+2 T (91)S 1 T (to port X, regardless of the binding address. This special consideration of)S
+372.63 Z
+2 T (92)S 1 T (\\fBINADDR_ANY\\fR and unspecified address can be changed using the socket option)S
+362.11 Z
+2 T (93)S 1 T (\\fBSO_REUSEADDR\\fR. If \\fBSO_REUSEADDR\\fR is set on a socket doing a bind, IPv4)S
+351.58 Z
+2 T (94)S 1 T (\\fBINADDR_ANY\\fR and IPv6 unspecified address do not compare as equal to any IP)S
+341.05 Z
+2 T (95)S 1 T (address. This means that as long as the two sockets are not both bound to)S
+330.53 Z
+2 T (96)S 1 T (\\fBINADDR_ANY\\fR/unspecified address or the same IP address, the two sockets)S
+320.00 Z
+2 T (97)S 1 T (can be bound to the same port.)S
+309.47 Z
+2 T (98)S 1 T (.sp)S
+298.95 Z
+2 T (99)S 1 T (.LP)S
+288.42 Z
+1 T (100)S 1 T (If an application does not want to allow another socket  using the)S
+277.90 Z
+1 T (101)S 1 T (\\fBSO_REUSEADDR\\fR option to bind to a port its socket is bound to, the)S
+267.37 Z
+1 T (102)S 1 T (application can set the socket level option \\fBSO_EXCLBIND\\fR on a socket. The)S
+256.84 Z
+1 T (103)S 1 T (option values of 0 and 1 mean enabling and disabling the option respectively.)S
+246.32 Z
+1 T (104)S 1 T (Once this option is enabled on a socket, no other socket can be bound to the)S
+235.79 Z
+1 T (105)S 1 T (same port.)S
+225.26 Z
+1 T (106)S 1 T (.sp)S
+214.74 Z
+1 T (107)S 1 T (.LP)S
+204.21 Z
+1 T (108)S 1 T (Once a connection has been established, data can be exchanged using the)S
+193.68 Z
+1 T (109)S 1 T (\\fBread\\fR\(2\) and \\fBwrite\\fR\(2\) system calls.)S
+183.16 Z
+1 T (110)S 1 T (.sp)S
+172.63 Z
+1 T (111)S 1 T (.LP)S
+162.11 Z
+1 T (112)S 1 T (Under most circumstances, \\fBTCP\\fR sends data when it is presented. When)S
+151.58 Z
+1 T (113)S 1 T (outstanding data has not yet been acknowledged, \\fBTCP\\fR gathers small amounts)S
+141.05 Z
+1 T (114)S 1 T (of output to be sent in a single packet once an acknowledgement has been)S
+130.53 Z
+1 T (115)S 1 T (received. For a small number of clients, such as window systems that send a)S
+120.00 Z
+1 T (116)S 1 T (stream of mouse events which receive no replies, this packetization may cause)S
+109.47 Z
+1 T (117)S 1 T (significant delays. To circumvent this problem, \\fBTCP\\fR provides a)S
+98.95 Z
+1 T (118)S 1 T (socket-level boolean option, \\fBTCP_NODELAY.\\fR \\fBTCP_NODELAY\\fR is defined in)S
+88.42 Z
+1 T (119)S 1 T (\\fB<netinet/tcp.h>\\fR, and is set with \\fBsetsockopt\\fR\(3SOCKET\) and tested)S
+77.90 Z
+1 T (120)S 1 T (with \\fBgetsockopt\\fR\(3SOCKET\). The option level for the \\fBsetsockopt\(\)\\fR)S
+67.37 Z
+1 T (121)S 1 T (call is the protocol number for \\fBTCP,\\fR available from)S
+56.84 Z
+1 T (122)S 1 T (\\fBgetprotobyname\\fR\(3SOCKET\).)S
+46.32 Z
+1 T (123)S 1 T (.sp)S
+35.79 Z
+1 T (124)S 1 T (.LP)S
+25.26 Z
+1 T (125)S 1 T (For some applications, it may be desirable for TCP not to send out data unless)S
+14.74 Z
+1 T (126)S 1 T (a full TCP segment can be sent. To enable this behavior, an application can use)S
+4.21 Z
+1 T (127)S 1 T (the \\fBTCP_CORK\\fR socket option. When \\fBTCP_CORK\\fR is set with a non-zero)S
+EPG
+1 FPG
+%%Page: ? 2
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (3)S
+FRN
+688.42 Z
+1 T (128)S 1 T (value, TCP sends out a full TCP segment only. When \\fBTCP_CORK\\fR is set to)S
+677.89 Z
+1 T (129)S 1 T (zero after it has been enabled, all buffered data is sent out \(as permitted by)S
+667.37 Z
+1 T (130)S 1 T (the peer's receive window and the current congestion window\). \\fBTCP_CORK\\fR is)S
+656.84 Z
+1 T (131)S 1 T (defined in <\\fBnetinet/tcp.h\\fR>,  and is set with \\fBsetsockopt\\fR\(3SOCKET\))S
+646.32 Z
+1 T (132)S 1 T (and tested with \\fBgetsockopt\\fR\(3SOCKET\). The option level for the)S
+635.79 Z
+1 T (133)S 1 T (\\fBsetsockopt\(\)\\fR call is the protocol  number  for TCP, available from)S
+625.26 Z
+1 T (134)S 1 T (\\fBgetprotobyname\\fR\(3SOCKET\).)S
+614.74 Z
+1 T (135)S 1 T (.sp)S
+604.21 Z
+1 T (136)S 1 T (.LP)S
+593.68 Z
+1 T (137)S 1 T (The SO_RCVBUF socket level option can be used to control the window that TCP)S
+583.16 Z
+1 T (138)S 1 T (advertises to the peer. IP level options may also be used with TCP. See)S
+572.63 Z
+1 T (139)S 1 T (\\fBip\\fR\(7P\) and \\fBip6\\fR\(7P\).)S
+562.11 Z
+1 T (140)S 1 T (.sp)S
+551.58 Z
+1 T (141)S 1 T (.LP)S
+541.05 Z
+1 T (142)S 1 T (Another socket level option, \\fBSO_RCVBUF,\\fR can be used to control the window)S
+530.53 Z
+1 T (143)S 1 T (that \\fBTCP\\fR advertises to the peer. \\fBIP\\fR level options may also be used)S
+520.00 Z
+1 T (144)S 1 T (with \\fBTCP.\\fR See \\fBip\\fR\(7P\) and \\fBip6\\fR\(7P\).)S
+509.47 Z
+1 T (145)S 1 T (.sp)S
+498.95 Z
+1 T (146)S 1 T (.LP)S
+488.42 Z
+1 T (147)S 1 T (\\fBTCP\\fR provides an urgent data mechanism, which may be invoked using the)S
+477.89 Z
+1 T (148)S 1 T (out-of-band provisions of \\fBsend\\fR\(3SOCKET\). The caller may mark one byte as)S
+467.37 Z
+1 T (149)S 1 T ("urgent" with the \\fBMSG_OOB\\fR flag to \\fBsend\\fR\(3SOCKET\). This sets an)S
+456.84 Z
+1 T (150)S 1 T ("urgent pointer" pointing to this byte in the \\fBTCP\\fR stream. The receiver on)S
+446.32 Z
+1 T (151)S 1 T (the other side of the stream is notified of the urgent data by a \\fBSIGURG\\fR)S
+435.79 Z
+1 T (152)S 1 T (signal. The \\fBSIOCATMARK\\fR \\fBioctl\\fR\(2\) request returns a value indicating)S
+425.26 Z
+1 T (153)S 1 T (whether the stream is at the urgent mark. Because the system never returns data)S
+414.74 Z
+1 T (154)S 1 T (across the urgent mark in a single \\fBread\\fR\(2\) call, it is possible to)S
+404.21 Z
+1 T (155)S 1 T (advance to the urgent data in a simple loop which reads data, testing the)S
+393.68 Z
+1 T (156)S 1 T (socket with the \\fBSIOCATMARK\\fR \\fBioctl\(\)\\fR request, until it reaches the)S
+383.16 Z
+1 T (157)S 1 T (mark.)S
+372.63 Z
+1 T (158)S 1 T (.sp)S
+362.11 Z
+1 T (159)S 1 T (.LP)S
+351.58 Z
+1 T (160)S 1 T (Incoming connection requests that include an \\fBIP\\fR source route option are)S
+341.05 Z
+1 T (161)S 1 T (noted, and the reverse source route is used in responding.)S
+330.53 Z
+1 T (162)S 1 T (.sp)S
+320.00 Z
+1 T (163)S 1 T (.LP)S
+309.47 Z
+1 T (164)S 1 T (A checksum over all data helps \\fBTCP\\fR implement reliability. Using a)S
+298.95 Z
+1 T (165)S 1 T (window-based flow control mechanism that makes use of positive)S
+288.42 Z
+1 T (166)S 1 T (acknowledgements, sequence numbers, and a retransmission strategy, \\fBTCP\\fR)S
+277.90 Z
+1 T (167)S 1 T (can usually recover when datagrams are damaged, delayed, duplicated or)S
+267.37 Z
+1 T (168)S 1 T (delivered out of order by the underlying communication medium.)S
+256.84 Z
+1 T (169)S 1 T (.sp)S
+246.32 Z
+1 T (170)S 1 T (.LP)S
+235.79 Z
+1 T (171)S 1 T (If the local \\fBTCP\\fR receives no acknowledgements from its peer for a period)S
+225.26 Z
+1 T (172)S 1 T (of time, \(for example, if the remote machine crashes\), the connection is closed)S
+214.74 Z
+1 T (173)S 1 T (and an error is returned.)S
+204.21 Z
+1 T (174)S 1 T (.sp)S
+193.68 Z
+1 T (175)S 1 T (.LP)S
+183.16 Z
+1 T (176)S 1 T (TCP follows the congestion control algorithm described in \\fIRFC 2581\\fR, and)S
+172.63 Z
+1 T (177)S 1 T (also supports the initial congestion window \(cwnd\) changes in \\fIRFC 3390\\fR.)S
+162.11 Z
+1 T (178)S 1 T (The initial cwnd calculation can be overridden by the socket option)S
+151.58 Z
+1 T (179)S 1 T (TCP_INIT_CWND. An application can use this option to set the initial cwnd to a)S
+141.05 Z
+1 T (180)S 1 T (specified number of TCP segments. This applies to the cases when the connection)S
+130.53 Z
+1 T (181)S 1 T (first starts and restarts after an idle period.  The process must have the)S
+120.00 Z
+1 T (182)S 1 T (PRIV_SYS_NET_CONFIG privilege if it wants to specify a number greater than that)S
+109.47 Z
+1 T (183)S 1 T (calculated by \\fIRFC 3390\\fR.)S
+98.95 Z
+1 T (184)S 1 T (.sp)S
+88.42 Z
+1 T (185)S 1 T (.LP)S
+77.90 Z
+1 T (186)S 1 T (SunOS supports \\fBTCP\\fR Extensions for High Performance \(\\fIRFC 1323\\fR\) which)S
+FRB
+0 64.21 540 74.74 SHD
+67.37 Z
+FRN
+1 T (187)S 1 T FRB
+(includes the window scale and timestamp options, and Protection Against Wrap)S
+FIN
+0 53.68 540 64.21 SHD
+56.84 Z
+FRN
+1 T (187)S 1 T FIN
+(includes the window scale and time stamp options, and Protection Against Wrap)S
+FRN
+46.32 Z
+1 T (188)S 1 T (Around Sequence Numbers \(PAWS\). SunOS also supports Selective Acknowledgment)S
+35.79 Z
+1 T (189)S 1 T (\(SACK\) capabilities \(RFC 2018\) and Explicit Congestion Notification \(ECN\))S
+25.26 Z
+1 T (190)S 1 T (mechanism \(\\fIRFC 3168\\fR\).)S
+14.74 Z
+1 T (191)S 1 T (.sp)S
+4.21 Z
+1 T (192)S 1 T (.LP)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (4)S
+FRN
+688.42 Z
+1 T (193)S 1 T (Turn on the window scale option in one of the following ways:)S
+677.89 Z
+1 T (194)S 1 T (.RS +4)S
+667.37 Z
+1 T (195)S 1 T (.TP)S
+656.84 Z
+1 T (196)S 1 T (.ie t \\\(bu)S
+646.32 Z
+1 T (197)S 1 T (.el o)S
+635.79 Z
+1 T (198)S 1 T (An application can set \\fBSO_SNDBUF\\fR or \\fBSO_RCVBUF\\fR size in the)S
+625.26 Z
+1 T (199)S 1 T (\\fBsetsockopt\(\)\\fR option to be larger than 64K. This must be done \\fIbefore\\fR)S
+614.74 Z
+1 T (200)S 1 T (the program calls \\fBlisten\(\)\\fR or \\fBconnect\(\)\\fR, because the window scale)S
+604.21 Z
+1 T (201)S 1 T (option is negotiated when the connection is established. Once the connection)S
+593.68 Z
+1 T (202)S 1 T (has been made, it is too late to increase the send or receive window beyond the)S
+583.16 Z
+1 T (203)S 1 T (default \\fBTCP\\fR limit of 64K.)S
+572.63 Z
+1 T (204)S 1 T (.RE)S
+562.11 Z
+1 T (205)S 1 T (.RS +4)S
+551.58 Z
+1 T (206)S 1 T (.TP)S
+541.05 Z
+1 T (207)S 1 T (.ie t \\\(bu)S
+530.53 Z
+1 T (208)S 1 T (.el o)S
+520.00 Z
+1 T (209)S 1 T (For all applications, use \\fBndd\\fR\(1M\) to modify the configuration parameter)S
+509.47 Z
+1 T (210)S 1 T (\\fBtcp_wscale_always\\fR. If \\fBtcp_wscale_always\\fR is set to \\fB1\\fR, the)S
+498.95 Z
+1 T (211)S 1 T (window scale option will always be set when connecting to a remote system. If)S
+488.42 Z
+1 T (212)S 1 T (\\fBtcp_wscale_always\\fR is \\fB0,\\fR the window scale option will be set only if)S
+477.89 Z
+1 T (213)S 1 T (the user has requested a send or receive window larger than 64K. The default)S
+467.37 Z
+1 T (214)S 1 T (value of \\fBtcp_wscale_always\\fR is \\fB1\\fR.)S
+456.84 Z
+1 T (215)S 1 T (.RE)S
+446.32 Z
+1 T (216)S 1 T (.RS +4)S
+435.79 Z
+1 T (217)S 1 T (.TP)S
+425.26 Z
+1 T (218)S 1 T (.ie t \\\(bu)S
+414.74 Z
+1 T (219)S 1 T (.el o)S
+404.21 Z
+1 T (220)S 1 T (Regardless of the value of \\fBtcp_wscale_always\\fR, the window scale option)S
+393.68 Z
+1 T (221)S 1 T (will always be included in a connect acknowledgement if the connecting system)S
+383.16 Z
+1 T (222)S 1 T (has used the option.)S
+372.63 Z
+1 T (223)S 1 T (.RE)S
+362.11 Z
+1 T (224)S 1 T (.sp)S
+351.58 Z
+1 T (225)S 1 T (.LP)S
+341.05 Z
+1 T (226)S 1 T (Turn on \\fBSACK\\fR capabilities in the following way:)S
+330.53 Z
+1 T (227)S 1 T (.RS +4)S
+320.00 Z
+1 T (228)S 1 T (.TP)S
+309.47 Z
+1 T (229)S 1 T (.ie t \\\(bu)S
+298.95 Z
+1 T (230)S 1 T (.el o)S
+288.42 Z
+1 T (231)S 1 T (Use \\fBndd\\fR to modify the configuration parameter \\fBtcp_sack_permitted\\fR.)S
+277.90 Z
+1 T (232)S 1 T (If \\fBtcp_sack_permitted\\fR is set to \\fB0\\fR, \\fBTCP\\fR will not accept)S
+267.37 Z
+1 T (233)S 1 T (\\fBSACK\\fR or send out \\fBSACK\\fR information. If \\fBtcp_sack_permitted\\fR is)S
+256.84 Z
+1 T (234)S 1 T (set to \\fB1\\fR, \\fBTCP\\fR will not initiate a connection with \\fBSACK\\fR)S
+246.32 Z
+1 T (235)S 1 T (permitted option in the \\fBSYN\\fR segment, but will respond with \\fBSACK\\fR)S
+235.79 Z
+1 T (236)S 1 T (permitted option in the \\fBSYN|ACK\\fR segment if an incoming connection request)S
+225.26 Z
+1 T (237)S 1 T (has the \\fBSACK \\fR permitted option. This means that \\fBTCP\\fR will only)S
+214.74 Z
+1 T (238)S 1 T (accept \\fBSACK\\fR information if the other side of the connection also accepts)S
+204.21 Z
+1 T (239)S 1 T (\\fBSACK\\fR information. If \\fBtcp_sack_permitted\\fR is set to \\fB2\\fR, it will)S
+193.68 Z
+1 T (240)S 1 T (both initiate and accept connections with \\fBSACK\\fR information. The default)S
+183.16 Z
+1 T (241)S 1 T (for \\fBtcp_sack_permitted\\fR is \\fB2\\fR \(active enabled\).)S
+172.63 Z
+1 T (242)S 1 T (.RE)S
+162.11 Z
+1 T (243)S 1 T (.sp)S
+151.58 Z
+1 T (244)S 1 T (.LP)S
+141.05 Z
+1 T (245)S 1 T (Turn on \\fBTCP ECN\\fR mechanism in the following way:)S
+130.53 Z
+1 T (246)S 1 T (.RS +4)S
+120.00 Z
+1 T (247)S 1 T (.TP)S
+109.47 Z
+1 T (248)S 1 T (.ie t \\\(bu)S
+98.95 Z
+1 T (249)S 1 T (.el o)S
+88.42 Z
+1 T (250)S 1 T (Use \\fBndd\\fR to modify the configuration parameter \\fBtcp_ecn_permitted\\fR. If)S
+77.90 Z
+1 T (251)S 1 T (\\fBtcp_ecn_permitted\\fR is set to \\fB0\\fR, \\fBTCP\\fR will not negotiate with a)S
+67.37 Z
+1 T (252)S 1 T (peer that supports \\fBECN\\fR mechanism. If \\fBtcp_ecn_permitted\\fR is set to)S
+56.84 Z
+1 T (253)S 1 T (\\fB1\\fR when initiating a connection, TCP will not tell a peer that it supports)S
+46.32 Z
+1 T (254)S 1 T (ECN mechanism. However, it will tell a peer that it supports \\fBECN\\fR)S
+35.79 Z
+1 T (255)S 1 T (mechanism when accepting a new incoming connection request if the peer)S
+25.26 Z
+1 T (256)S 1 T (indicates that it supports \\fBECN\\fR mechanism in the SYN segment. If)S
+14.74 Z
+1 T (257)S 1 T (tcp_ecn_permitted is set to 2, in addition to negotiating with a peer on ECN)S
+4.21 Z
+1 T (258)S 1 T (mechanism when accepting connections, TCP will indicate in the outgoing SYN)S
+EPG
+1 FPG
+%%Page: ? 3
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (5)S
+FRN
+688.42 Z
+1 T (259)S 1 T (segment that it supports \\fBECN\\fR mechanism when \\fBTCP\\fR makes active)S
+677.89 Z
+1 T (260)S 1 T (outgoing connections. The default for \\fBtcp_ecn_permitted\\fR is 1.)S
+667.37 Z
+1 T (261)S 1 T (.RE)S
+656.84 Z
+1 T (262)S 1 T (.sp)S
+646.32 Z
+1 T (263)S 1 T (.LP)S
+FRB
+0 632.63 540 643.16 SHD
+635.79 Z
+FRN
+1 T (264)S 1 T FRB
+(Turn on the timestamp option in the following way:)S
+FIN
+0 622.11 540 632.63 SHD
+625.26 Z
+FRN
+1 T (264)S 1 T FIN
+(Turn on the time stamp option in the following way:)S
+FRN
+614.74 Z
+1 T (265)S 1 T (.RS +4)S
+604.21 Z
+1 T (266)S 1 T (.TP)S
+593.68 Z
+1 T (267)S 1 T (.ie t \\\(bu)S
+583.16 Z
+1 T (268)S 1 T (.el o)S
+572.63 Z
+1 T (269)S 1 T (Use \\fBndd\\fR to modify the configuration parameter \\fBtcp_tstamp_always\\fR. If)S
+FRB
+0 558.95 540 569.47 SHD
+562.11 Z
+FRN
+1 T (270)S 1 T FRB
+(\\fBtcp_tstamp_always\\fR is \\fB1\\fR, the timestamp option will always be set)S
+FIN
+0 548.42 540 558.95 SHD
+551.58 Z
+FRN
+1 T (270)S 1 T FIN
+(\\fBtcp_tstamp_always\\fR is \\fB1\\fR, the time stamp option will always be set)S
+FRN
+541.05 Z
+1 T (271)S 1 T (when connecting to a remote machine. If \\fBtcp_tstamp_always\\fR is \\fB0\\fR, the)S
+530.53 Z
+1 T (272)S 1 T (timestamp option will not be set when connecting to a remote system. The)S
+520.00 Z
+1 T (273)S 1 T (default for \\fBtcp_tstamp_always\\fR is \\fB0\\fR.)S
+509.47 Z
+1 T (274)S 1 T (.RE)S
+498.95 Z
+1 T (275)S 1 T (.RS +4)S
+488.42 Z
+1 T (276)S 1 T (.TP)S
+477.89 Z
+1 T (277)S 1 T (.ie t \\\(bu)S
+467.37 Z
+1 T (278)S 1 T (.el o)S
+FRB
+0 453.68 540 464.21 SHD
+456.84 Z
+FRN
+1 T (279)S 1 T FRB
+(Regardless of the value of \\fBtcp_tstamp_always\\fR, the timestamp option will)S
+FIN
+0 443.16 540 453.68 SHD
+446.32 Z
+FRN
+1 T (279)S 1 T FIN
+(Regardless of the value of \\fBtcp_tstamp_always\\fR, the time stamp option will)S
+FRN
+435.79 Z
+1 T (280)S 1 T (always be included in a connect acknowledgement \(and all succeeding packets\) if)S
+FRB
+0 422.11 540 432.63 SHD
+425.26 Z
+FRN
+1 T (281)S 1 T FRB
+(the connecting system has used the timestamp option.)S
+FIN
+0 411.58 540 422.11 SHD
+414.74 Z
+FRN
+1 T (281)S 1 T FIN
+(the connecting system has used the time stamp option.)S
+FRN
+404.21 Z
+1 T (282)S 1 T (.RE)S
+393.68 Z
+1 T (283)S 1 T (.sp)S
+383.16 Z
+1 T (284)S 1 T (.LP)S
+FRB
+0 369.47 540 380.00 SHD
+372.63 Z
+FRN
+1 T (285)S 1 T FRB
+(Use the following procedure to turn on the timestamp option only when the)S
+FIN
+0 358.95 540 369.47 SHD
+362.11 Z
+FRN
+1 T (285)S 1 T FIN
+(Use the following procedure to turn on the time stamp option only when the)S
+FRN
+351.58 Z
+1 T (286)S 1 T (window scale option is in effect:)S
+341.05 Z
+1 T (287)S 1 T (.RS +4)S
+330.53 Z
+1 T (288)S 1 T (.TP)S
+320.00 Z
+1 T (289)S 1 T (.ie t \\\(bu)S
+309.47 Z
+1 T (290)S 1 T (.el o)S
+298.95 Z
+1 T (291)S 1 T (Use \\fBndd\\fR to modify the configuration parameter \\fBtcp_tstamp_if_wscale\\fR.)S
+FRB
+0 285.26 540 295.79 SHD
+288.42 Z
+FRN
+1 T (292)S 1 T FRB
+(Setting \\fBtcp_tstamp_if_wscale\\fR to \\fB1\\fR will cause the timestamp option)S
+FIN
+0 274.74 540 285.26 SHD
+277.90 Z
+FRN
+1 T (292)S 1 T FIN
+(Setting \\fBtcp_tstamp_if_wscale\\fR to \\fB1\\fR will cause the time stamp option)S
+FRN
+267.37 Z
+1 T (293)S 1 T (to be set when connecting to a remote system, if the window scale option has)S
+FRB
+0 253.68 540 264.21 SHD
+256.84 Z
+FRN
+1 T (294)S 1 T FRB
+(been set. If \\fBtcp_tstamp_if_wscale\\fR is \\fB0\\fR, the timestamp option will)S
+FIN
+0 243.16 540 253.68 SHD
+246.32 Z
+FRN
+1 T (294)S 1 T FIN
+(been set. If \\fBtcp_tstamp_if_wscale\\fR is \\fB0\\fR, the time stamp option will)S
+FRN
+235.79 Z
+1 T (295)S 1 T (not be set when connecting to a remote system. The default for)S
+225.26 Z
+1 T (296)S 1 T (\\fBtcp_tstamp_if_wscale\\fR is \\fB1\\fR.)S
+214.74 Z
+1 T (297)S 1 T (.RE)S
+204.21 Z
+1 T (298)S 1 T (.sp)S
+193.68 Z
+1 T (299)S 1 T (.LP)S
+183.16 Z
+1 T (300)S 1 T (Protection Against Wrap Around Sequence Numbers \(PAWS\) is always used when the)S
+FRB
+0 169.47 540 180.00 SHD
+172.63 Z
+FRN
+1 T (301)S 1 T FRB
+(timestamp option is set.)S
+FIN
+0 158.95 540 169.47 SHD
+162.11 Z
+FRN
+1 T (301)S 1 T FIN
+(time stamp option is set.)S
+FRN
+151.58 Z
+1 T (302)S 1 T (.sp)S
+141.05 Z
+1 T (303)S 1 T (.LP)S
+130.53 Z
+1 T (304)S 1 T (SunOS also supports multiple methods of generating initial sequence numbers.)S
+120.00 Z
+1 T (305)S 1 T (One of these methods is the improved technique suggested in \\fBRFC\\fR 1948. We)S
+109.47 Z
+1 T (306)S 1 T (\\fBHIGHLY\\fR recommend that you set sequence number generation parameters as)S
+98.95 Z
+1 T (307)S 1 T (close to boot time as possible. This prevents sequence number problems on)S
+88.42 Z
+1 T (308)S 1 T (connections that use the same connection-ID as ones that used a different)S
+77.90 Z
+1 T (309)S 1 T (sequence number generation. The \\fBsvc:/network/initial:default\\fR service)S
+67.37 Z
+1 T (310)S 1 T (configures the initial sequence number generation.  The service reads the value)S
+56.84 Z
+1 T (311)S 1 T (contained in the configuration file \\fB/etc/default/inetinit\\fR to determine)S
+46.32 Z
+1 T (312)S 1 T (which method to use.)S
+35.79 Z
+1 T (313)S 1 T (.sp)S
+25.26 Z
+1 T (314)S 1 T (.LP)S
+14.74 Z
+1 T (315)S 1 T (The \\fB/etc/default/inetinit\\fR file is an unstable interface, and may change)S
+4.21 Z
+1 T (316)S 1 T (in future releases.)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (6)S
+FRN
+688.42 Z
+1 T (317)S 1 T (.sp)S
+677.89 Z
+1 T (318)S 1 T (.LP)S
+667.37 Z
+1 T (319)S 1 T (\\fBTCP\\fR may be configured to report some information on connections that)S
+656.84 Z
+1 T (320)S 1 T (terminate by means of an \\fBRST\\fR packet. By default, no logging is done. If)S
+646.32 Z
+1 T (321)S 1 T (the \\fBndd\\fR\(1M\) parameter \\fItcp_trace\\fR is set to 1, then trace data is)S
+635.79 Z
+1 T (322)S 1 T (collected for all new connections established after that time.)S
+625.26 Z
+1 T (323)S 1 T (.sp)S
+614.74 Z
+1 T (324)S 1 T (.LP)S
+604.21 Z
+1 T (325)S 1 T (The trace data consists of the \\fBTCP\\fR headers and \\fBIP\\fR source and)S
+593.68 Z
+1 T (326)S 1 T (destination addresses of the last few packets sent in each direction before RST)S
+583.16 Z
+1 T (327)S 1 T (occurred. Those packets are logged in a series of \\fBstrlog\\fR\(9F\) calls. This)S
+572.63 Z
+1 T (328)S 1 T (trace facility has a very low overhead, and so is superior to such utilities as)S
+562.11 Z
+1 T (329)S 1 T (\\fBsnoop\\fR\(1M\) for non-intrusive debugging for connections terminating by)S
+551.58 Z
+1 T (330)S 1 T (means of an \\fBRST\\fR.)S
+541.05 Z
+1 T (331)S 1 T (.sp)S
+530.53 Z
+1 T (332)S 1 T (.LP)S
+520.00 Z
+1 T (333)S 1 T (SunOS supports the keep-alive mechanism described in \\fIRFC 1122\\fR. It is)S
+509.47 Z
+1 T (334)S 1 T (enabled using the socket option SO_KEEPALIVE. When enabled, the first)S
+498.95 Z
+1 T (335)S 1 T (keep-alive probe is sent out after a TCP is idle for two hours If the peer does)S
+488.42 Z
+1 T (336)S 1 T (not respond to the probe within eight minutes, the TCP connection is aborted.)S
+477.89 Z
+1 T (337)S 1 T (You can alter the interval for sending out the first probe using the socket)S
+467.37 Z
+1 T (338)S 1 T (option TCP_KEEPALIVE_THRESHOLD. The option value is an unsigned integer in)S
+456.84 Z
+1 T (339)S 1 T (milliseconds. The system default is controlled by the TCP ndd parameter)S
+446.32 Z
+1 T (340)S 1 T (tcp_keepalive_interval. The minimum value is ten seconds. The maximum is ten)S
+435.79 Z
+1 T (341)S 1 T (days, while the default is two hours. If you receive no response to the probe,)S
+425.26 Z
+1 T (342)S 1 T (you can use the TCP_KEEPALIVE_ABORT_THRESHOLD socket option to change the time)S
+414.74 Z
+1 T (343)S 1 T (threshold for aborting a TCP connection. The option value is an unsigned)S
+404.21 Z
+1 T (344)S 1 T (integer in milliseconds. The value zero indicates that TCP should never time)S
+393.68 Z
+1 T (345)S 1 T (out and abort the connection when probing. The system default is controlled by)S
+383.16 Z
+1 T (346)S 1 T (the TCP ndd parameter tcp_keepalive_abort_interval. The default is eight)S
+372.63 Z
+1 T (347)S 1 T (minutes.)S
+362.11 Z
+1 T (348)S 1 T (.sp)S
+351.58 Z
+1 T (349)S 1 T (.LP)S
+341.05 Z
+1 T (350)S 1 T (socket options TCP_KEEPIDLE, TCP_KEEPCNT and TCP_KEEPINTVL are also supported)S
+330.53 Z
+1 T (351)S 1 T (for compatibility with other Unix Flavors. TCP_KEEPIDLE option specifies the)S
+320.00 Z
+1 T (352)S 1 T (interval in seconds for sending out the first keep-alive probe. TCP_KEEPCNT)S
+309.47 Z
+1 T (353)S 1 T (specifies the number of keep-alive probes to be sent before aborting the)S
+298.95 Z
+1 T (354)S 1 T (connection in the event of no response from peer. TCP_KEEPINTVL specifies the)S
+288.42 Z
+1 T (355)S 1 T (interval in seconds between successive keep-alive probes.)S
+277.90 Z
+1 T (356)S 1 T (.SH SEE ALSO)S
+267.37 Z
+1 T (357)S 1 T (.sp)S
+256.84 Z
+1 T (358)S 1 T (.LP)S
+246.32 Z
+1 T (359)S 1 T (\\fBsvcs\\fR\(1\), \\fBndd\\fR\(1M\), \\fBioctl\\fR\(2\), \\fBread\\fR\(2\), \\fBsvcadm\\fR\(1M\),)S
+235.79 Z
+1 T (360)S 1 T (\\fBwrite\\fR\(2\), \\fBaccept\\fR\(3SOCKET\), \\fBbind\\fR\(3SOCKET\),)S
+225.26 Z
+1 T (361)S 1 T (\\fBconnect\\fR\(3SOCKET\), \\fBgetprotobyname\\fR\(3SOCKET\),)S
+214.74 Z
+1 T (362)S 1 T (\\fBgetsockopt\\fR\(3SOCKET\), \\fBlisten\\fR\(3SOCKET\), \\fBsend\\fR\(3SOCKET\),)S
+204.21 Z
+1 T (363)S 1 T (\\fBsmf\\fR\(5\), \\fBinet\\fR\(7P\), \\fBinet6\\fR\(7P\), \\fBip\\fR\(7P\), \\fBip6\\fR\(7P\))S
+193.68 Z
+1 T (364)S 1 T (.sp)S
+183.16 Z
+1 T (365)S 1 T (.LP)S
+172.63 Z
+1 T (366)S 1 T (Ramakrishnan, K., Floyd, S., Black, D., RFC 3168, \\fIThe Addition of Explicit)S
+162.11 Z
+1 T (367)S 1 T (Congestion Notification \(ECN\) to IP\\fR, September 2001.)S
+151.58 Z
+1 T (368)S 1 T (.sp)S
+141.05 Z
+1 T (369)S 1 T (.LP)S
+130.53 Z
+1 T (370)S 1 T (Mathias, M. and Hahdavi, J. Pittsburgh Supercomputing Center; Ford, S. Lawrence)S
+120.00 Z
+1 T (371)S 1 T (Berkeley National Laboratory; Romanow, A. Sun Microsystems, Inc. \\fIRFC 2018,)S
+109.47 Z
+1 T (372)S 1 T (TCP Selective Acknowledgement Options\\fR, October 1996.)S
+98.95 Z
+1 T (373)S 1 T (.sp)S
+88.42 Z
+1 T (374)S 1 T (.LP)S
+77.90 Z
+1 T (375)S 1 T (Bellovin, S., \\fIRFC 1948, Defending Against Sequence Number Attacks\\fR, May)S
+67.37 Z
+1 T (376)S 1 T (1996.)S
+56.84 Z
+1 T (377)S 1 T (.sp)S
+46.32 Z
+1 T (378)S 1 T (.LP)S
+35.79 Z
+1 T (379)S 1 T (Jacobson, V., Braden, R., and Borman, D., \\fIRFC 1323, TCP Extensions for High)S
+25.26 Z
+1 T (380)S 1 T (Performance\\fR, May 1992.)S
+14.74 Z
+1 T (381)S 1 T (.sp)S
+4.21 Z
+1 T (382)S 1 T (.LP)S
+EPG
+1 FPG
+%%Page: ? 4
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (7)S
+FRN
+688.42 Z
+1 T (383)S 1 T (Postel, Jon, \\fIRFC 793, Transmission Control Protocol - DARPA Internet Program)S
+677.89 Z
+1 T (384)S 1 T (Protocol Specification\\fR, Network Information Center, SRI International, Menlo)S
+667.37 Z
+1 T (385)S 1 T (Park, CA., September 1981.)S
+656.84 Z
+1 T (386)S 1 T (.SH DIAGNOSTICS)S
+646.32 Z
+1 T (387)S 1 T (.sp)S
+635.79 Z
+1 T (388)S 1 T (.LP)S
+625.26 Z
+1 T (389)S 1 T (A socket operation may fail if:)S
+614.74 Z
+1 T (390)S 1 T (.sp)S
+604.21 Z
+1 T (391)S 1 T (.ne 2)S
+593.68 Z
+1 T (392)S 1 T (.na)S
+583.16 Z
+1 T (393)S 1 T (\\fB\\fBEISCONN\\fR\\fR)S
+572.63 Z
+1 T (394)S 1 T (.ad)S
+562.11 Z
+1 T (395)S 1 T (.RS 17n)S
+551.58 Z
+1 T (396)S 1 T (A \\fBconnect\(\)\\fR operation was attempted on a socket on which a)S
+541.05 Z
+1 T (397)S 1 T (\\fBconnect\(\)\\fR operation had already been performed.)S
+530.53 Z
+1 T (398)S 1 T (.RE)S
+509.47 Z
+1 T (400)S 1 T (.sp)S
+498.95 Z
+1 T (401)S 1 T (.ne 2)S
+488.42 Z
+1 T (402)S 1 T (.na)S
+477.89 Z
+1 T (403)S 1 T (\\fB\\fBETIMEDOUT\\fR\\fR)S
+467.37 Z
+1 T (404)S 1 T (.ad)S
+456.84 Z
+1 T (405)S 1 T (.RS 17n)S
+446.32 Z
+1 T (406)S 1 T (A connection was dropped due to excessive retransmissions.)S
+435.79 Z
+1 T (407)S 1 T (.RE)S
+414.74 Z
+1 T (409)S 1 T (.sp)S
+404.21 Z
+1 T (410)S 1 T (.ne 2)S
+393.68 Z
+1 T (411)S 1 T (.na)S
+383.16 Z
+1 T (412)S 1 T (\\fB\\fBECONNRESET\\fR\\fR)S
+372.63 Z
+1 T (413)S 1 T (.ad)S
+362.11 Z
+1 T (414)S 1 T (.RS 17n)S
+351.58 Z
+1 T (415)S 1 T (The remote peer forced the connection to be closed \(usually because the remote)S
+341.05 Z
+1 T (416)S 1 T (machine has lost state information about the connection due to a crash\).)S
+330.53 Z
+1 T (417)S 1 T (.RE)S
+309.47 Z
+1 T (419)S 1 T (.sp)S
+298.95 Z
+1 T (420)S 1 T (.ne 2)S
+288.42 Z
+1 T (421)S 1 T (.na)S
+277.90 Z
+1 T (422)S 1 T (\\fB\\fBECONNREFUSED\\fR\\fR)S
+267.37 Z
+1 T (423)S 1 T (.ad)S
+256.84 Z
+1 T (424)S 1 T (.RS 17n)S
+246.32 Z
+1 T (425)S 1 T (The remote peer actively refused connection establishment \(usually because no)S
+235.79 Z
+1 T (426)S 1 T (process is listening to the port\).)S
+225.26 Z
+1 T (427)S 1 T (.RE)S
+204.21 Z
+1 T (429)S 1 T (.sp)S
+193.68 Z
+1 T (430)S 1 T (.ne 2)S
+183.16 Z
+1 T (431)S 1 T (.na)S
+172.63 Z
+1 T (432)S 1 T (\\fB\\fBEADDRINUSE\\fR\\fR)S
+162.11 Z
+1 T (433)S 1 T (.ad)S
+151.58 Z
+1 T (434)S 1 T (.RS 17n)S
+141.05 Z
+1 T (435)S 1 T (A \\fBbind\(\)\\fR operation was attempted on a socket with a network address/port)S
+130.53 Z
+1 T (436)S 1 T (pair that has already been bound to another socket.)S
+120.00 Z
+1 T (437)S 1 T (.RE)S
+98.95 Z
+1 T (439)S 1 T (.sp)S
+88.42 Z
+1 T (440)S 1 T (.ne 2)S
+77.90 Z
+1 T (441)S 1 T (.na)S
+67.37 Z
+1 T (442)S 1 T (\\fB\\fBEADDRNOTAVAIL\\fR\\fR)S
+56.84 Z
+1 T (443)S 1 T (.ad)S
+46.32 Z
+1 T (444)S 1 T (.RS 17n)S
+35.79 Z
+1 T (445)S 1 T (A \\fBbind\(\)\\fR operation was attempted on a socket with a network address for)S
+25.26 Z
+1 T (446)S 1 T (which no network interface exists.)S
+14.74 Z
+1 T (447)S 1 T (.RE)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man7p/tcp.7p)S
+530 709.47 M (8)S
+FRN
+688.42 Z
+1 T (449)S 1 T (.sp)S
+677.89 Z
+1 T (450)S 1 T (.ne 2)S
+667.37 Z
+1 T (451)S 1 T (.na)S
+656.84 Z
+1 T (452)S 1 T (\\fB\\fBEACCES\\fR\\fR)S
+646.32 Z
+1 T (453)S 1 T (.ad)S
+635.79 Z
+1 T (454)S 1 T (.RS 17n)S
+625.26 Z
+1 T (455)S 1 T (A \\fBbind\(\)\\fR operation was attempted with a "reserved" port number and the)S
+614.74 Z
+1 T (456)S 1 T (effective user \\fBID\\fR of the process was not the privileged user.)S
+604.21 Z
+1 T (457)S 1 T (.RE)S
+583.16 Z
+1 T (459)S 1 T (.sp)S
+572.63 Z
+1 T (460)S 1 T (.ne 2)S
+562.11 Z
+1 T (461)S 1 T (.na)S
+551.58 Z
+1 T (462)S 1 T (\\fB\\fBENOBUFS\\fR\\fR)S
+541.05 Z
+1 T (463)S 1 T (.ad)S
+530.53 Z
+1 T (464)S 1 T (.RS 17n)S
+520.00 Z
+1 T (465)S 1 T (The system ran out of memory for internal data structures.)S
+509.47 Z
+1 T (466)S 1 T (.RE)S
+488.42 Z
+1 T (468)S 1 T (.SH NOTES)S
+477.89 Z
+1 T (469)S 1 T (.sp)S
+467.37 Z
+1 T (470)S 1 T (.LP)S
+456.84 Z
+1 T (471)S 1 T (The \\fBtcp\\fR service is managed by the service management facility,)S
+446.32 Z
+1 T (472)S 1 T (\\fBsmf\\fR\(5\), under the service identifier:)S
+435.79 Z
+1 T (473)S 1 T (.sp)S
+425.26 Z
+1 T (474)S 1 T (.in +2)S
+414.74 Z
+1 T (475)S 1 T (.nf)S
+404.21 Z
+1 T (476)S 1 T (svc:/network/initial:default)S
+393.68 Z
+1 T (477)S 1 T (.fi)S
+383.16 Z
+1 T (478)S 1 T (.in -2)S
+372.63 Z
+1 T (479)S 1 T (.sp)S
+351.58 Z
+1 T (481)S 1 T (.sp)S
+341.05 Z
+1 T (482)S 1 T (.LP)S
+330.53 Z
+1 T (483)S 1 T (Administrative actions on this service, such as enabling, disabling, or)S
+320.00 Z
+1 T (484)S 1 T (requesting restart, can be performed using \\fBsvcadm\\fR\(1M\). The service's)S
+309.47 Z
+1 T (485)S 1 T (status can be queried using the \\fBsvcs\\fR\(1\) command.)S
+EPG
+1 FPG
+%%Trailer
+%%Pages: 4

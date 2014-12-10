@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>4835-getexecattr-manpage-formatting Udiff usr/src/man/man3secdb/getexecattr.3secdb</title>
+
+<style type="text/css" media="screen">
+span.new {
+    color: blue;
+    font-weight: normal;
+}
+</style>
+
+</head>
+<body id="SUNWwebrev">
+        <a class="print" href="javascript:print()">Print this page</a>
+<pre><a href="https://illumos.org/issues/4835">4835</a> getexecattr(3secdb): Minor formatting issues</pre>
+        <pre>
+</pre><hr></hr><pre>
+<span class="newmarker">@@ -129,11 +129,11 @@</span>
+ .sp
+ .LP
+ Once a list of entries is returned by \fBgetexecuser()\fR or
+ \fBgetexecprof()\fR, the convenience function \fBmatch_execattr()\fR can be
+ used to identify an individual entry. It returns a pointer to the individual
+<span class="removed">-element with the same profile name ( \fIprofname\fR), type name ( \fItype\fR),</span>
+<span class="new">+element with the same profile name (\fIprofname\fR), type name (\fItype\fR),</span>
+ and \fIid\fR. Function parameters set to \fINULL\fR are not used as part of the
+ matching criteria. In the event that multiple entries meet the matching
+ criteria, only a pointer to the first entry is returned. The
+ \fBkva_match\fR(3SECDB) function can be used to look up a key in a key-value
+ array.
+</pre><hr></hr><pre>
+<span class="newmarker">@@ -147,11 +147,11 @@</span>
+ .SH USAGE
+ .sp
+ .LP
+ The \fBgetexecattr()\fR, \fBgetexecuser()\fR, and \fBgetexecprof()\fR functions
+ all allocate memory for the pointers they return. This memory should be
+<span class="removed">-deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR(</span>
+<span class="new">+deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR</span>
+ function does not allocate any memory. Therefore, pointers returned by this
+ function should not be deallocated.
+ .sp
+ .LP
+ Individual attributes may be referenced in the \fBattr\fR structure by calling
+</pre></body></html>
+

@@ -1,0 +1,828 @@
+%!PS-Adobe-2.0
+%%Creator: codereview on oi
+%%CreationDate: Mon May 26 16:37:12 2014
+%%For: wmd
+%%DocumentFonts: Courier Courier-Bold Courier-Oblique Courier-BoldOblique
+%%Pages: (atend)
+%%EndComments
+%
+% PostScript Prologue for lwlp LaserWriter Line Printer
+%
+/SFT {findfont exch scalefont setfont}bind def
+/SWT {( ) stringwidth pop dup /W exch def neg /NW exch def}bind def
+/SPG {/SV save def translate dup scale rotate}bind def
+/EPG {SV restore}bind def
+/FPG {/#copies exch def showpage}bind def
+/B {NW 0 rmoveto}def
+/M /moveto load def
+/T {W mul 0 rmoveto}def
+/S /show load def
+/Z {0 exch moveto}bind def
+/SHD {save 5 1 roll			% S x1 y1 x0 y0
+	2 copy moveto			% S x1 y1 x0 y0
+	3 index exch lineto		% S x1 y1 x0
+	3 -1 roll 2 index lineto	% S y1 x0
+	exch lineto			% S
+	0.95 setgray fill		% S
+	restore}def
+%%EndProlog
+/FRN {10.526316 /Courier SFT}bind def
+/FRB {10.526316 /Courier-Bold SFT}bind def
+/FIN {10.526316 /Courier-Oblique SFT}bind def
+/FIB {10.526316 /Courier-BoldOblique SFT}bind def
+%%Page: ? 1
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3c/lockf.3c)S
+530 709.47 M (1)S
+FRN
+FIB
+0 688.42 M
+688.42 Z
+(**********************************************************)S
+0 677.89 M
+677.89 Z
+(   10118 Mon May 26 16:37:12 2014)S
+0 667.37 M
+667.37 Z
+(new/usr/src/man/man3c/lockf.3c)S
+0 656.84 M
+656.84 Z
+(4841 - lockf\(3c\): Minor formatting issues in man page)S
+0 646.32 M
+646.32 Z
+(**********************************************************)S
+FRN
+635.79 Z
+3 T (1)S 1 T ('\\" te)S
+625.26 Z
+3 T (2)S 1 T (.\\"  Copyright 1989 AT&T  Copyright \(c\) 2002, Sun Microsystems, Inc.  All Rights)S
+614.74 Z
+3 T (3)S 1 T (.\\" Sun Microsystems, Inc. gratefully acknowledges The Open Group for permission)S
+604.21 Z
+3 T (4)S 1 T (.\\" http://www.opengroup.org/bookstore/.)S
+593.68 Z
+3 T (5)S 1 T (.\\" The Institute of Electrical and Electronics Engineers and The Open Group, ha)S
+583.16 Z
+3 T (6)S 1 T (.\\"  This notice shall appear on any product containing this material.)S
+572.63 Z
+3 T (7)S 1 T (.\\" The contents of this file are subject to the terms of the Common Development)S
+562.11 Z
+3 T (8)S 1 T (.\\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http:)S
+551.58 Z
+3 T (9)S 1 T (.\\" When distributing Covered Code, include this CDDL HEADER in each file and in)S
+541.05 Z
+2 T (10)S 1 T (.TH LOCKF 3C "Apr 10, 2002")S
+530.53 Z
+2 T (11)S 1 T (.SH NAME)S
+520.00 Z
+2 T (12)S 1 T (lockf \\- record locking on files)S
+509.47 Z
+2 T (13)S 1 T (.SH SYNOPSIS)S
+498.95 Z
+2 T (14)S 1 T (.LP)S
+488.42 Z
+2 T (15)S 1 T (.nf)S
+477.89 Z
+2 T (16)S 1 T (#include <unistd.h>)S
+456.84 Z
+2 T (18)S 1 T (\\fBint\\fR \\fBlockf\\fR\(\\fBint\\fR \\fIfildes\\fR, \\fBint\\fR \\fIfunction\\fR, \\fBoff_t)S
+446.32 Z
+2 T (19)S 1 T (.fi)S
+425.26 Z
+2 T (21)S 1 T (.SH DESCRIPTION)S
+414.74 Z
+2 T (22)S 1 T (.sp)S
+404.21 Z
+2 T (23)S 1 T (.LP)S
+393.68 Z
+2 T (24)S 1 T (The \\fBlockf\(\)\\fR function allows sections of a file to be locked; advisory or)S
+383.16 Z
+2 T (25)S 1 T (mandatory write locks depending  on the mode bits of the file \(see)S
+372.63 Z
+2 T (26)S 1 T (\\fBchmod\\fR\(2\)\). Calls to \\fBlockf\(\)\\fR from other threads that attempt to lock)S
+362.11 Z
+2 T (27)S 1 T (the locked file section will either return an error value or be put to sleep)S
+351.58 Z
+2 T (28)S 1 T (until the resource becomes unlocked. All the locks for a process are removed)S
+341.05 Z
+2 T (29)S 1 T (when the process terminates. See \\fBfcntl\\fR\(2\) for more information about)S
+330.53 Z
+2 T (30)S 1 T (record locking.)S
+320.00 Z
+2 T (31)S 1 T (.sp)S
+309.47 Z
+2 T (32)S 1 T (.LP)S
+298.95 Z
+2 T (33)S 1 T (The \\fIfildes\\fR argument is an open file descriptor. The file descriptor must)S
+288.42 Z
+2 T (34)S 1 T (have \\fBO_WRONLY\\fR or \\fBO_RDWR\\fR permission in order to establish locks with)S
+277.90 Z
+2 T (35)S 1 T (this function call.)S
+267.37 Z
+2 T (36)S 1 T (.sp)S
+256.84 Z
+2 T (37)S 1 T (.LP)S
+FRB
+0 243.16 540 253.68 SHD
+246.32 Z
+FRN
+2 T (38)S 1 T FRB
+(The \\fIfunction\\fR argument is a control value that specifies the action to be)S
+0 232.63 540 243.16 SHD
+235.79 Z
+FRN
+2 T (39)S 1 T FRB
+(taken. The permissible values for \\fIfunction\\fR are defined in)S
+FIN
+0 222.11 540 232.63 SHD
+225.26 Z
+FRN
+2 T (38)S 1 T FIN
+(The \\fBfunction\\fR argument is a control value that specifies the action to be)S
+0 211.58 540 222.11 SHD
+214.74 Z
+FRN
+2 T (39)S 1 T FIN
+(taken. The permissible values for \\fBfunction\\fR are defined in)S
+FRN
+204.21 Z
+2 T (40)S 1 T (<\\fBunistd.h\\fR> as follows:)S
+193.68 Z
+2 T (41)S 1 T (.sp)S
+183.16 Z
+2 T (42)S 1 T (.in +2)S
+172.63 Z
+2 T (43)S 1 T (.nf)S
+162.11 Z
+2 T (44)S 1 T (#define   F_ULOCK   0   /* unlock previously locked section */)S
+151.58 Z
+2 T (45)S 1 T (#define   F_LOCK    1   /* lock section for exclusive use */)S
+141.05 Z
+2 T (46)S 1 T (#define   F_TLOCK   2   /* test & lock section for exclusive use */)S
+130.53 Z
+2 T (47)S 1 T (#define   F_TEST    3   /* test section for other locks */)S
+120.00 Z
+2 T (48)S 1 T (.fi)S
+109.47 Z
+2 T (49)S 1 T (.in -2)S
+88.42 Z
+2 T (51)S 1 T (.sp)S
+77.90 Z
+2 T (52)S 1 T (.LP)S
+FRB
+0 64.21 540 74.74 SHD
+67.37 Z
+FRN
+2 T (53)S 1 T FRB
+(All other values of \\fIfunction\\fR are reserved for future extensions and will)S
+FIN
+0 53.68 540 64.21 SHD
+56.84 Z
+FRN
+2 T (53)S 1 T FIN
+(All other values of \\fBfunction\\fR are reserved for future extensions and will)S
+FRN
+46.32 Z
+2 T (54)S 1 T (result in an error if not implemented.)S
+35.79 Z
+2 T (55)S 1 T (.sp)S
+25.26 Z
+2 T (56)S 1 T (.LP)S
+14.74 Z
+2 T (57)S 1 T (\\fBF_TEST\\fR is used to detect if a lock by another process is present on the)S
+4.21 Z
+2 T (58)S 1 T (specified section. \\fBF_LOCK\\fR and \\fBF_TLOCK\\fR both lock a section of a file)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3c/lockf.3c)S
+530 709.47 M (2)S
+FRN
+688.42 Z
+2 T (59)S 1 T (if the section is available. \\fBF_ULOCK\\fR removes locks from a section of the)S
+677.89 Z
+2 T (60)S 1 T (file.)S
+667.37 Z
+2 T (61)S 1 T (.sp)S
+656.84 Z
+2 T (62)S 1 T (.LP)S
+FRB
+0 643.16 540 653.68 SHD
+646.32 Z
+FRN
+2 T (63)S 1 T FRB
+(The \\fIsize\\fR argument is the number of contiguous bytes to be locked or)S
+FIN
+0 632.63 540 643.16 SHD
+635.79 Z
+FRN
+2 T (63)S 1 T FIN
+(The \\fBsize\\fR argument is the number of contiguous bytes to be locked or)S
+FRN
+625.26 Z
+2 T (64)S 1 T (unlocked. The resource to be locked or unlocked starts at the current offset in)S
+FRB
+0 611.58 540 622.11 SHD
+614.74 Z
+FRN
+2 T (65)S 1 T FRB
+(the file and extends forward for a positive \\fIsize\\fR and backward for a negati)S
+0 601.05 540 611.58 SHD
+604.21 Z
+FRN
+2 T (66)S 1 T FRB
+(\\fIsize\\fR \(the preceding bytes up to but not including the current offset\). If)S
+0 590.53 540 601.05 SHD
+593.68 Z
+FRN
+2 T (67)S 1 T FRB
+(\\fIsize\\fR is zero, the section from the current offset through the largest)S
+FIN
+0 580.00 540 590.53 SHD
+583.16 Z
+FRN
+2 T (65)S 1 T FIN
+(the file and extends forward for a positive size and backward for a negative)S
+0 569.47 540 580.00 SHD
+572.63 Z
+FRN
+2 T (66)S 1 T FIN
+(size \(the preceding bytes up to but not including the current offset\). If)S
+0 558.95 540 569.47 SHD
+562.11 Z
+FRN
+2 T (67)S 1 T FIN
+(\\fBsize\\fR is zero, the section from the current offset through the largest)S
+FRN
+551.58 Z
+2 T (68)S 1 T (file offset is locked \(that is, from the current offset through the present or)S
+541.05 Z
+2 T (69)S 1 T (any future end-of-file\). An area need not be allocated to the file in order to)S
+530.53 Z
+2 T (70)S 1 T (be locked as such locks may exist past the end-of-file.)S
+520.00 Z
+2 T (71)S 1 T (.sp)S
+509.47 Z
+2 T (72)S 1 T (.LP)S
+498.95 Z
+2 T (73)S 1 T (The sections locked with \\fBF_LOCK\\fR or \\fBF_TLOCK\\fR may, in whole or in)S
+488.42 Z
+2 T (74)S 1 T (part, contain or be contained by a previously locked section for the same)S
+477.89 Z
+2 T (75)S 1 T (process.  Locked sections will be unlocked starting at the point of the offset)S
+FRB
+0 464.21 540 474.74 SHD
+467.37 Z
+FRN
+2 T (76)S 1 T FRB
+(through \\fIsize\\fR bytes or to the end of file if \\fIsize\\fR is \(\\fBoff_t\\fR\))S
+FIN
+0 453.68 540 464.21 SHD
+456.84 Z
+FRN
+2 T (76)S 1 T FIN
+(through \\fBsize\\fR bytes or to the end of file if \\fBsize\\fR is \(\\fBoff_t\\fR\))S
+FRN
+446.32 Z
+2 T (77)S 1 T (0. When this situation occurs, or if this situation occurs in adjacent)S
+435.79 Z
+2 T (78)S 1 T (sections, the sections are combined into a single section. If the request)S
+425.26 Z
+2 T (79)S 1 T (requires that a new element be added to the table of active locks and this)S
+414.74 Z
+2 T (80)S 1 T (table is already full, an error is returned, and the new section is not locked.)S
+404.21 Z
+2 T (81)S 1 T (.sp)S
+393.68 Z
+2 T (82)S 1 T (.LP)S
+383.16 Z
+2 T (83)S 1 T (\\fBF_LOCK\\fR and \\fBF_TLOCK\\fR requests differ only by the action taken if the)S
+372.63 Z
+2 T (84)S 1 T (resource is not available. \\fBF_LOCK\\fR blocks the calling thread until the)S
+362.11 Z
+2 T (85)S 1 T (resource is available. \\fBF_TLOCK\\fR causes the function to return \\\(mi1 and)S
+351.58 Z
+2 T (86)S 1 T (set \\fBerrno\\fR to \\fBEAGAIN\\fR if the section is already locked by another)S
+341.05 Z
+2 T (87)S 1 T (process.)S
+330.53 Z
+2 T (88)S 1 T (.sp)S
+320.00 Z
+2 T (89)S 1 T (.LP)S
+309.47 Z
+2 T (90)S 1 T (File locks are released on first close by the locking process of any file)S
+298.95 Z
+2 T (91)S 1 T (descriptor for the file.)S
+288.42 Z
+2 T (92)S 1 T (.sp)S
+277.90 Z
+2 T (93)S 1 T (.LP)S
+267.37 Z
+2 T (94)S 1 T (\\fBF_ULOCK\\fR requests may, in whole or in part, release one or more locked)S
+256.84 Z
+2 T (95)S 1 T (sections controlled by the process. When sections are not fully released, the)S
+246.32 Z
+2 T (96)S 1 T (remaining sections are still locked by the process. Releasing the center)S
+235.79 Z
+2 T (97)S 1 T (section of a locked section requires an additional element in the table of)S
+225.26 Z
+2 T (98)S 1 T (active locks. If this table is full, an \\fBerrno\\fR is set to \\fBEDEADLK\\fR and)S
+214.74 Z
+2 T (99)S 1 T (the requested section is not released.)S
+204.21 Z
+1 T (100)S 1 T (.sp)S
+193.68 Z
+1 T (101)S 1 T (.LP)S
+FRB
+0 180.00 540 190.53 SHD
+183.16 Z
+FRN
+1 T (102)S 1 T FRB
+(An \\fBF_ULOCK\\fR request in which \\fIsize\\fR is non-zero and the offset of the)S
+FIN
+0 169.47 540 180.00 SHD
+172.63 Z
+FRN
+1 T (102)S 1 T FIN
+(An \\fBF_ULOCK\\fR request in which \\fBsize\\fR is non-zero and the offset of the)S
+FRN
+162.11 Z
+1 T (103)S 1 T (last byte of the requested section is the maximum value for an object of type)S
+FRB
+0 148.42 540 158.95 SHD
+151.58 Z
+FRN
+1 T (104)S 1 T FRB
+(\\fBoff_t\\fR, when the process has an existing lock in which \\fIsize\\fR is 0 and)S
+FIN
+0 137.90 540 148.42 SHD
+141.05 Z
+FRN
+1 T (104)S 1 T FIN
+(\\fBoff_t\\fR, when the process has an existing lock in which \\fBsize\\fR is 0 and)S
+FRN
+130.53 Z
+1 T (105)S 1 T (which includes the last byte of the requested section, will be treated as a)S
+FRB
+0 116.84 540 127.37 SHD
+120.00 Z
+FRN
+1 T (106)S 1 T FRB
+(request to unlock from the start of the requested section with a \\fIsize\\fR equa)S
+FIN
+0 106.32 540 116.84 SHD
+109.47 Z
+FRN
+1 T (106)S 1 T FIN
+(request to unlock from the start of the requested section with a size equal to)S
+FRN
+98.95 Z
+1 T (107)S 1 T (0. Otherwise, an \\fBF_ULOCK\\fR request will attempt to unlock only the)S
+88.42 Z
+1 T (108)S 1 T (requested section.)S
+77.90 Z
+1 T (109)S 1 T (.sp)S
+67.37 Z
+1 T (110)S 1 T (.LP)S
+56.84 Z
+1 T (111)S 1 T (A potential for deadlock occurs if the threads of a process controlling a)S
+46.32 Z
+1 T (112)S 1 T (locked resource is put to sleep by requesting another process's locked)S
+35.79 Z
+1 T (113)S 1 T (resource. Thus calls to \\fBlockf\(\)\\fR or \\fBfcntl\\fR\(2\) scan for a deadlock)S
+25.26 Z
+1 T (114)S 1 T (prior to sleeping on a locked resource. An error return is made if sleeping on)S
+14.74 Z
+1 T (115)S 1 T (the locked resource would cause a deadlock.)S
+4.21 Z
+1 T (116)S 1 T (.sp)S
+EPG
+1 FPG
+%%Page: ? 2
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3c/lockf.3c)S
+530 709.47 M (3)S
+FRN
+688.42 Z
+1 T (117)S 1 T (.LP)S
+677.89 Z
+1 T (118)S 1 T (Sleeping on a resource is interrupted with any signal. The \\fBalarm\\fR\(2\))S
+667.37 Z
+1 T (119)S 1 T (function may be used to provide a timeout facility in applications that require)S
+656.84 Z
+1 T (120)S 1 T (this facility.)S
+646.32 Z
+1 T (121)S 1 T (.SH RETURN VALUES)S
+635.79 Z
+1 T (122)S 1 T (.sp)S
+625.26 Z
+1 T (123)S 1 T (.LP)S
+614.74 Z
+1 T (124)S 1 T (Upon successful completion, \\fB0\\fR is returned.  Otherwise, \\fB\\\(mi1\\fR is)S
+604.21 Z
+1 T (125)S 1 T (returned and \\fBerrno\\fR is set to indicate the error.)S
+593.68 Z
+1 T (126)S 1 T (.SH ERRORS)S
+583.16 Z
+1 T (127)S 1 T (.sp)S
+572.63 Z
+1 T (128)S 1 T (.LP)S
+562.11 Z
+1 T (129)S 1 T (The \\fBlockf\(\)\\fR function will fail if:)S
+551.58 Z
+1 T (130)S 1 T (.sp)S
+541.05 Z
+1 T (131)S 1 T (.ne 2)S
+530.53 Z
+1 T (132)S 1 T (.na)S
+520.00 Z
+1 T (133)S 1 T (\\fB\\fBEBADF\\fR\\fR)S
+509.47 Z
+1 T (134)S 1 T (.ad)S
+498.95 Z
+1 T (135)S 1 T (.RS 20n)S
+488.42 Z
+1 T (136)S 1 T (The \\fIfildes\\fR argument is not a valid open file descriptor; or)S
+FRB
+0 474.74 540 485.26 SHD
+477.89 Z
+FRN
+1 T (137)S 1 T FRB
+(\\fIfunction\\fR is \\fBF_LOCK\\fR or \\fBF_TLOCK\\fR and \\fIfildes\\fR is not a valid)S
+FIN
+0 464.21 540 474.74 SHD
+467.37 Z
+FRN
+1 T (137)S 1 T FIN
+(\\fBfunction\\fR is \\fBF_LOCK\\fR or \\fBF_TLOCK\\fR and \\fIfildes\\fR is not a valid)S
+FRN
+456.84 Z
+1 T (138)S 1 T (file descriptor open for writing.)S
+446.32 Z
+1 T (139)S 1 T (.RE)S
+425.26 Z
+1 T (141)S 1 T (.sp)S
+414.74 Z
+1 T (142)S 1 T (.ne 2)S
+404.21 Z
+1 T (143)S 1 T (.na)S
+393.68 Z
+1 T (144)S 1 T (\\fB\\fBEACCES\\fR or \\fBEAGAIN\\fR\\fR)S
+383.16 Z
+1 T (145)S 1 T (.ad)S
+372.63 Z
+1 T (146)S 1 T (.RS 20n)S
+FRB
+0 358.95 540 369.47 SHD
+362.11 Z
+FRN
+1 T (147)S 1 T FRB
+(The \\fIfunction\\fR argument is \\fBF_TLOCK\\fR or \\fBF_TEST\\fR and the section is)S
+FIN
+0 348.42 540 358.95 SHD
+351.58 Z
+FRN
+1 T (147)S 1 T FIN
+(The \\fBfunction\\fR argument is \\fBF_TLOCK\\fR or \\fBF_TEST\\fR and the section is)S
+FRN
+341.05 Z
+1 T (148)S 1 T (already locked by another process.)S
+330.53 Z
+1 T (149)S 1 T (.RE)S
+309.47 Z
+1 T (151)S 1 T (.sp)S
+298.95 Z
+1 T (152)S 1 T (.ne 2)S
+288.42 Z
+1 T (153)S 1 T (.na)S
+277.90 Z
+1 T (154)S 1 T (\\fB\\fBEDEADLK\\fR\\fR)S
+267.37 Z
+1 T (155)S 1 T (.ad)S
+256.84 Z
+1 T (156)S 1 T (.RS 20n)S
+FRB
+0 243.16 540 253.68 SHD
+246.32 Z
+FRN
+1 T (157)S 1 T FRB
+(The \\fIfunction\\fR argument is \\fBF_LOCK\\fR and a deadlock is detected.)S
+FIN
+0 232.63 540 243.16 SHD
+235.79 Z
+FRN
+1 T (157)S 1 T FIN
+(The \\fBfunction\\fR argument is \\fBF_LOCK\\fR and a deadlock is detected.)S
+FRN
+225.26 Z
+1 T (158)S 1 T (.RE)S
+204.21 Z
+1 T (160)S 1 T (.sp)S
+193.68 Z
+1 T (161)S 1 T (.ne 2)S
+183.16 Z
+1 T (162)S 1 T (.na)S
+172.63 Z
+1 T (163)S 1 T (\\fB\\fBEINTR\\fR\\fR)S
+162.11 Z
+1 T (164)S 1 T (.ad)S
+151.58 Z
+1 T (165)S 1 T (.RS 20n)S
+141.05 Z
+1 T (166)S 1 T (A signal was caught during execution of the function.)S
+130.53 Z
+1 T (167)S 1 T (.RE)S
+109.47 Z
+1 T (169)S 1 T (.sp)S
+98.95 Z
+1 T (170)S 1 T (.ne 2)S
+88.42 Z
+1 T (171)S 1 T (.na)S
+77.90 Z
+1 T (172)S 1 T (\\fB\\fBECOMM\\fR\\fR)S
+67.37 Z
+1 T (173)S 1 T (.ad)S
+56.84 Z
+1 T (174)S 1 T (.RS 20n)S
+46.32 Z
+1 T (175)S 1 T (The \\fIfildes\\fR argument is on a remote machine and the link to that machine)S
+35.79 Z
+1 T (176)S 1 T (is no longer active.)S
+25.26 Z
+1 T (177)S 1 T (.RE)S
+4.21 Z
+1 T (179)S 1 T (.sp)S
+EPG
+FRN
+SWT 90 0.666666 546 414 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3c/lockf.3c)S
+530 709.47 M (4)S
+FRN
+688.42 Z
+1 T (180)S 1 T (.ne 2)S
+677.89 Z
+1 T (181)S 1 T (.na)S
+667.37 Z
+1 T (182)S 1 T (\\fB\\fBEINVAL\\fR\\fR)S
+656.84 Z
+1 T (183)S 1 T (.ad)S
+646.32 Z
+1 T (184)S 1 T (.RS 20n)S
+FRB
+0 632.63 540 643.16 SHD
+635.79 Z
+FRN
+1 T (185)S 1 T FRB
+(The \\fIfunction\\fR argument is not one of \\fBF_LOCK\\fR, \\fBF_TLOCK\\fR,)S
+0 622.11 540 632.63 SHD
+625.26 Z
+FRN
+1 T (186)S 1 T FRB
+(\\fBF_TEST\\fR, or \\fBF_ULOCK\\fR; or \\fIsize\\fR plus the current file offset is)S
+FIN
+0 611.58 540 622.11 SHD
+614.74 Z
+FRN
+1 T (185)S 1 T FIN
+(The \\fBfunction\\fR argument is not one of \\fBF_LOCK\\fR, \\fBF_TLOCK\\fR,)S
+0 601.05 540 611.58 SHD
+604.21 Z
+FRN
+1 T (186)S 1 T FIN
+(\\fBF_TEST\\fR, or \\fBF_ULOCK\\fR; or \\fBsize\\fR plus the current file offset is)S
+FRN
+593.68 Z
+1 T (187)S 1 T (less than 0.)S
+583.16 Z
+1 T (188)S 1 T (.RE)S
+562.11 Z
+1 T (190)S 1 T (.sp)S
+551.58 Z
+1 T (191)S 1 T (.ne 2)S
+541.05 Z
+1 T (192)S 1 T (.na)S
+530.53 Z
+1 T (193)S 1 T (\\fB\\fBEOVERFLOW\\fR\\fR)S
+520.00 Z
+1 T (194)S 1 T (.ad)S
+509.47 Z
+1 T (195)S 1 T (.RS 20n)S
+FRB
+0 495.79 540 506.32 SHD
+498.95 Z
+FRN
+1 T (196)S 1 T FRB
+(The offset of the first, or if \\fIsize\\fR is not 0 then the last, byte in the)S
+FIN
+0 485.26 540 495.79 SHD
+488.42 Z
+FRN
+1 T (196)S 1 T FIN
+(The offset of the first, or if \\fBsize\\fR is not 0 then the last, byte in the)S
+FRN
+477.89 Z
+1 T (197)S 1 T (requested section cannot be represented correctly in an object of type)S
+467.37 Z
+1 T (198)S 1 T (\\fBoff_t\\fR.)S
+456.84 Z
+1 T (199)S 1 T (.RE)S
+435.79 Z
+1 T (201)S 1 T (.sp)S
+425.26 Z
+1 T (202)S 1 T (.LP)S
+414.74 Z
+1 T (203)S 1 T (The \\fBlockf\(\)\\fR function may fail if:)S
+404.21 Z
+1 T (204)S 1 T (.sp)S
+393.68 Z
+1 T (205)S 1 T (.ne 2)S
+383.16 Z
+1 T (206)S 1 T (.na)S
+372.63 Z
+1 T (207)S 1 T (\\fB\\fBEAGAIN\\fR\\fR)S
+362.11 Z
+1 T (208)S 1 T (.ad)S
+351.58 Z
+1 T (209)S 1 T (.RS 24n)S
+FRB
+0 337.90 540 348.42 SHD
+341.05 Z
+FRN
+1 T (210)S 1 T FRB
+(The \\fIfunction\\fR argument is \\fBF_LOCK\\fR or \\fBF_TLOCK\\fR and the file is)S
+FIN
+0 327.37 540 337.90 SHD
+330.53 Z
+FRN
+1 T (210)S 1 T FIN
+(The \\fBfunction\\fR argument is \\fBF_LOCK\\fR or \\fBF_TLOCK\\fR and the file is)S
+FRN
+320.00 Z
+1 T (211)S 1 T (mapped with \\fBmmap\\fR\(2\).)S
+309.47 Z
+1 T (212)S 1 T (.RE)S
+288.42 Z
+1 T (214)S 1 T (.sp)S
+277.90 Z
+1 T (215)S 1 T (.ne 2)S
+267.37 Z
+1 T (216)S 1 T (.na)S
+256.84 Z
+1 T (217)S 1 T (\\fB\\fBEDEADLK\\fR or \\fBENOLCK\\fR\\fR)S
+246.32 Z
+1 T (218)S 1 T (.ad)S
+235.79 Z
+1 T (219)S 1 T (.RS 24n)S
+FRB
+0 222.11 540 232.63 SHD
+225.26 Z
+FRN
+1 T (220)S 1 T FRB
+(The \\fIfunction\\fR argument is \\fBF_LOCK\\fR, \\fBF_TLOCK\\fR, or \\fBF_ULOCK\\fR)S
+FIN
+0 211.58 540 222.11 SHD
+214.74 Z
+FRN
+1 T (220)S 1 T FIN
+(The \\fBfunction\\fR argument is \\fBF_LOCK\\fR, \\fBF_TLOCK\\fR, or \\fBF_ULOCK\\fR)S
+FRN
+204.21 Z
+1 T (221)S 1 T (and the request would cause the number of locks to exceed a system-imposed)S
+193.68 Z
+1 T (222)S 1 T (limit.)S
+183.16 Z
+1 T (223)S 1 T (.RE)S
+162.11 Z
+1 T (225)S 1 T (.sp)S
+151.58 Z
+1 T (226)S 1 T (.ne 2)S
+141.05 Z
+1 T (227)S 1 T (.na)S
+130.53 Z
+1 T (228)S 1 T (\\fB\\fBEOPNOTSUPP\\fR or \\fBEINVAL\\fR\\fR)S
+120.00 Z
+1 T (229)S 1 T (.ad)S
+109.47 Z
+1 T (230)S 1 T (.RS 24n)S
+98.95 Z
+1 T (231)S 1 T (The locking of files of the type indicated by the \\fIfildes\\fR argument is not)S
+88.42 Z
+1 T (232)S 1 T (supported.)S
+77.90 Z
+1 T (233)S 1 T (.RE)S
+56.84 Z
+1 T (235)S 1 T (.SH USAGE)S
+46.32 Z
+1 T (236)S 1 T (.sp)S
+35.79 Z
+1 T (237)S 1 T (.LP)S
+25.26 Z
+1 T (238)S 1 T (Record-locking should not be used in combination with the \\fBfopen\\fR\(3C\),)S
+14.74 Z
+1 T (239)S 1 T (\\fBfread\\fR\(3C\), \\fBfwrite\\fR\(3C\) and other \\fBstdio\\fR functions.  Instead,)S
+4.21 Z
+1 T (240)S 1 T (the more primitive, non-buffered functions \(such as \\fBopen\\fR\(2\)\) should be)S
+EPG
+1 FPG
+%%Page: ? 3
+FRN
+0.250000 setlinewidth newpath
+0 396 M 612 396 lineto
+stroke
+SWT 90 0.666666 546 18 SPG
+FRB
+0 709.47 M
+709.47 Z
+(new/usr/src/man/man3c/lockf.3c)S
+530 709.47 M (5)S
+FRN
+688.42 Z
+1 T (241)S 1 T (used.  Unexpected results may occur in processes that do buffering in the user)S
+677.89 Z
+1 T (242)S 1 T (address space.  The process may later read/write data which is/was locked.  The)S
+667.37 Z
+1 T (243)S 1 T (\\fBstdio\\fR functions are the most common source of unexpected buffering.)S
+656.84 Z
+1 T (244)S 1 T (.sp)S
+646.32 Z
+1 T (245)S 1 T (.LP)S
+635.79 Z
+1 T (246)S 1 T (The \\fBalarm\\fR\(2\) function may be used to provide a timeout facility in)S
+625.26 Z
+1 T (247)S 1 T (applications requiring it.)S
+614.74 Z
+1 T (248)S 1 T (.sp)S
+604.21 Z
+1 T (249)S 1 T (.LP)S
+593.68 Z
+1 T (250)S 1 T (The \\fBlockf\(\)\\fR function has a transitional interface for 64-bit file)S
+583.16 Z
+1 T (251)S 1 T (offsets.  See \\fBlf64\\fR\(5\).)S
+572.63 Z
+1 T (252)S 1 T (.SH ATTRIBUTES)S
+562.11 Z
+1 T (253)S 1 T (.sp)S
+551.58 Z
+1 T (254)S 1 T (.LP)S
+541.05 Z
+1 T (255)S 1 T (See \\fBattributes\\fR\(5\) for descriptions of the following attributes:)S
+530.53 Z
+1 T (256)S 1 T (.sp)S
+509.47 Z
+1 T (258)S 1 T (.sp)S
+498.95 Z
+1 T (259)S 1 T (.TS)S
+488.42 Z
+1 T (260)S 1 T (box;)S
+477.89 Z
+1 T (261)S 1 T (c | c)S
+467.37 Z
+1 T (262)S 1 T (l | l .)S
+456.84 Z
+1 T (263)S 1 T (ATTRIBUTE TYPE)S 2 T (ATTRIBUTE VALUE)S
+446.32 Z
+1 T (264)S 1 T (_)S
+435.79 Z
+1 T (265)S 1 T (Interface Stability)S 5 T (Standard)S
+425.26 Z
+1 T (266)S 1 T (_)S
+414.74 Z
+1 T (267)S 1 T (MT-Level)S 8 T (MT-Safe)S
+404.21 Z
+1 T (268)S 1 T (.TE)S
+383.16 Z
+1 T (270)S 1 T (.SH SEE ALSO)S
+372.63 Z
+1 T (271)S 1 T (.sp)S
+362.11 Z
+1 T (272)S 1 T (.LP)S
+351.58 Z
+1 T (273)S 1 T (\\fBIntro\\fR\(2\), \\fBalarm\\fR\(2\), \\fBchmod\\fR\(2\), \\fBclose\\fR\(2\), \\fBcreat\\fR\(2\),)S
+341.05 Z
+1 T (274)S 1 T (\\fBfcntl\\fR\(2\), \\fBmmap\\fR\(2\), \\fBopen\\fR\(2\), \\fBread\\fR\(2\), \\fBwrite\\fR\(2\),)S
+330.53 Z
+1 T (275)S 1 T (\\fBattributes\\fR\(5\), \\fBlf64\\fR\(5\), \\fBstandards\\fR\(5\))S
+EPG
+1 FPG
+%%Trailer
+%%Pages: 3

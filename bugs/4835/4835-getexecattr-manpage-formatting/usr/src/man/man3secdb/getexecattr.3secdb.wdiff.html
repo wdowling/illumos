@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>4835-getexecattr-manpage-formatting Wdiff usr/src/man/man3secdb/getexecattr.3secdb</title>
+
+    <meta http-equiv="cache-control" content="no-cache" />
+
+    <style type='text/css' media='screen'>
+      pre	{ margin: 2px; }
+
+      body	{ background-color: #eeeeee; }
+
+      hr	{ border: none 0; border-top: 1px solid #aaa; height: 1px; }
+
+      .subtracted { color: brown }
+      .added	{ color: blue }
+
+      .elided	{ border: 1px solid #444; cursor: pointer; margin: 1px }
+
+      table.hidebar { border: 1px solid #ff9900; background-color: #eee;
+      		  text-align: center; border-collapse: collapse; }
+
+      .hidebar td.active-down { border: 1px solid #ff9900;
+		border-right: 1px solid #ccc; cursor: s-resize }
+
+      .hidebar td.active-down:hover { background-color: #ffcc99; }
+
+      .hidebar td.active-up { border: 1px solid #ff9900; cursor: n-resize;
+		border-left: 1px solid #ccc; }
+
+      .hidebar td.active-up:hover { background-color: #ffcc99; }
+
+      .hidebar td.elided-label { font-style: italic; width: 12em; }
+
+      .cmdbox	{ position: fixed; top: 0; right: 0;
+	          border-left: solid 1px #444;
+	          border-bottom: solid 1px #444;
+      		  background-color: #ccc; text-align: center }
+
+      .cmdbox td { background-color: #eee; border: 1px #444 outset;
+		   cursor: pointer; padding: 3px 4px; }
+      .cmdbox td:hover { background-color: #ffcc99;
+ 		outline: thin solid #ff9900; }
+
+      a:hover { background-color: #ffcc99; }
+
+      a.print { font-size: x-small; }
+    </style>
+
+    <style type='text/css' media='print'>
+	pre { font-family: courier, monospace; font-size: 0.8em; }
+	.cmdbox { display: none; }
+        a.print { display: none; }
+	.hidebar td.active-down { display: none; }
+	.hidebar td.active-up { display: none; }
+        .hidebar td.elided-label { font-style: italic; font-size: small; }
+	table.hidebar { border: none; border-bottom: 1px dotted #000000; }
+	span.added { font-weight: bold;
+	         background-color: #eee; width: 100%; display: block; }
+	span.subtracted { font-style: italic;
+		 background-color: #eee; width: 100%; display: block; }
+	.elided { display: none; }
+        hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+    </style>
+
+    <script type="text/javascript">
+      function show_n_hide_dir(id_to_show, id_to_hide, dir) {
+	      var elt_to_show = document.getElementById(id_to_show);
+	      var elt_to_hide = document.getElementById(id_to_hide);
+	      // When we're opening up, we need to make the bottoms of the
+	      // elements appear to be the same.  So our invariant should be
+	      // elt.offsetBottom - window.scrollY.
+	      var preinvar = elt_to_hide.offsetHeight - window.scrollY;
+	      elt_to_show.style.setProperty('display', '', '');
+	      elt_to_hide.style.setProperty('display', 'none', '');
+	      if (dir == 'up') {
+		      var postinvar = elt_to_show.offsetHeight - window.scrollY;
+		      window.scrollBy(0, postinvar - preinvar);
+	      }
+      }
+
+      function handle_click(e) {
+	      var eh = e.target;
+	      var es = document.getElementById("hb-" + e.target.id);
+	      eh.style.setProperty('display', 'none', '');
+	      es.style.setProperty('display', '', '');
+	      /* Scroll so new element is at cursor. */
+	      window.scroll(0, es.offsetTop + (es.offsetHeight / 2)
+	          - e.clientY);
+      }
+
+      function stripsearch(str) {
+	q = str.indexOf("?");
+	if (q != -1)
+	  str = str.substr(0, q);
+	return (str);
+      }
+
+      function split() {
+        page = stripsearch(location.href);
+	halfway = window.scrollY + window.innerHeight / 2 - 5;
+	document.write('<frameset rows="50%,*">' +
+	  '<frame src="' + page + "?" + window.scrollY + '" />' +
+	  '<frame src="' + page + "?" + halfway + '" />' +
+	  '</frameset>');
+	document.close();
+      }
+
+      function closeframe() {
+	page = stripsearch(location.href);
+
+	otherf = window.parent.frames[0];
+	if (otherf == window)
+	  otherf = window.parent.frames[1];
+
+	parent.location.replace(page + "?" + otherf.scrollY);
+      }
+    </script>
+  </head>
+  <body id='SUNWwebrev'>
+    <a class="print" href="javascript:print()">Print this page</a>
+    <pre>
+<a href="https://illumos.org/issues/4835">4835</a> getexecattr(3secdb): Minor formatting issues
+</pre>
+<hr />
+    <table class='cmdbox'>
+      <tr>
+        <td onclick='split()'>Split</td>
+	<td id='close' onclick='closeframe()'>Close</td>
+      </tr>
+      <tr><td colspan="2" onclick='open_or_close_all(1)'>Expand all</td></tr>
+      <tr><td colspan="2" onclick='open_or_close_all(0)'>Collapse all</td></tr>
+    </table>
+
+    <script type='text/javascript'>
+      if (window == top)
+        document.getElementById('close').style.setProperty('display', 'none', '');
+    </script>
+<pre><span class='subtracted'>          --- old/usr/src/man/man3secdb/getexecattr.3secdb
+</span><span class='added'>          +++ new/usr/src/man/man3secdb/getexecattr.3secdb
+</span></pre>
+<pre id='elided1' class='elided' style='display: none'>   1    1  '\" te
+   2    2  .\" Copyright (c) 2005, Sun Microsystems, Inc.  All Rights Reserved.
+   3    3  .\" The contents of this file are subject to the terms of the Common Development and Distribution License (the "License").  You may not use this file except in compliance with the License.
+   4    4  .\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http://www.opensolaris.org/os/licensing.  See the License for the specific language governing permissions and limitations under the License.
+   5    5  .\" When distributing Covered Code, include this CDDL HEADER in each file and include the License file at usr/src/OPENSOLARIS.LICENSE.  If applicable, add the following below this CDDL HEADER, with the fields enclosed by brackets "[]" replaced with your own identifying information: Portions Copyright [yyyy] [name of copyright owner]
+   6    6  .TH GETEXECATTR 3SECDB "Mar 31, 2005"
+   7    7  .SH NAME
+   8    8  getexecattr, free_execattr, setexecattr, endexecattr, getexecuser, getexecprof,
+   9    9  match_execattr \- get execution profile entry
+  10   10  .SH SYNOPSIS
+  11   11  .LP
+  12   12  .nf
+  13   13  cc [ \fIflag\fR... ] \fIfile\fR... -lsecdb  -lsocket  -lnsl  [ \fIlibrary\fR... ]
+  14   14  #include &lt;exec_attr.h&gt;
+  15   15  #include &lt;secdb.h&gt;
+  16   16  
+  17   17  \fBexecattr_t *\fR\fBgetexecattr\fR(\fBvoid\fR);
+  18   18  .fi
+  19   19  
+  20   20  .LP
+  21   21  .nf
+  22   22  \fBvoid\fR \fBfree_execattr\fR(\fBexecattr_t *\fR\fIep\fR);
+  23   23  .fi
+  24   24  
+  25   25  .LP
+  26   26  .nf
+  27   27  \fBvoid\fR \fBsetexecattr\fR(\fBvoid\fR);
+  28   28  .fi
+  29   29  
+  30   30  .LP
+  31   31  .nf
+  32   32  \fBvoid\fR \fBendexecattr\fR(\fBvoid\fR);
+  33   33  .fi
+  34   34  
+  35   35  .LP
+  36   36  .nf
+  37   37  \fBexecattr_t *\fR\fBgetexecuser\fR(\fBconst char *\fR\fIusername\fR, \fBconst char *\fR\fItype\fR,
+  38   38       \fBconst char *\fR\fIid\fR, \fBint\fR \fIsearch_flag\fR);
+  39   39  .fi
+  40   40  
+  41   41  .LP
+  42   42  .nf
+  43   43  \fBexecattr_t *\fR\fBgetexecprof\fR(\fBconst char *\fR\fIprofname\fR, \fBconst char *\fR\fItype\fR,
+  44   44       \fBconst char *\fR\fIid\fR, \fBint\fR \fIsearch_flag\fR);
+  45   45  .fi
+  46   46  
+  47   47  .LP
+  48   48  .nf
+  49   49  \fBexecattr_t *\fR\fBmatch_execattr\fR(\fBexecattr_t *\fR\fIep\fR, \fBchar *\fR\fIprofname\fR,
+  50   50       \fBchar *\fR\fItype\fR, \fBchar *\fR\fIid\fR);
+  51   51  .fi
+  52   52  
+  53   53  .SH DESCRIPTION
+  54   54  .sp
+  55   55  .LP
+  56   56  The \fBgetexecattr()\fR function returns a single \fBexec_attr\fR(4) entry.
+  57   57  Entries can come from any of the sources specified in the
+  58   58  \fBnsswitch.conf\fR(4) file.
+  59   59  .sp
+  60   60  .LP
+  61   61  Successive calls to \fBgetexecattr()\fR return either successive
+  62   62  \fBexec_attr\fR entries or \fINULL\fR. Because \fBgetexecattr()\fR always
+  63   63  returns a single entry, the \fBnext\fR pointer in the  \fBexecattr_t\fR data
+  64   64  structure points to \fINULL\fR.
+  65   65  .sp
+  66   66  .LP
+  67   67  The internal representation of an \fBexec_attr\fR entry is an \fBexecattr_t\fR
+  68   68  structure defined in  &lt;\fBexec_attr.h\fR&gt; with the following members:
+  69   69  .sp
+  70   70  .in +2
+  71   71  .nf
+  72   72  char              *name;   /* name of the profile */
+  73   73  char              *type;   /* type of profile */
+  74   74  char              *policy; /* policy under which the attributes are */
+  75   75                             /* relevant*/
+  76   76  char              *res1;   /* reserved for future use */
+  77   77  char              *res2;   /* reserved for future use */
+  78   78  char              *id;     /* unique identifier */
+  79   79  kva_t             *attr;   /* attributes */
+  80   80  struct execattr_s *next;   /* optional pointer to next profile */
+  81   81  .fi
+  82   82  .in -2
+  83   83  
+  84   84  .sp
+  85   85  .LP
+  86   86  The \fBfree_execattr()\fR function releases memory. It follows the \fBnext\fR
+  87   87  pointers in the \fBexecattr_t\fR structure so that the entire linked list is
+  88   88  released.
+  89   89  .sp
+  90   90  .LP
+  91   91  The \fBsetexecattr()\fR function "rewinds" to the beginning of the enumeration
+  92   92  of \fBexec_attr\fR entries. Calls to \fBgetexecuser()\fR can leave the
+  93   93  enumeration in an indeterminate state. Therefore, \fBsetexecattr()\fR should be
+  94   94  called before the first call to \fBgetexecattr()\fR.
+  95   95  .sp
+  96   96  .LP
+  97   97  The \fBendexecattr()\fR function can be called to indicate that \fBexec_attr\fR
+  98   98  processing is complete; the library can then close any open \fBexec_attr\fR
+  99   99  file, deallocate any internal storage, and so forth.
+ 100  100  .sp
+ 101  101  .LP
+ 102  102  The \fBgetexecuser()\fR function returns a linked list of entries that match
+ 103  103  the \fItype\fR and \fIid\fR arguments and have a profile that has been assigned
+ 104  104  to the user specified by \fIusername\fR, as described in \fBpasswd\fR(4).
+ 105  105  Profiles for the user are obtained from the list of default profiles in
+ 106  106  \fB/etc/security/policy.conf\fR (see \fBpolicy.conf\fR(4)) and the
+ 107  107  \fBuser_attr\fR(4) database. Only entries in the name service scope for which
+ 108  108  the corresponding profile entry is found in the \fBprof_attr\fR(4) database are
+ 109  109  returned.
+ 110  110  .sp
+ 111  111  .LP
+ 112  112  The \fBgetexecprof()\fR function returns a linked list of entries that match
+ 113  113  the \fItype\fR and \fIid\fR arguments and have the profile specified by the
+ 114  114  \fIprofname\fR argument. Only entries in the name service scope for which the
+ 115  115  corresponding profile entry is found in the \fBprof_attr\fR database are
+ 116  116  returned.
+ 117  117  .sp
+ 118  118  .LP
+ 119  119  Using \fBgetexecuser()\fR and \fBgetexecprof()\fR, programmers can search  for
+ 120  120  any \fItype\fR argument, such as the manifest constant \fBKV_COMMAND\fR. The
+ 121  121  arguments are logically AND-ed together so that only entries exactly matching
+ 122  122  all of the arguments are returned. Wildcard matching applies if there is no
+ 123  123  exact match for an \fBID\fR. Any argument can be assigned the \fINULL\fR value
+</pre>
+<table id='hb-elided1' class='hidebar'>
+  <tr>
+    <td class='active-down'
+      onclick='show_n_hide_dir("elided1", "hb-elided1", "down")'>
+      &darr;&nbsp;open down&nbsp;&darr;</td>
+    <td class="elided-label">123 lines elided</td>
+    <td class='active-up'
+      onclick='show_n_hide_dir("elided1", "hb-elided1", "up")'>
+      &uarr;&nbsp;open up&nbsp;&uarr;</td>
+  </tr>
+</table>
+<pre> 124  124  to indicate that it is not used as part of the matching criteria. The \fB\fR
+ 125  125  search_flag controls whether the function returns the first match
+ 126  126  (\fBGET_ONE\fR), setting the \fBnext\fR pointer to \fINULL\fR or all matching
+ 127  127  entries (\fBGET_ALL\fR), using the \fBnext\fR pointer to create a linked list
+ 128  128  of all entries that meet the search criteria. See  \fBEXAMPLES\fR.
+ 129  129  .sp
+ 130  130  .LP
+ 131  131  Once a list of entries is returned by \fBgetexecuser()\fR or
+ 132  132  \fBgetexecprof()\fR, the convenience function \fBmatch_execattr()\fR can be
+ 133  133  used to identify an individual entry. It returns a pointer to the individual
+<span class='subtracted'> 134      -element with the same profile name ( \fIprofname\fR), type name ( \fItype\fR),
+</span><span class='added'>      134 +element with the same profile name (\fIprofname\fR), type name (\fItype\fR),
+</span> 135  135  and \fIid\fR. Function parameters set to \fINULL\fR are not used as part of the
+ 136  136  matching criteria. In the event that multiple entries meet the matching
+ 137  137  criteria, only a pointer to the first entry is returned. The
+ 138  138  \fBkva_match\fR(3SECDB) function can be used to look up a key in a key-value
+ 139  139  array.
+ 140  140  .SH RETURN VALUES
+ 141  141  .sp
+ 142  142  .LP
+ 143  143  Those functions returning data only return data related to the active policy.
+ 144  144  The \fBgetexecattr()\fR function returns a pointer to a  \fBexecattr_t\fR if it
+ 145  145  successfully enumerates an entry; otherwise it returns \fINULL\fR, indicating
+ 146  146  the end of the enumeration.
+ 147  147  .SH USAGE
+ 148  148  .sp
+ 149  149  .LP
+ 150  150  The \fBgetexecattr()\fR, \fBgetexecuser()\fR, and \fBgetexecprof()\fR functions
+ 151  151  all allocate memory for the pointers they return. This memory should be
+<span class='subtracted'> 152      -deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR(
+</span><span class='added'>      152 +deallocated with the \fBfree_execattr()\fR call. The \fBmatch_execattr()\fR
+</span> 153  153  function does not allocate any memory. Therefore, pointers returned by this
+ 154  154  function should not be deallocated.
+ 155  155  .sp
+ 156  156  .LP
+ 157  157  Individual attributes may be referenced in the \fBattr\fR structure by calling
+ 158  158  the \fBkva_match\fR(3SECDB) function.
+ 159  159  .SH EXAMPLES
+ 160  160  .LP
+ 161  161  \fBExample 1 \fRFind all profiles that have the  \fBping\fR command.
+ 162  162  .sp
+</pre>
+<pre id='elided2' class='elided' style='display: none'> 163  163  .in +2
+ 164  164  .nf
+ 165  165  if ((execprof=getexecprof(NULL, KV_COMMAND, "/usr/sbin/ping",
+ 166  166      GET_ONE)) == NULL) {
+ 167  167          /* do error */
+ 168  168  }
+ 169  169  .fi
+ 170  170  .in -2
+ 171  171  
+ 172  172  .LP
+ 173  173  \fBExample 2 \fRFind the entry for the \fBping\fR command in the Network
+ 174  174  Administration Profile.
+ 175  175  .sp
+ 176  176  .in +2
+ 177  177  .nf
+ 178  178  if ((execprof=getexecprof("Network Administration", KV_COMMAND,
+ 179  179      "/usr/sbin/ping", GET_ALL))==NULL) {
+ 180  180          /* do error */
+ 181  181  }
+ 182  182  .fi
+ 183  183  .in -2
+ 184  184  
+ 185  185  .LP
+ 186  186  \fBExample 3 \fRTell everything that can be done in the Filesystem Security
+ 187  187  profile.
+ 188  188  .sp
+ 189  189  .in +2
+ 190  190  .nf
+ 191  191  if ((execprof=getexecprof("Filesystem Security", KV_NULL, NULL,
+ 192  192      GET_ALL))==NULL)) {
+ 193  193          /* do error */
+ 194  194  }
+ 195  195  .fi
+ 196  196  .in -2
+ 197  197  
+ 198  198  .LP
+ 199  199  \fBExample 4 \fRTell if the \fBtar\fR utility is in a profile assigned to user
+ 200  200  wetmore. If there is no exact profile entry, the wildcard (*), if defined, is
+ 201  201  returned.
+ 202  202  .sp
+ 203  203  .LP
+ 204  204  The following tells if the \fBtar\fR utility is in a profile assigned to user
+ 205  205  wetmore. If there is no exact profile entry, the wildcard (*), if defined, is
+ 206  206  returned.
+ 207  207  
+ 208  208  .sp
+ 209  209  .in +2
+ 210  210  .nf
+ 211  211  if ((execprof=getexecuser("wetmore", KV_COMMAND, "/usr/bin/tar",
+ 212  212      GET_ONE))==NULL) {
+ 213  213          /* do error */
+ 214  214  }
+ 215  215  .fi
+ 216  216  .in -2
+ 217  217  
+ 218  218  .SH FILES
+ 219  219  .sp
+ 220  220  .ne 2
+ 221  221  .na
+ 222  222  \fB\fB/etc/nsswitch.conf\fR\fR
+ 223  223  .ad
+ 224  224  .RS 29n
+ 225  225  configuration file lookup information for the name server switch
+ 226  226  .RE
+ 227  227  
+ 228  228  .sp
+ 229  229  .ne 2
+ 230  230  .na
+ 231  231  \fB\fB/etc/user_attr\fR\fR
+ 232  232  .ad
+ 233  233  .RS 29n
+ 234  234  extended user attributes
+ 235  235  .RE
+ 236  236  
+ 237  237  .sp
+ 238  238  .ne 2
+ 239  239  .na
+ 240  240  \fB\fB/etc/security/exec_attr\fR\fR
+ 241  241  .ad
+ 242  242  .RS 29n
+ 243  243  execution profiles
+ 244  244  .RE
+ 245  245  
+ 246  246  .sp
+ 247  247  .ne 2
+ 248  248  .na
+ 249  249  \fB\fB/etc/security/policy.conf\fR\fR
+ 250  250  .ad
+ 251  251  .RS 29n
+ 252  252  policy definitions
+ 253  253  .RE
+ 254  254  
+ 255  255  .SH ATTRIBUTES
+ 256  256  .sp
+ 257  257  .LP
+ 258  258  See \fBattributes\fR(5) for descriptions of the following attributes:
+ 259  259  .sp
+ 260  260  
+ 261  261  .sp
+ 262  262  .TS
+ 263  263  box;
+ 264  264  c | c
+ 265  265  l | l .
+ 266  266  ATTRIBUTE TYPE  ATTRIBUTE VALUE
+ 267  267  _
+ 268  268  MT-Level        MT-Safe
+ 269  269  .TE
+ 270  270  
+ 271  271  .SH SEE ALSO
+ 272  272  .sp
+ 273  273  .LP
+ 274  274  \fBgetauthattr\fR(3SECDB), \fBgetuserattr\fR(3SECDB), \fBkva_match\fR(3SECDB),
+ 275  275  \fBexec_attr\fR(4), \fBpasswd\fR(4), \fBpolicy.conf\fR(4), \fBprof_attr\fR(4),
+ 276  276  \fBuser_attr\fR(4), \fBattributes\fR(5)
+</pre>
+<table id='hb-elided2' class='hidebar'>
+  <tr>
+    <td class='active-down'
+      onclick='show_n_hide_dir("elided2", "hb-elided2", "down")'>
+      &darr;&nbsp;open down&nbsp;&darr;</td>
+    <td class="elided-label">114 lines elided</td>
+    <td class='active-up'
+      onclick='show_n_hide_dir("elided2", "hb-elided2", "up")'>
+      &uarr;&nbsp;open up&nbsp;&uarr;</td>
+  </tr>
+</table>
+<pre id='linerefpre'><span id='lineref'>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span></pre>
+    <br clear="all" />
+    <br />
+
+    <script type="text/javascript">
+      /* Assign event handlers and widths. */
+      var w = document.getElementById('lineref').offsetWidth;
+      for (var i = 1; i <= 2; ++i) {
+	      var e = document.getElementById("elided" + i);
+	      e.onclick = handle_click;
+              e.style.setProperty('width', w + "px", '');
+
+	      e = document.getElementById("hb-elided" + i);
+              e.style.setProperty('width', w + "px", '');
+      }
+
+      /* Hide our line size reference. */
+      document.getElementById('linerefpre').style.setProperty('display',
+          'none', '');
+
+      /* Scroll as indicated. */
+      str = location.search;
+      s = str.substring(1, str.length);
+      if (s > 0)
+        window.scroll(0, s);
+
+      function open_or_close_all(open) {
+	      for (var i = 1; i <= 2; ++i) {
+		      var e = document.getElementById("hb-elided" + i);
+		      e.style.setProperty("display", open ? "none" : "", "");
+
+		      e = document.getElementById("elided" + i);
+		      e.style.setProperty("display", open ? "" : "none", "");
+	      }
+      }
+    </script>
+  </body>
+</html>

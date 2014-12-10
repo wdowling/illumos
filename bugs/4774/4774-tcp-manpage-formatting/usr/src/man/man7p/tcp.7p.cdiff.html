@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="cache-control" content="no-cache"></meta>
+<meta http-equiv="Pragma" content="no-cache"></meta>
+<meta http-equiv="Expires" content="-1"></meta>
+<!--
+   Note to customizers: the body of the webrev is IDed as SUNWwebrev
+   to allow easy overriding by users of webrev via the userContent.css
+   mechanism available in some browsers.
+
+   For example, to have all "removed" information be red instead of
+   brown, set a rule in your userContent.css file like:
+
+       body#SUNWwebrev span.removed { color: red ! important; }
+-->
+<style type="text/css" media="screen">
+body {
+    background-color: #eeeeee;
+}
+hr {
+    border: none 0;
+    border-top: 1px solid #aaa;
+    height: 1px;
+}
+div.summary {
+    font-size: .8em;
+    border-bottom: 1px solid #aaa;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+div.summary h2 {
+    margin-bottom: 0.3em;
+}
+div.summary table th {
+    text-align: right;
+    vertical-align: top;
+    white-space: nowrap;
+}
+span.lineschanged {
+    font-size: 0.7em;
+}
+span.oldmarker {
+    color: red;
+    font-size: large;
+    font-weight: bold;
+}
+span.newmarker {
+    color: green;
+    font-size: large;
+    font-weight: bold;
+}
+span.removed {
+    color: brown;
+}
+span.changed {
+    color: blue;
+}
+span.new {
+    color: blue;
+    font-weight: bold;
+}
+span.chmod {
+    font-size: 0.7em;
+    color: #db7800;
+}
+a.print { font-size: x-small; }
+a:hover { background-color: #ffcc99; }
+</style>
+
+<style type="text/css" media="print">
+pre { font-size: 0.8em; font-family: courier, monospace; }
+span.removed { color: #444; font-style: italic }
+span.changed { font-weight: bold; }
+span.new { font-weight: bold; }
+span.newmarker { font-size: 1.2em; font-weight: bold; }
+span.oldmarker { font-size: 1.2em; font-weight: bold; }
+a.print {display: none}
+hr { border: none 0; border-top: 1px solid #aaa; height: 1px; }
+</style>
+
+<title>4774-tcp-manpage-formatting Cdiff usr/src/man/man7p/tcp.7p</title>
+</head>
+<body id="SUNWwebrev">
+        <a class="print" href="javascript:print()">Print this page</a>
+<pre><a href="https://illumos.org/issues/4774">4774</a> Typos in tcp(7P) manpage</pre>
+        <pre>
+<hr></hr><span class="oldmarker">*** 182,192 ****</span>
+  PRIV_SYS_NET_CONFIG privilege if it wants to specify a number greater than that
+  calculated by \fIRFC 3390\fR.
+  .sp
+  .LP
+  SunOS supports \fBTCP\fR Extensions for High Performance (\fIRFC 1323\fR) which
+<span class="changed">! includes the window scale and time stamp options, and Protection Against Wrap</span>
+  Around Sequence Numbers (PAWS). SunOS also supports Selective Acknowledgment
+  (SACK) capabilities (RFC 2018) and Explicit Congestion Notification (ECN)
+  mechanism (\fIRFC 3168\fR).
+  .sp
+  .LP
+<span class="newmarker">--- 182,192 ----</span>
+  PRIV_SYS_NET_CONFIG privilege if it wants to specify a number greater than that
+  calculated by \fIRFC 3390\fR.
+  .sp
+  .LP
+  SunOS supports \fBTCP\fR Extensions for High Performance (\fIRFC 1323\fR) which
+<span class="changed">! includes the window scale and timestamp options, and Protection Against Wrap</span>
+  Around Sequence Numbers (PAWS). SunOS also supports Selective Acknowledgment
+  (SACK) capabilities (RFC 2018) and Explicit Congestion Notification (ECN)
+  mechanism (\fIRFC 3168\fR).
+  .sp
+  .LP
+<hr></hr><span class="oldmarker">*** 259,306 ****</span>
+  segment that it supports \fBECN\fR mechanism when \fBTCP\fR makes active
+  outgoing connections. The default for \fBtcp_ecn_permitted\fR is 1.
+  .RE
+  .sp
+  .LP
+<span class="changed">! Turn on the time stamp option in the following way:</span>
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+  Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_always\fR. If
+<span class="changed">! \fBtcp_tstamp_always\fR is \fB1\fR, the time stamp option will always be set</span>
+  when connecting to a remote machine. If \fBtcp_tstamp_always\fR is \fB0\fR, the
+  timestamp option will not be set when connecting to a remote system. The
+  default for \fBtcp_tstamp_always\fR is \fB0\fR.
+  .RE
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+<span class="changed">! Regardless of the value of \fBtcp_tstamp_always\fR, the time stamp option will</span>
+  always be included in a connect acknowledgement (and all succeeding packets) if
+<span class="changed">! the connecting system has used the time stamp option.</span>
+  .RE
+  .sp
+  .LP
+<span class="changed">! Use the following procedure to turn on the time stamp option only when the</span>
+  window scale option is in effect:
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+  Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_if_wscale\fR.
+<span class="changed">! Setting \fBtcp_tstamp_if_wscale\fR to \fB1\fR will cause the time stamp option</span>
+  to be set when connecting to a remote system, if the window scale option has
+<span class="changed">! been set. If \fBtcp_tstamp_if_wscale\fR is \fB0\fR, the time stamp option will</span>
+  not be set when connecting to a remote system. The default for
+  \fBtcp_tstamp_if_wscale\fR is \fB1\fR.
+  .RE
+  .sp
+  .LP
+  Protection Against Wrap Around Sequence Numbers (PAWS) is always used when the
+<span class="changed">! time stamp option is set.</span>
+  .sp
+  .LP
+  SunOS also supports multiple methods of generating initial sequence numbers.
+  One of these methods is the improved technique suggested in \fBRFC\fR 1948. We
+  \fBHIGHLY\fR recommend that you set sequence number generation parameters as
+<span class="newmarker">--- 259,306 ----</span>
+  segment that it supports \fBECN\fR mechanism when \fBTCP\fR makes active
+  outgoing connections. The default for \fBtcp_ecn_permitted\fR is 1.
+  .RE
+  .sp
+  .LP
+<span class="changed">! Turn on the timestamp option in the following way:</span>
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+  Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_always\fR. If
+<span class="changed">! \fBtcp_tstamp_always\fR is \fB1\fR, the timestamp option will always be set</span>
+  when connecting to a remote machine. If \fBtcp_tstamp_always\fR is \fB0\fR, the
+  timestamp option will not be set when connecting to a remote system. The
+  default for \fBtcp_tstamp_always\fR is \fB0\fR.
+  .RE
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+<span class="changed">! Regardless of the value of \fBtcp_tstamp_always\fR, the timestamp option will</span>
+  always be included in a connect acknowledgement (and all succeeding packets) if
+<span class="changed">! the connecting system has used the timestamp option.</span>
+  .RE
+  .sp
+  .LP
+<span class="changed">! Use the following procedure to turn on the timestamp option only when the</span>
+  window scale option is in effect:
+  .RS +4
+  .TP
+  .ie t \(bu
+  .el o
+  Use \fBndd\fR to modify the configuration parameter \fBtcp_tstamp_if_wscale\fR.
+<span class="changed">! Setting \fBtcp_tstamp_if_wscale\fR to \fB1\fR will cause the timestamp option</span>
+  to be set when connecting to a remote system, if the window scale option has
+<span class="changed">! been set. If \fBtcp_tstamp_if_wscale\fR is \fB0\fR, the timestamp option will</span>
+  not be set when connecting to a remote system. The default for
+  \fBtcp_tstamp_if_wscale\fR is \fB1\fR.
+  .RE
+  .sp
+  .LP
+  Protection Against Wrap Around Sequence Numbers (PAWS) is always used when the
+<span class="changed">! timestamp option is set.</span>
+  .sp
+  .LP
+  SunOS also supports multiple methods of generating initial sequence numbers.
+  One of these methods is the improved technique suggested in \fBRFC\fR 1948. We
+  \fBHIGHLY\fR recommend that you set sequence number generation parameters as
+</pre></body></html>
+
