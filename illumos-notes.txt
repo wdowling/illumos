@@ -49,6 +49,12 @@
 		user	190m17.520s
 		sys	47m45.915s
 
+
+- Using MAXJOBS = 12 building full nightly halves the build time from above:
+real    82m56.917s
+user    263m45.637s
+sys     182m49.067s
+
 [Using bldenv]
 - cd /export/home/illumos-dev/code/illumos-gate
 - /opt/onbld/bin/bldenv -d ./illumos.sh
@@ -70,3 +76,107 @@ where XXXX = bug #
 webrev -o XXXX-YYYYYYYY -p HEAD^
 
 YYYYY... = bug description
+
+[ON Notes]
+
+Chapter 2 - Prerequisites: http://web.archive.org/web/20130303020840/http://hub.opensolaris.org/bin/view/Community+Group+on/devref_2
+
+- Regarding OpenSolaris Sun Studio 12u1 and gcc are required. gcc can be used as the primary compiler. I guess this means dmake can be dropped?
+- Workspace and build environment variables must be set for the build to complete successfully. 
+- PATH needs the following entries:
+/opt/SUNQWspro/bin
+/opt/onbld/bin
+/opt/onbld/bin/`uname -p`
+- /usr/bin/ccs must also be included in your PATH
+- An example PATH would be:
+/usr/bin:/usr/sbin:/usr/ccs/bin:/usr/dt/bin:/usr/openwin/bin: \
+    /opt/onbld/bin:/opt/onbld/bin/sparc:/opt/sfw/bin:/usr/sfw/bin
+- Including /usr/ucb is not recommended for the build as it is not needed.
+- Adding /opt/onbld/man and /opt/SUNWspro/man to the MANPATH is also useful
+
+Chapter 3 - The Source Tree, part 1: http://web.archive.org/web/20121229100248/http://hub.opensolaris.org/bin/view/Community+Group+on/devref_3a
+
+- Initially the workspace contains one directory 'usr'. But after a build has been completed, proto, packages, archives and log will have also been created.
+- The log directory will contain the complete output from the nightly build process: /code/illumos-core/log/log.2014-12-10.11:54/nightly.log
+$ cat nightly.log | wc -l
+  296608
+$
+- The usr/src directory contains sources to buld the system but does not contain the following:
+ - Java
+ - the windowing system
+ - packaging tools
+ - installation tools
+- Here they are described:
+
+ cmd : Contains sources for the executable programs and scripts including all the basic commands, daemons, startup scripts and related data. Most subdirectories are named for the command or commands then provide; however, there are some exceptions listed here.
+ cmd/Adm : Misc key system files, such as crontabs and data installed in /etc
+ cmd/cmd-crypto : Basic crytographic utilities, such as elfsign and kcfd.
+ cmd/cmd-inet : Network commands and daemons, including the Berkeley r-commands, PPP, telnet, the inetd super-server, and other network-related utilities.
+ cmd/fs.d : Utilies for checking, mounting, unmounting and analysing filesystems.
+ cmd/netfiles : IP port definitions and name service switch configuration files installed in /etc.
+ cmd/ptools : Utilities for manipulating and observing processes; based on proc(4) and libproc interfaces.
+ cmd/sgs : Software Generation System. Contains binary utilities such as ld(1), ar(1) and mcs(1) and dev tools such as lex(1), yacc(1) and m4(1).
+ common : Files which are common among cmd, lib, stand and uts. These typically include headers and sources to basic libraries used by both the kernal and user programs.
+ head : Userland header files. Only libc should be stored here. Other libs have their headers in their own subdirectories in lib/
+ lib : Libraries.
+ pkg : Contains a manifests subdirectory with one manifest file for each package generated from the sources. The rest of the files are used to drive package publication based on those manifests. pkg/README.pkg has more details.
+ prototypes : Sample files showing format and copyright notices.
+ psm : Platform-specific modules. Contains only OBP and most of the boot code.
+ stand : Standalone environment code. Used for booting e.g. code for reading from UFS and the network is here.
+ tools : Dev tools and sources. README.tools for more info.
+ ucbcmd : Commands and daemons installed into /usr/ucb.
+ ucbhead : Header files installed into /usr/ucb.
+ ucblib : Libraries installed into /usr/ucb.
+ uts : Kernel sources are here. (UTS = UNIX Time Sharing). Some directories of interest are below.
+ uts/adb : adb contained the obsolete kernel debugger macros; it is no longer supported. Directory is now empty. Use mdb(1) instead.
+ uts/common : All platform-independent kernel sources. Nearly all kernel source code is here.
+ uts/common/c2 : Auditing code to support the C2 U.S. government security standard.
+ uts/common/conf : System configuration parameters.
+ uts/common/contract : Code to support process contracts. contact(4) and libcontract(3LIB).
+ uts/common/cpr : CheckPoint-and-Resume support. Suspend and resume functionality.
+ uts/common/crypto : Kernel crypto framework. See kcfd(1M) and cryptoadm(1M).
+ uts/common/ctf : Code for handling Compact C Type Format data.
+ uts/common/disp : Dispatcher, thread handling, and scheduling classes.
+ uts/common/dtrace : CPU-independent dtrace(7D) kernel support.
+ uts/common/exec : Code for handling userland binary executable types (a.out, ELF, etc).
+ uts/common/fs : Filesystems.
+ uts/common/gssapi : Generic Security Services API.
+ uts/common/inet : IP networking subsystem, including IPv6.
+ uts/common/io : I/O subsystem. Most of this code is device drivers.
+ uts/common/ipp : IP Policy framework, QoS etc.
+ uts/common/kmdb : Kernel modular debugger (kmdb(1)).
+ uts/common/krtld : Kernel runtime linker/loader. Responsible for handling loadable modules and symbolresolution; it is analogous to ld.so.1 and shares code with it.
+ uts/common/ktli : Kernel TLI (Transport Layer Interface).
+ uts/common/net : Header files.
+ uts/common/netinet : Header files.
+ uts/common/nfs : NFS header files.
+ uts/common/os : Core OS implementation. Includes privileges, zones, timers, DDI/DKI interfaces, and high-level locking mechanisms.
+ uts/common/pcmcia : PCMCIA I/O subsystem and drivers.
+ uts/common/rpc : RPC call subsystem.
+ uts/common/rpcsvc : RPC header files.
+ uts/common/sys : Header files. Also used to build the kernel.
+ uts/common/syscall : System call implementations.
+ uts/common/tnf : Old tracing subsystem, not related to dtrace(7D).
+ uts/common/vm : Virtual memory subsystem.
+ uts/common/zmod : Compression/decompression library.
+ uts/i86pc : Architecture-dependent files for x86 machines. 
+ uts/intel : ISA-dependent, architecture-independent files for x86 machines.
+ uts/sfmmu : Code specific to the SpitFire memory management unit (UltraSPARC).
+ uts/sparc : ISA-dependent, architecture-independent files for SPARC machines.
+ uts/sun : Sources common to all Sun implementations. Contains a small number of device drivers and some headers shipped in /usr/include/sys.
+ uts/sun4 : Sources common to all sun4* machine architectures.
+ uts/sun4u : Architecture-dependent sources for the sun4u architecture. Each system implementation has their own subdirectory.
+
+- Makefile layout
+ - usr/src/Makefile : top level makefile which drives builds for various targets in each subdirectory. - usr/src/Makefile.lint : All linting from the top level is done by this makefile. 
+ - usr/src/Makefile.master and usr/src/Makefile.master.64 : These two makefiles contain generic definitions, such as build and installation tools locations, template macros for compilers, linkers, and other tools to be used by other makefiles in defining rules, and global definitions such as the ISA and machine names that apply to this build. Makefile.master.64 contains definitions specific to 64-bit builds that override the generic definitions.
+ - usr/src/Makefile.msg.targ : Common targets for building message catalogues are defined here. Message catalogues provide translations of messages for g11n purposes.
+ - usr/src/Makefile.psm : Defines the installation locations for platform-specific modules.
+ - usr/src/Makefile.psm.targ : Installation target definitions for platform-specific modules.
+ - usr/src/Targetdirs : Set of definitions for the owner, group, permissions of each directory that will be created by the installation process.
+
+
+
+
+
+
