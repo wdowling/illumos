@@ -55,6 +55,11 @@ real    82m56.917s
 user    263m45.637s
 sys     182m49.067s
 
+- Using MAXJOB = 18 building full nightly is pretty much the same as above:
+real    83m28.971s
+user    276m52.324s
+sys     180m37.146s
+
 [Using bldenv]
 - cd /export/home/illumos-dev/code/illumos-gate
 - /opt/onbld/bin/bldenv -d ./illumos.sh
@@ -174,6 +179,127 @@ $
  - usr/src/Makefile.psm : Defines the installation locations for platform-specific modules.
  - usr/src/Makefile.psm.targ : Installation target definitions for platform-specific modules.
  - usr/src/Targetdirs : Set of definitions for the owner, group, permissions of each directory that will be created by the installation process.
+
+MODULE INSTALLATION
+- The install target causes binaries and libraries to be installed in the proto area. All modules are installed under $proto/kernel or $proto/usr/kernel.
+- To accommodate fully functional builds for ON, even though some sources are missing, a set of closed binaries are available, and the build system has been modified to make use of them. The makefile variable CLOSED_BUILD controls whether the build system will use the prebuilt closed binaries or look for the closed sources.
+-  CLOSED_BUILD is typically used in makefile lines that build up the list of modules or subdirectories that are to be built. Makefile lines that start with CLOSED_BUILD, e.g.,
+$(CLOSED_BUILD)DCSUBDIRS += \
+	$(CLOSED)/cmd/pax
+
+ are for use only when the closed sources are present.
+
+Chapter 3 - The Source Tree: part 2 - http://web.archive.org/web/20130303020856/http://hub.opensolaris.org/bin/view/Community+Group+on/devref_3b
+
+- Adding a new kernel module
+  - Imagine the module is called foofs
+  - Create the usr/src/uts/common/fs/foofs directory and populate it with your sources 
+  - Edit uts/*/Makefiles.files to define the set of objects.
+  - Create build directories in the appropriate places. (foofs is common code, so two build directories are needed: usr/src/uts/sparc/foofs and usr/src/uts/intel/foofs.)
+  - In each build directory, create a makefile.
+    	MODULE		= foofs
+	OBJECTS		= $(FOOFS_OBJS:%=$(OBJS_DIR)/%)
+	LINTS		= $(FOOFS_OBJS:%.o=$(LINTS_DIR)/%.ln)
+	ROOTMODULE	= $(ROOT_FS_DIR)/$(MODULE)
+  - Edit the parent Makefile.sparc, Makefile.intel to know about the new module
+	FS_KMODS	+= foofs
+
+- Some library Makefile examples:
+    lib/libdhcputil
+     Example of a simple 32-bit only library.
+    lib/libdhcpagent
+     Example of a simple 32-bit only library that obtains its sources from multiple directories.
+    lib/ncad_addr
+     Example of a simple loadable module.
+    lib/libipmp
+     Example of a simple library that builds a message catalog.
+    lib/libdhcpsvc
+     Example of a Makefile hierarchy for a library and a collection of related pluggable modules.
+    lib/lvm
+     Example of a Makefile hierarchy for a collection of related libraries and pluggable modules.
+     Also an example of a Makefile hierarchy that supports the _dc target for domain and category specific messages.
+
+Chapter 4 - Building ON - http://web.archive.org/web/20130301050449/http://hub.opensolaris.org/bin/view/Community+Group+on/devref_4
+
+- Environment Variables affecting the build:
+ - CODEMGR_WS root of the workspace.
+ - SRC root of the ON source tree.
+ - MACH ISA of the machine.
+ - ROOT root of the proto area of the build.
+ - PARENT_ROOT proto area of the parent workspace.
+ - MAKEFLAGS make flags.
+ - SPRO_ROOT top of the compiler tree typically /opt/SUNWspro.
+ - SPROV_ROOT version of compiler.
+ - GNU_ROOT /usr/sfw gcc tree.
+ - __GNUC, __GNUC64 control use of gcc.
+ - CLOSED_IS_PRESENT whether to look for closed binaries or not.
+ - ON_CLOSED_BINS points to the unpacked closed binaries.
+- Using nightly and bldenv:
+ - ON's build process entails creation of the proto area, compiling and linking binaries, generating lint libraries and linting the sources, building packages and BFU archives, and verifying headers, packaging, and proto area changes. 
+ - nightly automates this entire process.
+ - nightly builds the source, generates BFU archives, generates packages, runs lint(1), does syntactic checks, and creates and checks the proto area.
+ - It does not do any unit testing.
+ - nightly uses an environment file to set variables for workspace, flags etc. Sample files are located in usr/src/tools/env.
+- Using make:
+ - You can use make if you are working on a specific subdirectory.
+ - You cannot use BSD make or GNU make to build your workspace.
+ - Generic targets for make:
+all
+ Build all derived objects in the object directory.
+install
+ Install derived objects into the proto area defined by ${ROOT}.
+install_h
+ Install header files into the proto area defined by ${ROOT}.
+clean
+ Remove intermediate object files, but do not remove "complete" derived files such as executable programs, libraries, or kernel modules.
+clobber
+ Remove all derived files.
+check
+ Perform source-specific checks such as source and header style conformance.
+lint
+ Generate lint libraries and run all appropriate lint passes against all code which would be used to build objects in the current directory.
+- Proto Area:
+ - The install target causes binaries and headers to be installed into a hierarchy called the prototype or proto area. 
+ - This looks like a full system install as all files and directories are relative to the workspace root.
+ - The proto area is useful if you need to copy specific files from the build into your live system.
+ - It is also compared with the parent's proto area and the packaging information by tools like protocmp and checkproto to verify that only the expected shipped files have changed as a result of your source changes.
+- BFU Archives:
+ - cpio-format archives used to install ON on the live system.
+ - BFU archives are built by mkbfu.
+- Packages:
+ - The -p option to nightly will package the files that were installed into your proto area.
+
+Chapter 5 - Installing and Testing ON - http://web.archive.org/web/20130303044403/http://hub.opensolaris.org/bin/view/Community+Group+on/devref_5
+ - Cap-Eye Install - used only to install the kernel. It will place the new kernel in a nonstandard location and install only the platform-specific modules for your particular host. This allows you to test your changes without removing the normal kernel; if your new kernel does not boot or crashes, this makes recovery much easier.
+ - BFU - Updates both kernel and userland. Everything.
+ - Installing a kernel:
+  - Install -G kernel.foo -k sun4u
+  - Creates a tarfile.
+  - Copy /tmp/Install.username/Install.sun4u.tar to target machine and extract into root directory.
+  - Reboot:
+   
+(SPARC)
+# reboot -- 'kernel.foo/sparcv9/unix'
+
+
+(AMD64)
+# reboot -- 'kernel.foo/amd64/unix'
+
+
+(x86)
+# reboot -- 'kernel.foo/unix'
+
+ - Using BFU to Install ON:
+  - BFU uses a set of cpio(1) archives to directly overwrite the existing contents of the system. 
+  - In order to use BFU, you will need to set three additional environment variables first.
+   -FASTFS
+     This should normally be set to /opt/onbld/bin/`uname -p`/fastfs.
+    BFULD
+     This should normally be set to /opt/onbld/bin/`uname -p`/bfuld.
+    GZIPBIN
+     This should normally be set to /usr/bin/gzip.
+
+
 
 
 
