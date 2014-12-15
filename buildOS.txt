@@ -1,0 +1,43 @@
+
+1: Build illumos-core http://wiki.illumos.org/display/illumos/How+To+Build+illumos
+2: Build pkg - http://wiki.openindiana.org/oi/Building+pkg & https://github.com/OpenIndiana/pkg5
+  - cd /code
+  - Change Makefile:
+  # Use the bits we just built to create the packages.
+packages: install pylint
+        @cd pkg; pwd; $(MAKE) $(TARGET) \
+                PATH=/code/pkg5/proto/root_i386/usr/bin:$$PATH \
+                PYTHONPATH=/code/pkg5/proto/root_i386/usr/lib/python2.6/vendor-packages
+
+  - make packages 
+3: Build Caiman - http://wiki.openindiana.org/pages/viewpage.action?pageId=1048828 & https://github.com/OpenIndiana/slim_source
+4: Create repos for each of the above as an SMF service - http://wiki.illumos.org/display/illumos/Redistributing+built+packages & http://wiki.illumos.org/display/illumos/Installing+built+illumos+packages+into+BEs+on+a+remote+host+and+non-onu+updates
+  - illumos-core
+  oot@oi:~# svccfg -s svc:/application/pkg/server add illumos-build
+root@oi:~# svccfg -s svc:/application/pkg/server:illumos-build addpg pkg application
+root@oi:~# svccfg -s svc:/application/pkg/server:illumos-build setprop pkg/inst_root = astring: "/code/illumos-core/packages/i386/nightly/repo.redist"
+root@oi:~# svccfg -s svc:/application/pkg/server:illumos-build setprop pkg/port = count: 8001
+root@oi:~# svccfg -s svc:/application/pkg/server:illumos-build setprop pkg/readonly = boolean: true
+root@oi:~# svcadm refresh illumos-build
+root@oi:~# svcadm enable illumos-build
+
+  - pkg5
+  root@oi:~# svccfg -s svc:/application/pkg/server add pkg5
+root@oi:~# svccfg -s svc:/application/pkg/server:pkg5 addpg pkg application
+root@oi:~# svccfg -s svc:/application/pkg/server:pkg5 setprop pkg/inst_root = astring: "/code/pkg5/packages/i386/repo"
+root@oi:~# svccfg -s svc:/application/pkg/server:pkg5 setprop pkg/port = count: 8002
+root@oi:~# svccfg -s svc:/application/pkg/server:pkg5 setprop pkg/readonly = boolean: true
+root@oi:~# svcadm refresh pkg5
+root@oi:~# svcadm enable pkg5
+
+ - slim_source
+ root@oi:~# svccfg -s svc:/application/pkg/server add caiman
+root@oi:~# svccfg -s svc:/application/pkg/server:caiman addpg pkg application
+root@oi:~# svccfg -s svc:/application/pkg/server:caiman setprop pkg/inst_root = astring: "/code/slim_source/packages/i386/nightly-nd/repo.redist"
+root@oi:~# svccfg -s svc:/application/pkg/server:caiman setprop pkg/port = count: 8003
+root@oi:~# svccfg -s svc:/application/pkg/server:caiman setprop pkg/readonly = boolean: true
+root@oi:~# svcadm refresh caiman
+root@oi:~# svcadm enable caiman
+5: Merge repos under single illumos-core repo - http://wiki.openindiana.org/oi/Release+Publishing+with+IPS
+6: Use distro_const to build the ISO - http://wiki.openindiana.org/oi/Distribution+Constructor
+
