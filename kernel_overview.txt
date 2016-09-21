@@ -1,0 +1,79 @@
+                                                                               79
+General Overview of a Kernel
+----------------------------
+
+Primary functions of a kernel can be divided into two functions:
+1. Managing hardware by allocating its resources for the programs running on it
+2. Supplying a set of system services for those programs
+
+Basic unit of a program's environmment is the process. The process is made up of
+a number of threads which executes independently within the process' environment.
+
+Illumos Kernel Architecture
+---------------------------
+
+The kernel is grouped in to several key components and is implemented in a
+modular fashion:
+
+* System call interface - allows user processes to access kernel facilities.
+* Process execution and scheduling - process management facilities enable
+  process creation, execution, management and termination.
+* Memory management - the virtual memory system manages mapping of physical
+  memory to user processes and the kernel.
+* Resource management - contains the infrastructure and administrative
+  framework for allocating specific system resources (processor, memory,
+  network) to applications.
+* File systems - implements a virtual file system framework, by which multiple
+  types of file systems can be configured into the Illumos kernel at the same
+  time.
+* I/O bus and device management - implements bus nexus node drivers and device
+  drivers as a hierarchy of modules, reflecting the physical layout of the
+  bus/device interconnect.
+* Kernel facilities (clocks, timers, etc.) - central kernel facilities include
+  regular clock interrupts, system timers, synchronization primitives, and
+  loadable module support.
+* Networking - provides complete IPv4 and IPv6 support, socket-based interfaces
+  for network programming, and the traditional STREAMS framework for insertion
+  of custom modules in the protocol stack.
+
+The kernel supports 7 types of loadable kernel modules:
+
+1. Schedular Classes - TS, RT. FX, FSS
+2. File Systems - UFS, NFS, PROCFS
+3. Loadable System Calls - shmsys, semsys, msgsys
+4. Executable Formats - ELF, COFF
+5. Streams Modules - pipemod, idterm
+6. Misc Modules - NFSSRV, IPC
+7. Device and Bus Drivers - SBus, PCI, sd
+
+Processes, Threads and Scheduling
+---------------------------------
+
+The kernel thread is the core unti of execution management by the Illumos kernel.
+
+* Kernel threads - object that gets scheduled and executed on a processor.
+* User threads - user-level (non-kernel) thread state maintained within a user
+  process.
+* Process - executable form of a program; the execution environment for a user
+  program.
+* Lightweight process (LWP) - kernel-visible execution context for a user thread.
+
+Global Process Priorities and Scheduling
+----------------------------------------
+
+There exists 170 global priorities in the kernel. The priority name space is
+partitioned by different scheduling classes.
+
+TS - Timeshare - default class for processes and all the kernel threads within
+     the process. Range 0 - 59.
+IA - Interactive - enhanced TS class used by desktop windowing systems. Range
+     0 - 59.
+FSS - Fair share scheduler - share-based, not priority-based.
+FX - Fixed-priority - threads in the FX class do not have their priority changed.
+SYS - System class - used by the kernel for kernel threads. Range 60 - 99.
+RT - Real-time - implements fixed-priority, fixed-time-quantum scheduling.
+     Range 100 - 159.
+
+RT class threads will preempt operating system kernel threads.
+
+
