@@ -1,4 +1,3 @@
-                                                                               79
 General Overview of a Kernel
 ----------------------------
 
@@ -76,4 +75,48 @@ RT - Real-time - implements fixed-priority, fixed-time-quantum scheduling.
 
 RT class threads will preempt operating system kernel threads.
 
+Interprocess Communication
+--------------------------
+
+With IPC, information transfer, or synchronization occurs between processes.
+illumos supports four different groups of interprocess communication:
+ 1. traditional IPC
+ 2. System V IPC
+ 3. POSIX IPC
+ 4. Advanced Solaris IPC
+
+Signals
+-------
+
+The signal facility provides a method of interrupting a process or thread within
+a process as a result of a specific event.
+
+Memory Management
+-----------------
+
+Every object in the system is managed as a memory object in some form; data
+structures, kernel text, process address space segments, processes, threads, etc.
+The VM system can be considered the core of the operation system. It manages the
+system's memory on behalf of the kernel and processes.
+
+Files and File Systems
+----------------------
+
+VFS is a framework which allows multiple file system types to exist. File systems 
+can be categorized into the following groups:
+* Storage-Based File Systems
+* Network File Systems
+* Pseudo File Systems
+
+Resource Management
+-------------------
+
+Generally the primary purpose of any operating system is to manage hardware
+resources for system and user processes.
+
+Processor controls and domains:
+* Processor binding.
+* Processdor sets.
+* Processor interrupt management.
+* Dynamic system domains.
 
