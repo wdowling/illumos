@@ -1,0 +1,63 @@
+
+Notes from:
+  "The Process File System and Process Model in UNIX System V"
+
+$ ls -l /proc/
+total 24
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3245
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3309
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3337
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3339
+dr-x--x--x 5 netadm netadm 896 Sep 22 07:45 3421
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3508
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3623
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3797
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3802
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3803
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3805
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3807
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3810
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3818
+dr-x--x--x 5 root   root   896 Sep 22 07:45 3854
+dr-x--x--x 5 root   root   896 Sep 22 07:46 4212
+dr-x--x--x 5 wmd    other  896 Sep 22 07:46 4214
+dr-x--x--x 5 wmd    other  896 Sep 22 07:46 4215
+dr-x--x--x 5 wmd    other  896 Sep 22 07:46 4218
+dr-x--x--x 5 wmd    other  896 Sep 22 07:47 4221
+dr-x--x--x 5 wmd    other  896 Sep 22 07:47 4222
+dr-x--x--x 5 wmd    other  896 Sep 22 07:47 4225
+dr-x--x--x 5 wmd    other  896 Sep 22 07:47 4232
+dr-x--x--x 5 wmd    other  896 Sep 22 07:47 4233
+
+For detailed manpage information:
+$ man -s 4 proc
+
+The process file system represents all processes in the system as files in
+a directory conventionally named /proc.
+
+Standard syscall interfaces for /proc files:
+- open(2)
+- close(2)
+- lseek(2)
+- read(2)
+- write(2)
+- ioctl(2)
+
+Process Address Space
+---------------------
+
+* A process executes in a virtual address space consisting of a
+  number of memory mappings.
+* Mappings can be either Private or Shared
+
+Process Context
+---------------
+
+* The execution context of a process is described by a structure
+  which holds signal state, contents of the processor registers,
+  process and session ids and scheduling state.
+
+A process executes in an environment established by and enforced
+by the UNIX kernel. Natural points of control for a process are
+where it enters and leaves the kernel, specifically, system call
+entry and exit, machine faults, and receipt of signals.
