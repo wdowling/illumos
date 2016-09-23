@@ -56,8 +56,17 @@ Process Context
 * The execution context of a process is described by a structure
   which holds signal state, contents of the processor registers,
   process and session ids and scheduling state.
+* A process executes in an environment established by and enforced
+  by the UNIX kernel. Natural points of control for a process are
+  where it enters and leaves the kernel, specifically, system call
+  entry and exit, machine faults, and receipt of signals.
+* There a two points in the kernel where signals are detected: when
+  the process is returning to user level and when the process is
+  sleeping at an interruptible priority within a system call.
 
-A process executes in an environment established by and enforced
-by the UNIX kernel. Natural points of control for a process are
-where it enters and leaves the kernel, specifically, system call
-entry and exit, machine faults, and receipt of signals.
+Implementation
+--------------
+
+* The implementation of /proc as a set of ''files'' is facilitates by
+  the Virtual File System architecture of SVR4.
+
