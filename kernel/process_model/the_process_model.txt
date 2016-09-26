@@ -1,0 +1,61 @@
+
+The Solaris/illumos Process Model
+---------------------------------
+
+A process is an executable object, occupying pages of physical memory
+containing specific memory segments with instructions (text), stack space,
+data space, and other components necessary for execution.
+
+Thread Objects
+--------------
+* Tasks performed by the operating system are executed as kernel threads.
+* Light Weight Processes (LWP) allow user threads to execute and enter the 
+  kernel independently of other threads in the same process.
+
+  Relationship between user and kernel threads in a process object
+
+           ------------------------
+          |        Process         |
+          |    ----------------    |<------- proc_t
+          |   |---   user   ---|   |
+          |   |   | thread |<--|---|-------- ulwp_t
+          |   |   ----------   |   |
+          |   |                |   |
+          |   |      LWP       |<--|-------- klwp_t 
+           ---|                |---
+               ----------------
+                  |        |
+               ----------------
+              |    kernel      |<----------- kthread_t
+              |    thread      | 
+               ----------------
+
+* process: illumos/src/uts/common/sys/proc.h
+* user thread: illumos/usr/src/lib/libc/inc/thr_uberdata.h
+* light-weight process: illumos/usr/src/uts/common/sys/klwp.h
+* kernel thread: illumos/usr/src/uts/common/sys/thread.h
+
+proc_t exists in the kernel address space and thus is protected from being
+accessed by user processes.
+
+Core Process Components
+-----------------------
+* Address space which is broken up as follows:
+    * Text segment: defines the memory pages containing the instruction stream
+      the process executes when it runs.
+    * Stack segment: defines memory pages for the process stack.
+    * Data segment: contains initialized data.
+    * All processes also have a heap segment, which defines the memory
+      pages for uninitialized data.
+* Credentials which bind the process to a user, group and set of privileges.
+* Process links which are the linked lists in the kernel the process resides on.
+* CPU utilization. Fields that track the time spent by the process executing in
+  user and kernel mode.
+* Signals. Fields for signals to be set.
+* Threads. Fields to track number of LWPs in the process.
+* Microstate accounting. Resource usage tracking.
+* User area. Maintains various bits of information such as process name, argument
+  list etc.
+* Procfs. Support for integration with the process file system.
+* Resource management. Support for resource controls.
+
