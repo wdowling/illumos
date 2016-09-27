@@ -1,0 +1,157 @@
+
+Peeking into /proc
+----------------------------------
+
+The /proc filesystem holds information on each process executing on
+illumos. The directory contains subdirectories named after each pid running
+on the system. For this analyis I will be looking at the bash process.
+
+$ ps 
+  PID TTY         TIME CMD
+ 4477 pts/3       0:00 bash
+ 4829 pts/3       0:00 ps
+
+$ ls -l /proc/4477
+total 3902
+-r--r--r-- 1 wmd other    4096 Sep 26 11:01 argv
+-rw------- 1 wmd other 3944448 Sep 26 11:01 as
+-r-------- 1 wmd other     208 Sep 26 11:01 auxv
+dr-x------ 2 wmd other      32 Sep 26 11:01 contracts
+-r-------- 1 wmd other      32 Sep 26 11:01 cred
+--w------- 1 wmd other       0 Sep 26 11:01 ctl
+lr-x------ 1 wmd other       0 Sep 26 11:01 cwd -> 
+dr-x------ 2 wmd other    8208 Sep 26 11:01 fd
+-r-------- 1 wmd other       0 Sep 26 11:01 ldt
+-r--r--r-- 1 wmd other     120 Sep 26 11:01 lpsinfo
+-r-------- 1 wmd other     816 Sep 26 11:01 lstatus
+-r--r--r-- 1 wmd other     536 Sep 26 11:01 lusage
+dr-xr-xr-x 3 wmd other      64 Sep 26 11:01 lwp
+-r-------- 1 wmd other    3360 Sep 26 14:28 map
+dr-x------ 2 wmd other     800 Sep 26 11:01 object
+-r-------- 1 wmd other    4504 Sep 26 11:01 pagedata
+dr-x------ 2 wmd other    9008 Sep 26 11:01 path
+-r-------- 1 wmd other      88 Sep 26 11:01 priv
+-rw-r--r-- 1 wmd other     336 Sep 26 11:01 psinfo
+-r-------- 1 wmd other    3360 Sep 26 11:01 rmap
+lr-x------ 1 wmd other       0 Sep 26 11:01 root -> 
+-r-------- 1 wmd other    2368 Sep 26 11:01 sigact
+-r-------- 1 wmd other    1136 Sep 26 11:01 status
+-r--r--r-- 1 wmd other     256 Sep 26 11:01 usage
+-r-------- 1 wmd other       0 Sep 26 11:01 watch
+-r-------- 1 wmd other    5320 Sep 26 11:01 xmap
+
+Files
+-----
+The pid subdirectory - in this case /proc/4477 - is made up of a nummber
+of files and directories. The procfs.h file contains datastructures to
+represent each of the entries above.
+
+argv
+----
+This file contains the concatenation of each of the argument strings. 
+$ cat /proc/4477/argv
+-bash$
+
+It's essentially the process name.
+
+as
+--
+Contains the Address Space of the process. This can be opened by using
+lseek() to position the file at a certain address, and then using read()
+or write() can be read or modified.
+
+auxv
+----
+Initial values of the process's aux vector <sys/auxv.h>. The Auxilary Vector
+is a table of information which provides a process with information on the
+operating system environment. Some examples:
+
+#define AT_SUN_UID      2000    /* effective user id */
+#define AT_SUN_RUID     2001    /* real user id */ 
+#define AT_SUN_LDELF    2004    /* dynamic linker's ELF header */
+#define AT_SUN_PLATFORM 2008    /* platform name */
+
+contracts
+---------
+A directory containing references to the contracts held by the process. If
+any contracts exist, they would appear as a symlink to /system/contracts.
+Contracts are used by SMF to monitor processes. Since bash is not controlled
+via SMF, the contracts/ directory is empty.
+
+cred
+----
+
+ctl
+---
+
+cwd
+---
+
+fd
+--
+
+ldt
+---
+
+lpsinfo
+-------
+
+lstatus
+-------
+
+lusage
+------
+
+lwp
+---
+Each process can contain more than one LWP and under the /proc directory
+they exist under the lwp/ subdirectory each defined in a <lwpid> subdirectory.
+
+$ ls -l /proc/4477/lwp/1/
+total 3
+--w------- 1 wmd other   0 Sep 26 11:01 lwpctl
+-r--r--r-- 1 wmd other 104 Sep 26 11:01 lwpsinfo
+-r-------- 1 wmd other 800 Sep 26 11:01 lwpstatus
+-r--r--r-- 1 wmd other 256 Sep 26 11:01 lwpusage
+-r-------- 1 wmd other   0 Sep 26 11:01 spymaster
+dr-x------ 2 wmd other  64 Sep 26 11:01 templates
+-r-------- 1 wmd other   0 Sep 26 11:01 xregs
+
+map
+---
+
+object
+------
+
+pagedata
+--------
+
+path
+----
+
+priv
+----
+
+psinfo
+------
+
+rmap
+----
+
+root
+----
+
+sigact
+------
+
+status
+------
+
+usage
+-----
+
+watch
+-----
+
+xmap
+----

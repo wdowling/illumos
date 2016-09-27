@@ -1,0 +1,25 @@
+
+A Foray in to Linking
+---------------------
+
+The final step in generating an application is to link it. But link to what?
+Well it must be linked to any library required to produce an executable. On
+illumos there are two types of linking - static and dynamic. The program `ld` 
+performs the linking. It exists under the directory usr/src/cmd/sgs/ld. 
+
+Dynamic Linking
+---------------
+* Allow libraries to be shared among multiple applications and loaded when
+  needed.
+* Libraries optimized for a particular platform are picked up at runtime.
+* Can investigate runtime behaviour and examine function calls.
+* Dynamic libraries can be changed without changing the application.
+* Postfix .so for "shared object".
+
+Static Linking
+--------------
+* Slightly better performance over dynamic libraries.
+* Easier to track what code was called.
+* Postfix .a for "archive".
+
+System libraries are now only available as dynamic libraries. 
