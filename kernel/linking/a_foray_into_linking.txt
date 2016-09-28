@@ -18,8 +18,26 @@ Dynamic Linking
 
 Static Linking
 --------------
+A static library is a collection of object files.
 * Slightly better performance over dynamic libraries.
 * Easier to track what code was called.
 * Postfix .a for "archive".
 
 System libraries are now only available as dynamic libraries. 
+
+Runtime Linker
+--------------
+At runtime, it is necessary to load required libraries. This task is done
+by a program called the `runtime linker`. It searches the /lib, /usr/lib, 
+/lib/64 and /usr/lib/64 directories when called.
+
+Lazy Loading
+------------
+Libraries can be loaded in to a program once the calling routine is executed
+rather than when the program is launched. This saves on memory requirements
+and speeds up the application launch time.
+
+Symbol Scoping
+--------------
+* Use __hidden to keep functions or variables local to a module.
+* Use __global for global access.
