@@ -59,3 +59,81 @@ Core Process Components
 * Procfs. Support for integration with the process file system.
 * Resource management. Support for resource controls.
 
+Process - The Executable Object
+-------------------------------
+A process is simply an executable file on disk. The file becomes a process
+when it is successfully invoked by the exec(2) system call which is typically
+preceded by a fork(2) call. Forking creates a new proc_t structure and replaces
+the process image of the calling process with the new process image. The executable
+object file is an Executable and Linking Format (ELF) file. This is an industry
+standard for compiled, executable programs for operating systems.
+
+An ELF object contains an ELF header that provides specific informatio about the
+object and a series of fields that describe the different components of the file.
+
+The ELF header of /bin/ls:
+$ elfdump -e /bin/ls
+
+ELF Header
+  ei_magic:   { 0x7f, E, L, F }
+  ei_class:   ELFCLASS32          ei_data:       ELFDATA2LSB
+  ei_osabi:   ELFOSABI_SOLARIS    ei_abiversion: EAV_SUNW_CURRENT
+  e_machine:  EM_386              e_version:     EV_CURRENT
+  e_type:     ET_EXEC
+  e_flags:                     0
+  e_entry:             0x8052598  e_ehsize:     52  e_shstrndx:  29
+  e_shoff:                0xb4d0  e_shentsize:  40  e_shnum:     30
+  e_phoff:                  0x34  e_phentsize:  32  e_phnum:     7
+
+This shows the platform type - EM_386 (32bit x86) and the Section Header (e_shoff)
+and Program Header (e_phoff). The Section Header Table (e_shentsize) is 40 bytes in
+size and locates linkale sections of the executable. The Program Header Table
+(e_phentsize) is 32 bytes and defines the program segments of the object file, which
+are segments of executable code.
+
+The Section Header Table of /bin/ls can be dumped using `elfdump -c /bin/ls`. Some of
+the important sections displayed below:
+$ elfdump -c /bin/ls                                                                                                                 
+
+Section Header[14]:  sh_name: .text
+    sh_addr:      0x8052598       sh_flags:   [ SHF_ALLOC SHF_EXECINSTR ]
+    sh_size:      0x4df8          sh_type:    [ SHT_PROGBITS ]
+    sh_offset:    0x2598          sh_entsize: 0
+    sh_link:      0               sh_info:    0
+    sh_addralign: 0x4       
+
+Section Header[15]:  sh_name: .init
+    sh_addr:      0x8057390       sh_flags:   [ SHF_ALLOC SHF_EXECINSTR ]
+    sh_size:      0x23            sh_type:    [ SHT_PROGBITS ]
+    sh_offset:    0x7390          sh_entsize: 0
+    sh_link:      0               sh_info:    0
+    sh_addralign: 0x10      
+
+Section Header[16]:  sh_name: .fini
+    sh_addr:      0x80573c0       sh_flags:   [ SHF_ALLOC SHF_EXECINSTR ]
+    sh_size:      0x1e            sh_type:    [ SHT_PROGBITS ]
+    sh_offset:    0x73c0          sh_entsize: 0
+    sh_link:      0               sh_info:    0
+    sh_addralign: 0x1
+
+...
+
+Section Header[21]:  sh_name: .data
+    sh_addr:      0x8069320       sh_flags:   [ SHF_WRITE SHF_ALLOC ]
+    sh_size:      0x1a0           sh_type:    [ SHT_PROGBITS ]
+    sh_offset:    0x9320          sh_entsize: 0
+    sh_link:      0               sh_info:    0
+    sh_addralign: 0x20
+
+...
+
+Section Header[25]:  sh_name: .bss
+    sh_addr:      0x8069500       sh_flags:   [ SHF_WRITE SHF_ALLOC ]
+    sh_size:      0xd3c           sh_type:    [ SHT_NOBITS ]
+    sh_offset:    0x9500          sh_entsize: 0
+    sh_link:      0               sh_info:    0
+    sh_addralign: 0x40      
+
+Using `LD_DEBUG=help /bin/ls` gives a wealth of options for runtime linking
+debugging. LD_DEBUG=all generates a large amount of output that can be quite
+useful.
