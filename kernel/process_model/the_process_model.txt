@@ -136,4 +136,7 @@ Section Header[25]:  sh_name: .bss
 
 Using `LD_DEBUG=help /bin/ls` gives a wealth of options for runtime linking
 debugging. LD_DEBUG=all generates a large amount of output that can be quite
+
+* A process that has terminated, but whose parent has not yet waited for it, is
+  called a zombie. The `ps` command represents zombie state by the letter 'Z'.
 useful.
